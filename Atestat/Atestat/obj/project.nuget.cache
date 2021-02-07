@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bv/2nFRqxNgxu97Yin8WNMClREAsQre/c0iJVwdFgIevlPaaYRGpAOMlRN4hBwOdou3hL92pVNFBojEOAlAFeQ==",
+  "success": true,
+  "projectFilePath": "D:\\c#\\ProiectAtestat\\Atestat\\Atestat\\Atestat.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\materialdesigncolors\\1.2.7\\materialdesigncolors.1.2.7.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\materialdesignthemes\\3.2.0\\materialdesignthemes.3.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
