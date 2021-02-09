@@ -9,7 +9,8 @@
       "Atestat/1.0.0": {
         "dependencies": {
           "MaterialDesignColors": "1.2.7",
-          "MaterialDesignThemes": "3.2.0"
+          "MaterialDesignThemes": "3.2.0",
+          "MySql.Data": "8.0.22.0"
         },
         "runtime": {
           "Atestat.dll": {}
@@ -31,6 +32,78 @@
           "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {
             "assemblyVersion": "3.2.0.1979",
             "fileVersion": "3.2.0.1979"
+          }
+        }
+      },
+      "MySql.Data/8.0.22.0": {
+        "runtime": {
+          "MySql.Data.dll": {
+            "assemblyVersion": "8.0.22.0",
+            "fileVersion": "8.0.22.0"
+          }
+        }
+      },
+      "Google.Protobuf/3.11.4.0": {
+        "runtime": {
+          "Google.Protobuf.dll": {
+            "assemblyVersion": "3.11.4.0",
+            "fileVersion": "3.11.4.0"
+          }
+        }
+      },
+      "Zstandard.Net/1.1.7.0": {
+        "runtime": {
+          "Zstandard.Net.dll": {
+            "assemblyVersion": "1.1.7.0",
+            "fileVersion": "1.1.7.0"
+          }
+        }
+      },
+      "K4os.Compression.LZ4.Streams/1.1.11.0": {
+        "runtime": {
+          "K4os.Compression.LZ4.Streams.dll": {
+            "assemblyVersion": "1.1.11.0",
+            "fileVersion": "1.1.11.0"
+          }
+        }
+      },
+      "BouncyCastle.Crypto/1.8.3.0": {
+        "runtime": {
+          "BouncyCastle.Crypto.dll": {
+            "assemblyVersion": "1.8.3.0",
+            "fileVersion": "1.8.18223.1"
+          }
+        }
+      },
+      "Ubiety.Dns.Core/2.2.1.0": {
+        "runtime": {
+          "Ubiety.Dns.Core.dll": {
+            "assemblyVersion": "2.2.1.0",
+            "fileVersion": "2.2.1.0"
+          }
+        }
+      },
+      "Renci.SshNet/2016.1.0.0": {
+        "runtime": {
+          "Renci.SshNet.dll": {
+            "assemblyVersion": "2016.1.0.0",
+            "fileVersion": "2016.1.0.0"
+          }
+        }
+      },
+      "K4os.Compression.LZ4/1.1.11.0": {
+        "runtime": {
+          "K4os.Compression.LZ4.dll": {
+            "assemblyVersion": "1.1.11.0",
+            "fileVersion": "1.1.11.0"
+          }
+        }
+      },
+      "K4os.Hash.xxHash/1.0.6.0": {
+        "runtime": {
+          "K4os.Hash.xxHash.dll": {
+            "assemblyVersion": "1.0.6.0",
+            "fileVersion": "1.0.6.0"
           }
         }
       }
@@ -55,6 +128,51 @@
       "sha512": "sha512-aOZQShQuV7sCWOwO98dYz1S4stmIWDBH+Q6KoR3wDiDyuG7twoGnBDzQBhrxuS16I3GQiG5nfvUjEJFVc/zdKg==",
       "path": "materialdesignthemes/3.2.0",
       "hashPath": "materialdesignthemes.3.2.0.nupkg.sha512"
+    },
+    "MySql.Data/8.0.22.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Google.Protobuf/3.11.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zstandard.Net/1.1.7.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "K4os.Compression.LZ4.Streams/1.1.11.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BouncyCastle.Crypto/1.8.3.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ubiety.Dns.Core/2.2.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Renci.SshNet/2016.1.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "K4os.Compression.LZ4/1.1.11.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "K4os.Hash.xxHash/1.0.6.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

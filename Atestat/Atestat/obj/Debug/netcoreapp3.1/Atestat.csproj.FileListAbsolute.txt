@@ -21,3 +21,13 @@ D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat.dll
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat.pdb
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat.genruntimeconfig.cache
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat.csprojAssemblyReference.cache
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\MySql.Data.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\MySql.Data.xml
