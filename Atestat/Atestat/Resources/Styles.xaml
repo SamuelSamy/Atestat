@@ -140,14 +140,29 @@
         <Setter Property="Foreground" Value="{StaticResource BlackBrush}"/>
         <Setter Property="TextDecorations" Value=""/>
         
+        
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="{StaticResource LightBlueBrush}"/>
                 <Setter Property="TextDecorations" Value="Underline"/>
             </Trigger>
-        </Style.Triggers>
 
+            <EventTrigger RoutedEvent="Button.Click">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"  
+                                                                From="{StaticResource LightBlue}" To="{StaticResource DarkBlue}" 
+                                                                Duration="0:0:0.15"
+                                                                AutoReverse="True"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+
+        </Style.Triggers>
+        
 
 
 
