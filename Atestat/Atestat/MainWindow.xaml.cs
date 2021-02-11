@@ -69,7 +69,7 @@ namespace Atestat
 
                 MySqlDataReader r = cmd.ExecuteReader();
 
-                if (r.Read() && r["parola"].ToString() == txtPass.Text)
+                if (r.Read() && r["parola"].ToString() == "salut")
                 {
                     User.id = int.Parse(r["id"].ToString());
                     User.mail = r["mail"].ToString();
@@ -83,6 +83,8 @@ namespace Atestat
                 }
                 else
                 {
+                    txtMail.Text = "";
+                    passBox.Password = "";
                     MessageBox.Show("Datele introduse nu sunt corecte!");
                 }
 
@@ -93,10 +95,15 @@ namespace Atestat
             catch (Exception ex)
             {
                 Vars.conn.Close();
-                MessageBox.Show("Eroare in procesul de conectare! Daca problema persista, contactati un administrator!");
+                txtMail.Text = "";
+                passBox.Password = "";
+                MessageBox.Show("Eroare in procesul de conectare! Daca problema persista, contactati un administrator!\n" + ex.ToString());
             }
         }
 
-        
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
