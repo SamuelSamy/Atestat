@@ -75,49 +75,61 @@
                     <RowDefinition Height=".75*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Adresa de mail:"
+
+                <Viewbox  Grid.Column="1"
+                          Grid.Row="1"
+                          HorizontalAlignment="Left" Stretch="Uniform">
+                    <TextBlock Text="Adresa de mail:"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="20" 
-                           Grid.Column="1"
-                           Grid.Row="1">
-                </TextBlock>
+                           FontSize="24"/>
+                </Viewbox>
+                
 
                 <TextBox x:Name="txtMail"
                          Grid.Row="3"
+                         FontSize="24"
                          Grid.Column="1"
-                         Style="{StaticResource CustomTextBox}">
+                         Style="{StaticResource CustomTextBox}"
+                         SizeChanged="ControlSizeChanged">
 
 
                 </TextBox>
 
-                <TextBlock Text="Parola:" 
+                <Viewbox   Grid.Column="1"
+                           Grid.Row="5"
+                           HorizontalAlignment="Left" Stretch="Uniform">
+                    <TextBlock Text="Parola:" 
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="20"
-                           Grid.Column="1"
-                           Grid.Row="5">
-
-                </TextBlock>
+                           FontSize="24"/>
+                </Viewbox>
+                
 
                 <PasswordBox    x:Name="passBox"
                                 Grid.Row="7"
                                 Grid.Column="1"
                                 Style="{StaticResource CustomPasswordBox}"
-                                FontSize="20"
+                                FontSize="24"
                                 Foreground="{StaticResource BlackBrush}" 
                                 HorizontalContentAlignment="Left" 
                                 VerticalContentAlignment="Center"
+                                SizeChanged="ControlSizeChanged"
                                 />
-
-                <TextBlock Text="Ati uitat parola?" 
-                           Grid.Row="9"
-                           Grid.Column="1"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           TextAlignment="Left"
-                           FontSize="16"
-                           Style="{StaticResource ForgotPassword}"/>
+                
+                <Viewbox Grid.Row="9"
+                         Grid.Column="1"
+                         Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    
+                    <TextBlock Text="Ati uitat parola?" 
+                           
+                           VerticalAlignment="Stretch"
+                           HorizontalAlignment="Stretch"
+                           TextAlignment="Center"
+                           FontSize="10"
+                           Style="{StaticResource ForgotPassword}" FontWeight="Normal"/>
+                </Viewbox>
+                
 
                 <Grid Grid.Row="11" Grid.Column="1">
 
@@ -137,10 +149,11 @@
 
                             Content="Conectare" 
                             Foreground="Snow" 
-                            FontSize="20" 
+                            FontSize="28" 
                             FontWeight="Bold" 
                             
-                            Click="btnLogin_Click">
+                            Click="btnLogin_Click"
+                            SizeChanged="ControlSizeChanged">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -157,10 +170,11 @@
 
                             Content="Inregistrare" 
                             Foreground="Snow" 
-                            FontSize="20" 
+                            FontSize="28" 
                             FontWeight="Bold" 
                             
-                            Click="btnRegister_Click">
+                            Click="btnRegister_Click"
+                            SizeChanged="ControlSizeChanged">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

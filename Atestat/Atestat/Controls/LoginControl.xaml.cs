@@ -101,5 +101,10 @@ namespace Atestat
      
            
         }
+
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+             Functions.ControlResize(sender, e);
+        }
     }
 }

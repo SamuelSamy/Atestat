@@ -40,5 +40,12 @@ namespace Atestat
 
             this.Content = new LoginControl();
         }
+
+        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Functions.ControlResize(sender, e);
+        }
+
+        
     }
 }

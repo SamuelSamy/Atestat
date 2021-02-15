@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Atestat"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="675" d:DesignWidth="1200">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/Atestat;component/Resources/Styles.xaml"/>
@@ -14,11 +14,12 @@
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="566*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="sideBarMain" Visibility="Visible" Grid.Column="0" Background="{StaticResource WhiteBrush}" >
+        <Grid x:Name="sideBarMain" Visibility="Visible"  Background="{StaticResource WhiteBrush}" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -43,8 +44,8 @@
                     
                     Content="Anunturi" 
                     Foreground="Snow" 
-                    FontSize="20"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    FontSize="24"
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -59,9 +60,12 @@
 
                     Content="Conectare" 
                     Foreground="Snow" 
-                    FontSize="20" 
-                    FontWeight="Bold" Click="btnLogin_Click">
+                    FontSize="24" 
+                    FontWeight="Bold" Click="btnLogin_Click"
+                    SizeChanged="Button_SizeChanged">
 
+                    
+                
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
                 </Button.Effect>
@@ -76,8 +80,9 @@
                     
                     Content="Ajutor" 
                     Foreground="Snow"
-                    FontSize="20" 
-                    FontWeight="Bold">
+                    FontSize="24" 
+                    FontWeight="Bold"
+                    SizeChanged="Button_SizeChanged">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -88,7 +93,7 @@
 
         </Grid>
 
-        <Grid x:Name="gridLogo" Grid.Column="1" Visibility="Visible">
+        <Grid x:Name="gridLogo" Grid.Column="1" Visibility="Visible" Grid.ColumnSpan="2">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
