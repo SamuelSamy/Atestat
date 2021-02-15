@@ -7,14 +7,26 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="sideLogin.xaml.cs">
+    <Compile Update="Controls\LoginControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="test.xaml.cs">
+    <Compile Update="Controls\MainControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\RegisterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\LoginControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MainControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\RegisterControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Resources\Colors.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -25,12 +37,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Styles.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="sideLogin.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="test.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

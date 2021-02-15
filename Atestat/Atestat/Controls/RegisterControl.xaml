@@ -1,0 +1,238 @@
+﻿<UserControl x:Class="Atestat.RegisterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Atestat"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Atestat;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1.6*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="gridLogin" 
+              Grid.Column="0" 
+              Visibility="Visible"
+              Background="Snow">
+
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <!-- 0. TextBlock - nume -->
+                    <RowDefinition Height="1*"/>
+                    <!-- 1. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 2. TextBox - nume -->
+                    <RowDefinition Height="1.5*"/>
+                    <!-- 3. Nothing  -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 4. TextBlock mail  -->
+                    <RowDefinition Height="1*"/>
+                    <!-- 5. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 6. TextBox - mail  -->
+                    <RowDefinition Height="1.5*"/>
+                    <!-- 7. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 8. TextBlock - password -->
+                    <RowDefinition Height="1*"/>
+                    <!-- 9. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 10. PasswordBox - Password -->
+                    <RowDefinition Height="1.5*"/>
+                    <!-- 11. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 12. TextBlock - confPass -->
+                    <RowDefinition Height="1*"/>
+                    <!-- 13. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 14. PasswordBox - ConfirmPassword -->
+                    <RowDefinition Height="1.5*"/>
+                    <!-- 15. Nothing -->
+                    <RowDefinition Height=".15*"/>
+                    <!-- 16. "Aveti deja un cont?" -->
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Adresa de mail:"
+                           TextAlignment="Left"
+                           Foreground="{StaticResource BlackBrush}"
+                           FontSize="20" 
+                           Grid.Column="1"
+                           Grid.Row="0">
+                </TextBlock>
+
+
+                <TextBox x:Name="txtName"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         Style="{StaticResource CustomTextBox}">
+                </TextBox>
+                
+                
+                <TextBlock Text="Adresa de mail:"
+                           TextAlignment="Left"
+                           Foreground="{StaticResource BlackBrush}"
+                           FontSize="20" 
+                           Grid.Column="1"
+                           Grid.Row="4">
+                </TextBlock>
+
+                <TextBox x:Name="txtMail"
+                         Grid.Row="6"
+                         Grid.Column="1"
+                         Style="{StaticResource CustomTextBox}">
+
+
+                </TextBox>
+
+                <TextBlock Text="Parola:" 
+                           TextAlignment="Left"
+                           Foreground="{StaticResource BlackBrush}"
+                           FontSize="20"
+                           Grid.Column="1"
+                           Grid.Row="8">
+
+                </TextBlock>
+
+                <PasswordBox    x:Name="passBox"
+                                Grid.Row="10"
+                                Grid.Column="1"
+                                Style="{StaticResource CustomPasswordBox}"
+                                FontSize="20"
+                                Foreground="{StaticResource BlackBrush}" 
+                                HorizontalContentAlignment="Left" 
+                                VerticalContentAlignment="Center"
+                                />
+
+                <TextBlock Text="Confirmare Parola:" 
+                           TextAlignment="Left"
+                           Foreground="{StaticResource BlackBrush}"
+                           FontSize="20"
+                           Grid.Column="1"
+                           Grid.Row="12">
+
+                </TextBlock>
+
+                <PasswordBox    x:Name="passBoxConf"
+                                Grid.Row="14"
+                                Grid.Column="1"
+                                Style="{StaticResource CustomPasswordBox}"
+                                FontSize="20"
+                                Foreground="{StaticResource BlackBrush}" 
+                                HorizontalContentAlignment="Left" 
+                                VerticalContentAlignment="Center"
+                                />
+
+                <TextBlock Text="Ai deja un cont? Click aici pentru a te conecta!" 
+                           Grid.Row="16"
+                           Grid.Column="1"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Left"
+                           FontSize="16"
+                           Style="{StaticResource ForgotPassword}" 
+                           MouseDown="AlreadyHasAccount_MouseDown"/>
+
+
+            </Grid>
+
+
+
+        </Grid>
+
+
+
+
+        <Grid Grid.Column="1"
+              Background="Snow">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1.3*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width=".1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" Grid.Row="1" Source="/Atestat;component/Assets/RoundLogo.png" RenderTransformOrigin="0.5,0.5">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="15"/>
+                </Image.Effect>
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="30"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+
+            <Grid Grid.Row="3">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height=".2*"/>
+                </Grid.RowDefinitions>
+                
+                <Button x:Name="btnRegister" 
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Background="{StaticResource LightBlueBrush}"
+                            BorderBrush="{StaticResource DarkBlueBrush}"
+                            Style="{StaticResource RoundButton}"
+                            
+
+                            Content="Inregistrare" 
+                            Foreground="Snow" 
+                            FontSize="20" 
+                            FontWeight="Bold" 
+                            
+                            Click="btnRegister_Click">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                    </Button.Effect>
+
+                </Button>
+            </Grid>
+            
+
+        </Grid>
+    </Grid>
+</UserControl>

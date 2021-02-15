@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\c#\ProiectAtestat\Atestat\Atestat\App.xaml
-6297990997
+7-606777213
 
-7-907571985
+8-576245773
 205-1960069534
-MainWindow.xaml;Resources\Brushes.xaml;Resources\Colors.xaml;Resources\Styles.xaml;sideLogin.xaml;test.xaml;
+Controls\LoginControl.xaml;Controls\MainControl.xaml;Controls\RegisterControl.xaml;MainWindow.xaml;Resources\Brushes.xaml;Resources\Colors.xaml;Resources\Styles.xaml;
 
 False
 

@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\RoundLogo.ico" />
     <None Remove="Logo.png" />
-    <None Remove="RoundLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,12 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Logo.png" />
-    <Resource Include="RoundLogo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controls\" />
+    <Resource Include="Assets\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\RoundLogo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\RoundLogo.png" />
   </ItemGroup>
 
 </Project>
