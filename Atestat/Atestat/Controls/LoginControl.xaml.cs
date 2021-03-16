@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
-
+using System.Data;
 
 namespace Atestat
 {
@@ -26,6 +26,8 @@ namespace Atestat
         {
             InitializeComponent();
         }
+
+        bool Connected = false;
 
         /// <summary>
         /// Checks if the mail address already exists in the database and if the password is correct    - true  -> save user's data
@@ -47,17 +49,19 @@ namespace Atestat
 
                 MySqlDataReader r = cmd.ExecuteReader();
 
-                if (r.Read() && r["parola"].ToString() == "salut")
+                if (r.Read() && r["parola"].ToString() == passBox.Password.ToString())
                 {
                     User.id = int.Parse(r["id"].ToString());
                     User.mail = r["mail"].ToString();
                     User.name = r["nume"].ToString();
-                    User.registerDate = DateTime.Parse(r["dataInregistrare"].ToString());
+                    User.registerDate = DateTime.Parse(r["dataI"].ToString());
                     User.password = r["parola"].ToString();
                     User.phone = r["nrTelefon"].ToString();
                     User.type = r["tipCont"].ToString();
 
                     MessageBox.Show("Ati fost autentificat cu succes!");
+
+                    Connected = true;
                 }
                 else
                 {
@@ -72,10 +76,17 @@ namespace Atestat
             }
             catch (Exception ex)
             {
-                Vars.conn.Close();
+                if (Vars.conn.State == ConnectionState.Open)
+                    Vars.conn.Close();
+
                 txtMail.Text = "";
                 passBox.Password = "";
                 MessageBox.Show("Eroare in procesul de conectare! Daca problema persista, contactati un administrator!\n" + ex.ToString());
+            }
+
+            if (Connected)
+            {
+                this.Content = new Controls.MainLogin();
             }
         }
 
@@ -86,7 +97,7 @@ namespace Atestat
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            BlurEffect b = new BlurEffect();
+            /*BlurEffect b = new BlurEffect();
             this.Effect = b;
 
             DoubleAnimation anim = new DoubleAnimation();
@@ -95,7 +106,7 @@ namespace Atestat
             anim.Duration = (Duration)TimeSpan.FromSeconds(.05);
             anim.AutoReverse = true;
 
-            b.BeginAnimation(BlurEffect.RadiusProperty, anim);
+            b.BeginAnimation(BlurEffect.RadiusProperty, anim);*/
 
             this.Content = new RegisterControl();
      
@@ -105,6 +116,16 @@ namespace Atestat
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
              Functions.ControlResize(sender, e);
+        }
+
+        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Functions.ControlResize(sender, e);
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Content = new ForgotPasswordControl();
         }
     }
 }

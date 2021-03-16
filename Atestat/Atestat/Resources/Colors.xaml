@@ -22,4 +22,8 @@
         #130205
     </Color>
 
+    <Color x:Key="Red">
+        RED
+    </Color>
+
 </ResourceDictionary>

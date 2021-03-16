@@ -27,7 +27,7 @@ namespace Atestat
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            BlurEffect b = new BlurEffect();
+           /* BlurEffect b = new BlurEffect();
             this.Effect = b;
 
             DoubleAnimation anim = new DoubleAnimation();
@@ -36,7 +36,7 @@ namespace Atestat
             anim.Duration = (Duration)TimeSpan.FromSeconds(.05);
             anim.AutoReverse = true;
 
-            b.BeginAnimation(BlurEffect.RadiusProperty, anim);
+            b.BeginAnimation(BlurEffect.RadiusProperty, anim);*/
 
             this.Content = new LoginControl();
         }
@@ -46,6 +46,9 @@ namespace Atestat
             Functions.ControlResize(sender, e);
         }
 
-        
+        private void btnAnunturi_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new AdsControl();
+        }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\c#\ProiectAtestat\Atestat\Atestat\App.xaml
-7-606777213
+11-1633535721
 
-11-1296753894
+15125547320
 205-1960069534
-Controls\LoginControl.xaml;Controls\MainControl.xaml;Controls\RegisterControl.xaml;MainWindow.xaml;Resources\Brushes.xaml;Resources\Colors.xaml;Resources\Styles.xaml;
+Controls\AdsControl.xaml;Controls\ForgotPasswordControl.xaml;Controls\LoginControl.xaml;Controls\MainControl.xaml;Controls\MainLogin.xaml;Controls\RegisterControl.xaml;Controls\SingleAdControl.xaml;MainWindow.xaml;Resources\Brushes.xaml;Resources\Colors.xaml;Resources\Styles.xaml;
 
-False
+True
 

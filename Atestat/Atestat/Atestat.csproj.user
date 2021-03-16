@@ -7,24 +7,48 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\AdsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\ForgotPasswordControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\LoginControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\MainControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\MainLogin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\RegisterControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SingleAdControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\AdsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ForgotPasswordControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\LoginControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\MainControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\MainLogin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\RegisterControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SingleAdControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Colors.xaml">

@@ -11,6 +11,7 @@ namespace Atestat
       
         public static void ControlResize(object sender, SizeChangedEventArgs e)
         {
+            //double scale = (e.NewSize.Width * e.NewSize.Width + e.NewSize.Height * e.NewSize.Height) / (e.PreviousSize.Width * e.PreviousSize.Width + e.PreviousSize.Height * e.PreviousSize.Height);
             double scale = e.NewSize.Width / e.PreviousSize.Width;
 
             if (scale != double.PositiveInfinity && scale != 0)
@@ -31,7 +32,5 @@ namespace Atestat
                 }
             }
         }
-
-       
     }
 }

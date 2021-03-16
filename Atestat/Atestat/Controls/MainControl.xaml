@@ -44,8 +44,8 @@
                     
                     Content="Anunturi" 
                     Foreground="Snow" 
-                    FontSize="24"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged">
+                    FontSize="36"
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnAnunturi_Click">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -60,7 +60,7 @@
 
                     Content="Conectare" 
                     Foreground="Snow" 
-                    FontSize="24" 
+                    FontSize="36" 
                     FontWeight="Bold" Click="btnLogin_Click"
                     SizeChanged="Button_SizeChanged">
 
@@ -80,7 +80,7 @@
                     
                     Content="Ajutor" 
                     Foreground="Snow"
-                    FontSize="24" 
+                    FontSize="36" 
                     FontWeight="Bold"
                     SizeChanged="Button_SizeChanged">
 

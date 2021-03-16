@@ -1,0 +1,74 @@
+eMarket este o platforma de vanzare / cumparare.
+Programul va avea 5 trepte de conectare: vizitator, utilizator, utilizator verificat, administrator si proprietar.
+
+Vizitatorul va avea acces la:               - vizualizarea anunturilor
+                                            - creearea unui cont
+                                            - contactarea administratorilor - reclamarea unui utilizator / anunt
+                                                                            - cerere ajutor
+
+
+Utilizatorul va avea acces la:              - toate operatiile anterioare
+                                            - conectarea in cont
+                                            - adaugarea unui anunt:     - adaugarea imaginilor
+                                                                        - adaugarea descrierii / titlului
+                                                                        - ??? adaugarea etichetelor
+                                                                        - adaugarea datelor de contact
+                                                                        - adaugarea pretului
+                                                                        - selectarea categoriei
+                                            - salvarea anunturilor favorite         
+                                            - contactarea altor utilizatori
+                                            - evaluarea unui vanzator
+                                            - stergerea / modificarea unui anunt propriu
+
+
+???? Utilizatorul verificat va avea acces la:   - toate operatiile anterioare
+                                                - publicarea anunturilor intr-o categorie speciala
+                                                - prioritate la contactarea administratorilor
+
+
+Administratorul va avea acces la:           - toate operatiile anterioare
+                                            - ??? marcarea / demarcarea unui utilizator ca verificat
+                                            - suspendarea conturilor temporar / permanent
+                                            - revocarea dreptului de a publica anunturi temporar / permanent
+                                            - stergerea / modificarea unui anunt
+
+Proprietarul va avea acces la:              - toate operatiile anterioare
+                                            - adaugarea unui membru ca administator
+                                            - adaugarea / stergerea / modificarea unei categorii
+
+Operatii:
+
+    - cautare avansata in functie de:   - categorie
+                                        - pretul anuntului
+                                        - vechimea anuntului
+                                        - eticheta
+
+    - creearea unui cont / conectarea in cont
+    - adaugarea unui anunt:    - adaugarea imaginilor
+                                - adaugarea descrierii / titlu
+                                - adaugarea etichetelor
+                                - adaugarea datelor de contact
+                                - adaugarea pretului
+                                - selectarea categoriei
+
+    - cautarea unui anunt
+    - vizualiarea unui anunt
+    - contactarea unui utilizator
+    - salvarea anunturilor favorite
+    - sistem de evaluare a vanzatorilor
+    - contactarea administratorilor:    - reclamarea unui alt utilizator
+                                        - reclamarea unui anunt
+                                        - cerere ajutor 
+                                    
+    - adaugarea memberilor ca administatori
+    - suspendarea conturilor temporar / permanent
+    - revocarea dreptului de a publica anunturi temporar / permanent
+    - publicarea anunturilor intr-o categorie speciala
+    - gruparea anunturilor in categorii
+    - marcarea / demarcarea unui utilizator ca verificat
+    - adaugarea unui membru ca administator
+    - stergerea / modificarea unui anunt
+
+
+Dezvoltare ulterioara:
+    - adaugarea unui noi trepte de acces: Utilizator Premium

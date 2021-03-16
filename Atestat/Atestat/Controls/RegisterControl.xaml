@@ -74,58 +74,100 @@
                     <!-- 12. TextBlock - confPass -->
                     <RowDefinition Height="1*"/>
                     <!-- 13. Nothing -->
-                    <RowDefinition Height=".15*"/>
+                    <RowDefinition Height=".5*"/>
                     <!-- 14. PasswordBox - ConfirmPassword -->
                     <RowDefinition Height="1.5*"/>
                     <!-- 15. Nothing -->
                     <RowDefinition Height=".15*"/>
-                    <!-- 16. "Aveti deja un cont?" -->
-                    <RowDefinition Height="1*"/>
+
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Nume:"
+                <Image Source="/Atestat;component/Assets/ExclamationMark.png" Grid.Row="2" Grid.Column="3" Visibility="Hidden"/>
+                <Image Source="/Atestat;component/Assets/ExclamationMark.png" Grid.Row="6" Grid.Column="3" Visibility="Hidden"/>
+                <Image Source="/Atestat;component/Assets/ExclamationMark.png" Grid.Row="10" Grid.Column="3" Visibility="Hidden"/>
+                <Image Source="/Atestat;component/Assets/ExclamationMark.png" Grid.Row="14" Grid.Column="3" Visibility="Hidden"/>
+
+                <Grid Grid.Row="0"
+                      Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height=".2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Viewbox   Stretch="Uniform"
+                           HorizontalAlignment="Left"
+                           Grid.Column="1"
+                           Grid.Row="1">
+                        <TextBlock Text="Nume:"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24" 
-                           Grid.Column="1"
-                           Grid.Row="0">
-                </TextBlock>
+                           FontSize="24"/>
+                    </Viewbox>
+
+                </Grid>
+                
+                
 
 
                 <TextBox x:Name="txtName"
                          Grid.Row="2"
                          Grid.Column="1"
                          FontSize="24"
-                         Style="{StaticResource CustomTextBox}">
-                </TextBox>
-                
-                
-                <TextBlock Text="Adresa de mail:"
+                         Text="samy"
+                         Style="{StaticResource CustomTextBox}" TextChanged="txtName_TextChanged"/>
+
+                <Grid Grid.Row="4"
+                      Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height=".2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Viewbox   HorizontalAlignment="Left"
+                           Stretch="Uniform"
+                           Grid.Column="1"
+                           Grid.Row="1">
+                        <TextBlock Text="Adresa de mail:"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24" 
-                           Grid.Column="1"
-                           Grid.Row="4">
-                </TextBlock>
+                           FontSize="24"/>
+                    </Viewbox>
+                </Grid>
+                
+               
 
                 <TextBox x:Name="txtMail"
                          Grid.Row="6"
                          Grid.Column="1"
                          FontSize="24" 
-                         
-                         Style="{StaticResource CustomTextBox}">
+                         Text="samy@gmail.com"
+                         Style="{StaticResource CustomTextBox}" TextChanged="txtMail_TextChanged"/>
 
+                <Grid Grid.Row="8"
+                      Grid.Column="1">
 
-                </TextBox>
-
-                <TextBlock Text="Parola:" 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height=".2*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Viewbox   Stretch="Uniform"
+                           HorizontalAlignment="Left"
+                           Grid.Row="1">
+                        <TextBlock Text="Parola:" 
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"
-                           Grid.Column="1"
-                           Grid.Row="8">
+                           FontSize="24"/>
+                    </Viewbox>
 
-                </TextBlock>
+                </Grid>
+                
+
 
                 <PasswordBox    x:Name="passBox"
                                 Grid.Row="10"
@@ -134,38 +176,52 @@
                                 FontSize="24"
                                 Foreground="{StaticResource BlackBrush}" 
                                 HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center"
+                                VerticalContentAlignment="Center" KeyDown="passBox_KeyDown"
+                                Password="1Asamuel"
                                 />
-
-                <TextBlock Text="Confirmare Parola:" 
-                           TextAlignment="Left"
-                           Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"
+                
+                <Viewbox   Grid.Row="12"
                            Grid.Column="1"
-                           Grid.Row="12">
-
-                </TextBlock>
-
-                <PasswordBox    x:Name="passBoxConf"
-                                Grid.Row="14"
-                                Grid.Column="1"
-                                Style="{StaticResource CustomPasswordBox}"
-                                FontSize="24"
-                                Foreground="{StaticResource BlackBrush}" 
-                                HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center"
-                                />
-
-                <TextBlock Text="Aveti deja un cont? Click aici pentru a va conecta!" 
-                           Grid.Row="16"
-                           Grid.Column="1"
-                           VerticalAlignment="Center"
+                           Stretch="Uniform"
                            HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                    <TextBlock Text="Aveti deja un cont? Click aici pentru a va conecta!"   
                            TextAlignment="Left"
-                           FontSize="20"
+                           FontSize="24"
                            Style="{StaticResource ForgotPassword}" 
                            MouseDown="AlreadyHasAccount_MouseDown"/>
+                </Viewbox>
 
+                <Grid Grid.Row="14"
+                      Grid.Column="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnRegister" 
+                            Grid.Column="1"
+                            Grid.Row="14"
+                            Background="{StaticResource LightBlueBrush}"
+                            BorderBrush="{StaticResource DarkBlueBrush}"
+                            Style="{StaticResource RoundButton}"
+                            
+
+                            Content="Inregistrare" 
+                            Foreground="Snow" 
+                            FontSize="32" 
+                            FontWeight="Bold" 
+                            
+                            Click="btnRegister_Click" SizeChanged="btnRegister_SizeChanged">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                        </Button.Effect>
+
+                    </Button>
+                </Grid>
+                
 
             </Grid>
 
@@ -180,9 +236,9 @@
               Background="Snow">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height=".1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1.3*"/>
+                <RowDefinition/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -204,6 +260,34 @@
                 </Image.RenderTransform>
             </Image>
 
+            <Grid Grid.Row="2"
+                  Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.5*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height=".15*" />
+                </Grid.RowDefinitions>
+
+                <Button     x:Name="btnHome" 
+                            Background="{StaticResource LightBlueBrush}"
+                            BorderBrush="{StaticResource DarkBlueBrush}"
+                            Style="{StaticResource RoundButton}"
+                            Grid.Row="1"
+
+                            Content="Acasa" 
+                            Foreground="Snow" 
+                            FontSize="32" 
+                            FontWeight="Bold" 
+                            SizeChanged="Button_SizeChanged">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                    </Button.Effect>
+                </Button>
+
+            </Grid>
+
 
             <Grid Grid.Row="3">
 
@@ -212,29 +296,10 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height=".2*"/>
                 </Grid.RowDefinitions>
+
                 
-                <Button x:Name="btnRegister" 
-                            Grid.Column="0"
-                            Grid.Row="1"
-                            Background="{StaticResource LightBlueBrush}"
-                            BorderBrush="{StaticResource DarkBlueBrush}"
-                            Style="{StaticResource RoundButton}"
-                            
-
-                            Content="Inregistrare" 
-                            Foreground="Snow" 
-                            FontSize="20" 
-                            FontWeight="Bold" 
-                            
-                            Click="btnRegister_Click">
-
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
-                    </Button.Effect>
-
-                </Button>
             </Grid>
-            
+
 
         </Grid>
     </Grid>

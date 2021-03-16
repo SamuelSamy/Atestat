@@ -14,7 +14,7 @@
         <Setter Property="FontFamily" Value="Montserrat"/>
         <Setter Property="BorderBrush" Value="{StaticResource DarkBlueBrush}"/>
 
-        <Setter Property="Template">
+        <Setter Property="Template" x:Name="Temp">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
 
@@ -78,6 +78,7 @@
     </Style>
 
     <Style x:Key="CustomTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="Text" Value=""/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="Cursor" Value="IBeam"/>
@@ -86,7 +87,6 @@
         <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource BlackBrush}"/>
         <Setter Property="FontSize" Value="16"/>
-        <Setter Property="Text" Value=""/>
         <Setter Property="CaretBrush" Value="{StaticResource DarkBlueBrush}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
 
@@ -108,6 +108,37 @@
         </Setter>
     </Style>
 
+    <Style x:Key="CustomTextBoxWrong" TargetType="{x:Type TextBox}">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Cursor" Value="IBeam"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="BorderThickness" Value="4"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlackBrush}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Text" Value=""/>
+        <Setter Property="CaretBrush" Value="{StaticResource DarkBlueBrush}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="Border" 
+                                    CornerRadius="16" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="{StaticResource RedkBrush}" 
+                                    Background="{StaticResource WhiteBrush}">
+
+                        <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost"/>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style x:Key="CustomPasswordBox" TargetType="{x:Type PasswordBox}">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -126,6 +157,33 @@
                                     CornerRadius="16" 
                                     BorderThickness="{TemplateBinding BorderThickness}" 
                                     BorderBrush="{StaticResource LightBlueBrush}" 
+                                    Background="{StaticResource WhiteBrush}">
+                        <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomPasswordBoxWrong" TargetType="{x:Type PasswordBox}">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Cursor" Value="IBeam"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="BorderThickness" Value="4"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlackBrush}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="CaretBrush" Value="{StaticResource DarkBlueBrush}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border x:Name="Border" 
+                                    CornerRadius="16" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="Red"
                                     Background="{StaticResource WhiteBrush}">
                         <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost"/>
                     </Border>
