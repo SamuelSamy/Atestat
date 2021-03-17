@@ -58,8 +58,10 @@ namespace Atestat
                     User.password = r["parola"].ToString();
                     User.phone = r["nrTelefon"].ToString();
                     User.type = r["tipCont"].ToString();
+                    User.loggedIn = true;
 
                     MessageBox.Show("Ati fost autentificat cu succes!");
+
 
                     Connected = true;
                 }
@@ -90,10 +92,7 @@ namespace Atestat
             }
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            this.Content = new MainControl();
-        }
+
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -126,6 +125,11 @@ namespace Atestat
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Content = new ForgotPasswordControl();
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new MainControl();
         }
     }
 }

@@ -95,6 +95,7 @@ namespace Atestat
                 if (cmd.ExecuteNonQuery() != 0)
                 {
                     MessageBox.Show("Datele au fost adaugate cu succes!");
+                    User.loggedIn = true;
                 }
                 else
                 {
@@ -181,7 +182,7 @@ namespace Atestat
 
             int Value = (int)PasswordRequirements.None;
 
-            if (password == password && match)//if (password == passBoxConf.Password && match)
+            if (match)//if (password == passBoxConf.Password && match)
             {
                 Value |= (int)PasswordRequirements.Match;
             }
@@ -268,9 +269,6 @@ namespace Atestat
                 txtMail.Style = (Resources["CustomTextBox"] as Style);
                 txtMail.Text = mail;
                 txtMail.CaretIndex = txtMail.Text.Length;
-
-
-
             }
         }
 
@@ -314,6 +312,11 @@ namespace Atestat
         private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Functions.ControlResize(sender, e);
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new MainControl();
         }
     }
 }

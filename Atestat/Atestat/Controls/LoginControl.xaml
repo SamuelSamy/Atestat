@@ -240,7 +240,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.5*" />
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height=".85*" />
                     <RowDefinition Height=".15*" />
                 </Grid.RowDefinitions>
 
@@ -254,9 +254,8 @@
                             Foreground="Snow" 
                             FontSize="32" 
                             FontWeight="Bold" 
-                            
-                            Click="btnLogin_Click"
-                            SizeChanged="ControlSizeChanged">
+                         
+                            SizeChanged="ControlSizeChanged" Click="btnHome_Click">
 
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

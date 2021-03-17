@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,42 @@ namespace Atestat
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
             Functions.ControlResize(sender, e);
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new MainControl();
+        }
+
+        private bool IsValidAddress(string mail)
+        {
+            try
+            {
+                MailAddress address = new MailAddress(mail);
+                return address.Address == mail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void txtMail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtMail.Text.Length <= 1 || !IsValidAddress(txtMail.Text))
+            {
+                string mail = txtMail.Text;
+                txtMail.Style = (Resources["CustomTextBoxWrong"] as Style);
+                txtMail.Text = mail;
+                txtMail.CaretIndex = txtMail.Text.Length;
+            }
+            else
+            {
+                string mail = txtMail.Text;
+                txtMail.Style = (Resources["CustomTextBox"] as Style);
+                txtMail.Text = mail;
+                txtMail.CaretIndex = txtMail.Text.Length;
+            }
         }
     }
 }
