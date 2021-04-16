@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using MySql.Data.MySqlClient;
+using Atestat.Classes;
 
 namespace Atestat
 {
@@ -30,6 +33,47 @@ namespace Atestat
                         (sender as TextBlock).FontSize *= scale;
                         break;
                 }
+            }
+        }
+
+        public static bool AdressAlreadyInDataBase(string mail)
+        {
+            try
+            {
+                Vars.conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = Vars.conn;
+                cmd.CommandText = "select * from utilizatori where mail = @mail";
+
+                cmd.Parameters.AddWithValue("mail", mail);
+
+                cmd.Parameters["mail"].DbType = DbType.String;
+
+                MySqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read())
+                {
+                    r.Close();
+                    Vars.conn.Close();
+                    return true;
+                }
+                else
+                {
+                    r.Close();
+                    Vars.conn.Close();
+                }
+
+                return false;
+
+            }
+            catch
+            {
+                if (Vars.conn.State == ConnectionState.Open)
+                    Vars.conn.Close();
+
+                MessageBox.Show("Eroare!");
+                return true;
             }
         }
     }

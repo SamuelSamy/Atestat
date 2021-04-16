@@ -1,0 +1,237 @@
+﻿<UserControl x:Class="Atestat.Controls.AdsControlH"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Atestat.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1200" Loaded="UserControl_Loaded">
+
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Atestat;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
+
+    <Grid Background="Snow">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".66*"/>
+            <ColumnDefinition Width=".01*"/>
+            <ColumnDefinition Width=".33*"/>
+            <ColumnDefinition Width=".01*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="Ads">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".01*"/>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height=".01*"/>
+                <RowDefinition Height=".25*"/>
+                <RowDefinition Height=".01*"/>
+                <RowDefinition Height=".25*"/>
+                <RowDefinition Height=".01*"/>
+                <RowDefinition Height=".25*"/>
+                <RowDefinition Height=".01*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".02*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".05*"/>
+                <ColumnDefinition Width=".9*"/>
+                <ColumnDefinition Width=".05*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="9" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".1*"/>
+                    <ColumnDefinition Width=".8 *"/>
+                    <ColumnDefinition Width=".1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="txtPage" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".8*"/>
+                        <RowDefinition Height=".15*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".15*"/>
+                        <ColumnDefinition Width=".8*"/>
+                        <ColumnDefinition Width=".15*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnNextPage" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click">
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".8*"/>
+                        <RowDefinition Height=".15*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".15*"/>
+                        <ColumnDefinition Width=".8*"/>
+                        <ColumnDefinition Width=".15*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnPrevPage" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click">
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+
+
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".8*"/>
+                    <RowDefinition Height=".1*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBox x:Name="searchBar" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="0,0,0,0" Text="Cauta un anunt..." TextWrapping="Wrap" VerticalAlignment="Stretch" FontFamily="Times New Roman" FontSize="42" TextAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FlowDirection="LeftToRight" HorizontalScrollBarVisibility="Auto" SizeChanged="TextBox_SizeChanged" PreviewTextInput="searchBar_PreviewTextInput" GotKeyboardFocus="searchBar_GotKeyboardFocus" LostFocus="searchBar_LostFocus" Foreground="#BF000000" Background="White" BorderBrush="#FF006496" FontWeight="Normal" BorderThickness="5,5,5,5">
+                    <TextBox.Effect>
+                        <DropShadowEffect/>
+                    </TextBox.Effect>
+                </TextBox>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Column="2">
+
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".4*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".4*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".7*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height=".35*"/>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height=".35*"/>
+                <RowDefinition Height=".1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".05*"/>
+                    <ColumnDefinition Width=".9*"/>
+                    <ColumnDefinition Width=".05*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".9*"/>
+                    <RowDefinition Height=".05*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="searchButton" Grid.Column="1" Grid.Row="1" Content="Cauta acum 🔍" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold" Cursor="Hand" Foreground="White" SizeChanged="Button_SizeChanged" AutomationProperties.IsOffscreenBehavior="Onscreen" FlowDirection="RightToLeft" Padding="0,0,0,0" Grid.IsSharedSizeScope="True" Background="{StaticResource LightBlueBrush}" Click="searchButton_Click">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10" Direction="200"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+            
+
+
+            <TextBlock Grid.Row="2" Text="Categorie:" FontWeight="Bold" FontSize="48" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+
+
+            <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="19.604"/>
+                    <ColumnDefinition Width="353*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="cmbCats" Grid.Column="1" FontSize="24" SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cmbCats_SelectionChanged"/>
+
+            </Grid>
+
+            <Grid Grid.Row="10" Grid.ColumnSpan="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".9*"/>
+                    <RowDefinition Height=".05*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".15*"/>
+                    <ColumnDefinition Width=".7*"/>
+                    <ColumnDefinition Width=".15*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnHome" 
+                        Grid.Column="1"
+                        Grid.Row="1"
+                    Background="{StaticResource LightBlueBrush}" 
+                    Style="{StaticResource RoundButton}"
+                    
+                    Content="Acasa" 
+                    Foreground="Snow" 
+                    FontSize="36"
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+
+
+            <Grid Grid.Row="8" Grid.ColumnSpan="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".9*"/>
+                    <RowDefinition Height=".05*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".15*"/>
+                    <ColumnDefinition Width=".7*"/>
+                    <ColumnDefinition Width=".15*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnAdd" 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Background="{StaticResource LightBlueBrush}" 
+                        Style="{StaticResource RoundButton}"
+                    
+                        Content="Adauga anunt" 
+                        Foreground="Snow" 
+                        FontSize="36"
+                        FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnAdd_Click">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+
+        </Grid>
+
+
+    </Grid>
+</UserControl>

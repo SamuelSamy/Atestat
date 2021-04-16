@@ -10,8 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Atestat.Controls;
 
-namespace Atestat.Controls
+namespace Atestat
 {
     /// <summary>
     /// Interaction logic for MainLogin.xaml
@@ -26,6 +27,11 @@ namespace Atestat.Controls
         private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Functions.ControlResize(sender, e);
+        }
+
+        private void btnAnunturi_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new AdsControlH();
         }
     }
 }

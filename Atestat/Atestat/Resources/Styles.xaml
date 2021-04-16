@@ -6,6 +6,7 @@
         <ResourceDictionary Source="Brushes.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+
     <Style x:Key="RoundButton" TargetType="{x:Type Button}">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>

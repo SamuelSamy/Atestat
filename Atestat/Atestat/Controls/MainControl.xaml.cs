@@ -12,6 +12,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Atestat.Controls;
 
 namespace Atestat
 {
@@ -48,7 +49,7 @@ namespace Atestat
 
         private void btnAnunturi_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new AdsControl();
+            this.Content = new AdsControlH();
         }
     }
 }

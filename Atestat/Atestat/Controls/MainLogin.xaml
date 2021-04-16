@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Atestat.Controls.MainLogin"
+﻿<UserControl x:Class="Atestat.MainLogin"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Atestat.Controls"
+             xmlns:local="clr-namespace:Atestat"
              mc:Ignorable="d" 
-             d:DesignHeight="675" d:DesignWidth="1200">
+             d:DesignHeight="900" d:DesignWidth="1600">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/Atestat;component/Resources/Styles.xaml"/>
@@ -45,7 +45,7 @@
                     Content="Anunturi" 
                     Foreground="Snow" 
                     FontSize="36"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged">
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnAnunturi_Click">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

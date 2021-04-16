@@ -11,7 +11,7 @@ Utilizatorul va avea acces la:              - toate operatiile anterioare
                                             - conectarea in cont
                                             - adaugarea unui anunt:     - adaugarea imaginilor
                                                                         - adaugarea descrierii / titlului
-                                                                        - ??? adaugarea etichetelor
+                                                                        - [adaugarea etichetelor]
                                                                         - adaugarea datelor de contact
                                                                         - adaugarea pretului
                                                                         - selectarea categoriei

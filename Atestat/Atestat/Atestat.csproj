@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <None Remove="Assets\ExclamationMark.png" />
+    <None Remove="Assets\NoImage.png" />
     <None Remove="Assets\RoundLogo.ico" />
+    <None Remove="Assets\x.png" />
     <None Remove="Logo.png" />
   </ItemGroup>
 
@@ -36,10 +38,16 @@
     <Resource Include="Assets\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\NoImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\RoundLogo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\RoundLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

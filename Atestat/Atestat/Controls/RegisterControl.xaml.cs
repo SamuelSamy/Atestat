@@ -57,7 +57,7 @@ namespace Atestat
                 return;
             }
 
-            if (AdressAlreadyInDataBase(txtMail.Text))
+            if (Functions.AdressAlreadyInDataBase(txtMail.Text))
             {
                 MessageBox.Show("Adresa de mail exista deja!");
                 return;
@@ -96,6 +96,7 @@ namespace Atestat
                 {
                     MessageBox.Show("Datele au fost adaugate cu succes!");
                     User.loggedIn = true;
+                    this.Content = new MainLogin();
                 }
                 else
                 {
@@ -128,41 +129,7 @@ namespace Atestat
             }
         }
 
-        private bool AdressAlreadyInDataBase(string mail)
-        {
-            try
-            {
-                Vars.conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = Vars.conn;
-                cmd.CommandText = "select * from utilizatori where mail = @mail";
-
-                cmd.Parameters.AddWithValue("mail", mail);
-
-                cmd.Parameters["mail"].DbType = DbType.String;
-
-                MySqlDataReader r = cmd.ExecuteReader();
-
-                if (r.Read())
-                {
-                    r.Close();
-                    Vars.conn.Close();
-                    return true;
-                }
-
-                return false;
-
-            }
-            catch
-            {
-                if (Vars.conn.State == ConnectionState.Open)
-                    Vars.conn.Close();
-
-                MessageBox.Show("Eroare!");
-                return true;
-            }
-        }
 
         /// <summary>
         /// 
@@ -182,7 +149,7 @@ namespace Atestat
 
             int Value = (int)PasswordRequirements.None;
 
-            if (match)//if (password == passBoxConf.Password && match)
+            if (password == passBoxConf.Password && match)
             {
                 Value |= (int)PasswordRequirements.Match;
             }
@@ -218,7 +185,7 @@ namespace Atestat
         /// <returns></returns>
         public bool AllAreCompleted()
         {
-            return (txtName.Text != "" && txtMail.Text != "" && passBox.Password != "");            
+            return (!String.IsNullOrEmpty(txtName.Text) && !String.IsNullOrEmpty(txtMail.Text) && !String.IsNullOrEmpty(passBox.Password));            
         }
 
         private void AlreadyHasAccount_MouseDown(object sender, MouseButtonEventArgs e)

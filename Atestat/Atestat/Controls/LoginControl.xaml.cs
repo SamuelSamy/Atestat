@@ -88,7 +88,7 @@ namespace Atestat
 
             if (Connected)
             {
-                this.Content = new Controls.MainLogin();
+                this.Content = new MainLogin();
             }
         }
 

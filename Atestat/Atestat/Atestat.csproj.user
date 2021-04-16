@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Controls\AdsControl.xaml.cs">
+    <Compile Update="Controls\AddAnAd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\AdsControlH.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\DisplayAdControlH.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\ForgotPasswordControl.xaml.cs">
@@ -25,12 +31,18 @@
     <Compile Update="Controls\RegisterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\SingleAdControl.xaml.cs">
+    <Compile Update="Controls\SingleAdView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\AdsControl.xaml">
+    <Page Update="Controls\AddAnAd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\AdsControlH.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\DisplayAdControlH.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ForgotPasswordControl.xaml">
@@ -48,7 +60,7 @@
     <Page Update="Controls\RegisterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\SingleAdControl.xaml">
+    <Page Update="Controls\SingleAdView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Colors.xaml">
@@ -58,6 +70,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Dictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Images.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Styles.xaml">

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Atestat"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="1600">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/Atestat;component/Resources/Styles.xaml"/>
@@ -54,7 +54,7 @@
                     <!-- 2. Nothing -->
                     <RowDefinition Height=".15*"/>
                     <!-- 3. TextBox - mail  -->
-                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.1*"/>
                     <!-- 4. Nothing  -->
                     <RowDefinition Height=".15*"/>
                     <!-- 5. TextBlock - password -->
@@ -62,7 +62,7 @@
                     <!-- 6. Nothing  -->
                     <RowDefinition Height=".15*"/>
                     <!-- 7. PasswordBox -->
-                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.1*"/>
                     <!-- 8. Nothing -->
                     <RowDefinition Height=".15*"/>
                     <!-- 9. TextBlock - forgot password  -->
@@ -92,8 +92,8 @@
                     </Viewbox>
                 </Grid>
 
-               
-                
+
+
 
                 <TextBox x:Name="txtMail"
                          Grid.Row="3"
@@ -101,8 +101,6 @@
                          Grid.Column="1"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged">
-
-
                 </TextBox>
 
 
@@ -176,7 +174,7 @@
 
                             Content="Conectare" 
                             Foreground="Snow" 
-                            FontSize="24" 
+                            FontSize="32" 
                             FontWeight="Bold" 
                             
                             Click="btnLogin_Click"
@@ -197,7 +195,7 @@
 
                             Content="Inregistrare" 
                             Foreground="Snow" 
-                            FontSize="26" 
+                            FontSize="32" 
                             FontWeight="Bold" 
                             
                             Click="btnRegister_Click"
@@ -240,22 +238,27 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.5*" />
-                    <RowDefinition Height=".85*" />
+                    <RowDefinition Height=".75*" />
                     <RowDefinition Height=".15*" />
                 </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
                 <Button     x:Name="btnHome" 
                             Background="{StaticResource LightBlueBrush}"
                             BorderBrush="{StaticResource DarkBlueBrush}"
                             Style="{StaticResource RoundButton}"
                             Grid.Row="1"
-
+                            Grid.Column="1"
                             Content="Acasa" 
                             Foreground="Snow" 
-                            FontSize="32" 
+                            FontSize="36" 
                             FontWeight="Bold" 
-                         
-                            SizeChanged="ControlSizeChanged" Click="btnHome_Click">
+                            SizeChanged="Button_SizeChanged" Click="btnHome_Click">
 
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
