@@ -2,32 +2,21 @@ eMarket este o platforma de vanzare / cumparare.
 Programul va avea 5 trepte de conectare: vizitator, utilizator, utilizator verificat, administrator si proprietar.
 
 Vizitatorul va avea acces la:               - vizualizarea anunturilor
-                                            - creearea unui cont
+                                            - crearea unui cont
                                             - contactarea administratorilor - reclamarea unui utilizator / anunt
                                                                             - cerere ajutor
 
 
 Utilizatorul va avea acces la:              - toate operatiile anterioare
                                             - conectarea in cont
-                                            - adaugarea unui anunt:     - adaugarea imaginilor
-                                                                        - adaugarea descrierii / titlului
-                                                                        - [adaugarea etichetelor]
-                                                                        - adaugarea datelor de contact
-                                                                        - adaugarea pretului
-                                                                        - selectarea categoriei
-                                            - salvarea anunturilor favorite         
-                                            - contactarea altor utilizatori
-                                            - evaluarea unui vanzator
+                                            - adaugarea unui anunt:         - adaugarea imaginilor
+                                                                            - adaugarea descrierii / titlului
+                                                                            - adaugarea datelor de contact
+                                                                            - adaugarea pretului
+                                                                            - selectarea categoriei        
                                             - stergerea / modificarea unui anunt propriu
 
-
-???? Utilizatorul verificat va avea acces la:   - toate operatiile anterioare
-                                                - publicarea anunturilor intr-o categorie speciala
-                                                - prioritate la contactarea administratorilor
-
-
 Administratorul va avea acces la:           - toate operatiile anterioare
-                                            - ??? marcarea / demarcarea unui utilizator ca verificat
                                             - suspendarea conturilor temporar / permanent
                                             - revocarea dreptului de a publica anunturi temporar / permanent
                                             - stergerea / modificarea unui anunt
@@ -35,6 +24,18 @@ Administratorul va avea acces la:           - toate operatiile anterioare
 Proprietarul va avea acces la:              - toate operatiile anterioare
                                             - adaugarea unui membru ca administator
                                             - adaugarea / stergerea / modificarea unei categorii
+
+Dezvoltare ulterioara:
+    - adaugarea unui noi trepte de acces: Utilizator Premium
+    - salvarea anunturilor favorite 
+    - evaluarea unui vanzator
+    - contactarea altor utilizatori prin intermediul platformei
+    - Utilizator verificat  - publicarea anunturilor intr-o categorie speciala
+                            - prioritate la contactarea administratorilor
+
+
+
+----
 
 Operatii:
 
@@ -69,6 +70,4 @@ Operatii:
     - adaugarea unui membru ca administator
     - stergerea / modificarea unui anunt
 
-
-Dezvoltare ulterioara:
-    - adaugarea unui noi trepte de acces: Utilizator Premium
+----

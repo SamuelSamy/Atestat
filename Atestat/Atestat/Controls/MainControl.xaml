@@ -39,7 +39,6 @@
             <Button x:Name="btnAnunturi" 
                     Grid.Row="1" 
                     Grid.Column="1"
-                    Background="{StaticResource LightBlueBrush}" 
                     Style="{StaticResource RoundButton}"
                     
                     Content="Anunturi" 

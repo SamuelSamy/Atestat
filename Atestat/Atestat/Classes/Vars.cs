@@ -13,5 +13,7 @@ namespace Atestat
         public static string MailPass   = "fsgpv2407";
 
         public static MySqlConnection conn = new MySqlConnection(@"SERVER=localhost; DATABASE=atestat; UID=root; PASSWORD=; Allow User Variables=True");
+
+        public static List<int> adIds = new List<int>();
     }
 }

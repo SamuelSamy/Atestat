@@ -11,17 +11,99 @@
         <ResourceDictionary Source="/Atestat;component/Resources/Dictionary.xaml" />
     </UserControl.Resources>
 
-    <Grid Background="White">
+
+    <Grid>
+
+        <Grid x:Name="ImageView" Background="Transparent" Visibility="Visible" Panel.ZIndex="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".175*"/>
+                <RowDefinition Height=".65*"/>
+                <RowDefinition Height=".175*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="37*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="156*"/>
+                <ColumnDefinition Width="42*"/>
+            </Grid.ColumnDefinitions>
+            
+
+            <Grid  Grid.Row="0" Grid.Column="3" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".05*"/>
+                    <ColumnDefinition Width=".25*"/>
+                    <ColumnDefinition Width=".7*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".65*"/>
+                    <RowDefinition Height=".3*"/>
+                    <RowDefinition Height=".05*"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource NoHoverButton}" BorderThickness="3.5" BorderBrush="{StaticResource RedkBrush}"  FontWeight="Bold" FontSize="24" Content="X" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Segoe UI" Click="Button_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".375*"/>
+                    <RowDefinition Height=".15*"/>
+                    <RowDefinition Height=".375*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width=".2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="PrevImage" Style="{StaticResource NoHoverButton}" Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="3.5" Content="&lt;" FontSize="54" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="PrevImage_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".375*"/>
+                    <RowDefinition Height=".15*"/>
+                    <RowDefinition Height=".375*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height=".1*"/>
-            <RowDefinition Height=".8*"/>
-        </Grid.RowDefinitions>
+                <Button x:Name="NextImage" Style="{StaticResource NoHoverButton}" Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="3.5" Content="&gt;" FontSize="54" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="NextImage_Click"/>
+            </Grid>
 
 
 
-        <TextBlock  Text="-"
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Border BorderBrush="{StaticResource BlackBrush}" BorderThickness="8">
+                    <Image x:Name="BigImage" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="MainView" Background="White" Panel.ZIndex="1">
+            <Grid.Effect>
+                <BlurEffect Radius="0"/>
+            </Grid.Effect>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".8*"/>
+            </Grid.RowDefinitions>
+
+
+
+            <TextBlock  x:Name="txtTtile"
+                    Text="-"
                     TextAlignment="Left"
                     FontWeight="Bold"
                     Foreground="{StaticResource BlackBrush}"
@@ -29,82 +111,46 @@
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
                     Grid.Row="0">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
-        </TextBlock>
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
 
-        <Grid  Grid.Row="1">
+            <Grid  Grid.Row="1">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.25*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.25*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height=".05*"/>
-                    <RowDefinition Height=".3*"/>
-                    <RowDefinition Height=".02*"/>
-                    <RowDefinition Height=".45*"/>
-                    <RowDefinition Height=".02*"/>
-                    <RowDefinition Height=".55*"/>
-                    <RowDefinition Height=".02*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="1">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".025*"/>
-                        <ColumnDefinition Width=".95*"/>
-                        <ColumnDefinition Width=".025*"/>
-                    </Grid.ColumnDefinitions>
-
+                <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height=".025*"/>
-                        <RowDefinition Height=".35*"/>
-                        <RowDefinition Height=".025*"/>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height=".025*"/>
+                        <RowDefinition Height=".0*"/>
+                        <RowDefinition Height=".0*"/>
+                        <RowDefinition Height=".0*"/>
+                        <RowDefinition Height=".7*"/>
+                        <RowDefinition Height=".02*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height=".02*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="1" Grid.Column="1">
-                        <TextBlock Text="Titlu"
-                                TextAlignment="Left"
-                                FontWeight="Bold"
-                                Foreground="{StaticResource BlackBrush}"
-                                FontSize="56"
-                                Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".025*"/>
+                            <ColumnDefinition Width=".95*"/>
+                            <ColumnDefinition Width=".025*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="txtTitle"
-                         Grid.Row="3"
-                         FontSize="28"
-                         Grid.Column="1"
-                         Style="{StaticResource CustomTextBox}"
-                         SizeChanged="ControlSizeChanged">
-                    </TextBox>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".025*"/>
+                            <RowDefinition Height=".15*"/>
+                            <RowDefinition Height=".025*"/>
+                            <RowDefinition Height=".5*"/>
+                            <RowDefinition Height=".01*"/>
+                        </Grid.RowDefinitions>
 
 
-                </Grid>
-
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".025*"/>
-                        <ColumnDefinition Width=".95*"/>
-                        <ColumnDefinition Width=".025*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".025*"/>
-                        <RowDefinition Height=".15*"/>
-                        <RowDefinition Height=".025*"/>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height=".01*"/>
-                    </Grid.RowDefinitions>
-
-
-                    <TextBlock  Text="Descriere"
+                        <TextBlock  Text="Descriere"
                             TextAlignment="Left"
                             FontWeight="Bold"
                             Foreground="{StaticResource BlackBrush}"
@@ -115,28 +161,28 @@
                             Grid.Column="1"/>
 
 
-                    <TextBox x:Name="txtDesc"
+                        <TextBox x:Name="txtDesc"
                          Grid.Row="3"
                          FontSize="24"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"
-                         Grid.Column="1"/>
-                </Grid>
+                         Grid.Column="1" IsReadOnly="True"/>
+                    </Grid>
 
-                <Grid Grid.Row="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".28*"/>
-                        <RowDefinition Height=".02*"/>
-                        <RowDefinition Height=".7*"/>
-                    </Grid.RowDefinitions>
+                    <Grid x:Name="gridPhotos" Grid.Row="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".28*"/>
+                            <RowDefinition Height=".02*"/>
+                            <RowDefinition Height=".7*"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".025*"/>
-                        <ColumnDefinition Width=".95*"/>
-                        <ColumnDefinition Width=".025*"/>
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".025*"/>
+                            <ColumnDefinition Width=".95*"/>
+                            <ColumnDefinition Width=".025*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Fotografii"
+                        <TextBlock Text="Fotografii"
                                 TextAlignment="Left"
                                 FontWeight="Bold"
                                 Foreground="{StaticResource BlackBrush}"
@@ -144,156 +190,188 @@
                                 Grid.Row="0" 
                                 Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-                    <Grid Grid.Row="2"
+                        <Grid Grid.Row="2"
                           Grid.Column="1"
                           x:Name="Images">
 
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.24*"/>
+                                <ColumnDefinition Width="0.01*"/>
+                                <ColumnDefinition Width="0.24*"/>
+                                <ColumnDefinition Width="0.01*"/>
+                                <ColumnDefinition Width="0.24*"/>
+                                <ColumnDefinition Width="0.01*"/>
+                                <ColumnDefinition Width="0.24*"/>
+                                <ColumnDefinition Width="0.01*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="Image1" Grid.Column="0" Stretch="Fill" Cursor="Hand" MouseDown="Image1_MouseDown"/>
+
+                            <Image x:Name="Image2" Grid.Column="2" Stretch="Fill" Cursor="Hand"  MouseDown="Image1_MouseDown"/>
+
+                            <Image x:Name="Image3" Grid.Column="4" Stretch="Fill" Cursor="Hand" MouseDown="Image1_MouseDown"/>
+
+                            <Image x:Name="Image4" Grid.Column="6" Stretch="Fill" Cursor="Hand" MouseDown="Image1_MouseDown"/>
+
+
+
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height=".02*"/>
+                        <RowDefinition Height=".18*"/>
+                        <RowDefinition Height=".02*"/>
+                        <RowDefinition Height=".18*"/>
+                        <RowDefinition Height=".02*"/>
+                        <RowDefinition Height=".18*"/>
+                        <RowDefinition Height=".02*"/>
+                        <RowDefinition Height=".18*"/>
+                        <RowDefinition Height=".02*"/>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".03*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.24*"/>
-                            <ColumnDefinition Width="0.01*"/>
-                            <ColumnDefinition Width="0.24*"/>
-                            <ColumnDefinition Width="0.01*"/>
-                            <ColumnDefinition Width="0.24*"/>
-                            <ColumnDefinition Width="0.01*"/>
-                            <ColumnDefinition Width="0.24*"/>
-                            <ColumnDefinition Width="0.01*"/>
+                            <ColumnDefinition Width=".05*"/>
+                            <ColumnDefinition Width=".9*"/>
+                            <ColumnDefinition Width=".05*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image x:Name="Image1" Grid.Column="0" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill" Cursor="Hand"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".52*"/>
+                            <RowDefinition Height=".06*"/>
+                        </Grid.RowDefinitions>
 
-                        <Image x:Name="Image2" Grid.Column="2" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill" Cursor="Hand"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Categorie" FontWeight="Bold" FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
 
-                        <Image x:Name="Image3" Grid.Column="4" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill" Cursor="Hand"/>
-
-                        <Image x:Name="Image4" Grid.Column="6" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill" Cursor="Hand"/>
-
-                       
-
-
-                    </Grid>
-                </Grid>
-
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height=".05*"/>
-                    <RowDefinition Height=".3*"/>
-                    <RowDefinition Height=".03*"/>
-                    <RowDefinition Height=".5*"/>
-                    <RowDefinition Height=".05*"/>
-                    <RowDefinition Height=".175*"/>
-                    <RowDefinition Height=".03*"/>
-                    <RowDefinition Height=".175*"/>
-                    <RowDefinition Height=".05*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".9*"/>
-                        <ColumnDefinition Width=".05*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".025*"/>
-                        <RowDefinition Height=".35*"/>
-                        <RowDefinition Height=".025*"/>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height=".025*"/>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Categorie" FontWeight="Bold" FontSize="48" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
-
-                    <ComboBox BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="5" Grid.Row="3" Grid.Column="1" x:Name="cmbCats" FontSize="24" SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-
-
-                </Grid>
-
-                <Grid Grid.Row="3">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".01*"/>
-                        <RowDefinition Height=".15*"/>
-                        <RowDefinition Height=".05*"/>
-                        <RowDefinition Height=".2*"/>
-                        <RowDefinition Height=".05*"/>
-                        <RowDefinition Height=".15*"/>
-                        <RowDefinition Height=".05*"/>
-                        <RowDefinition Height=".2*"/>
-                        <RowDefinition Height=".04*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.05*"/>
-                        <ColumnDefinition Width=".9*"/>
-                        <ColumnDefinition Width="0.05*"/>
-                    </Grid.ColumnDefinitions>
-
-
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Numar de telefon" FontWeight="Bold" FontSize="38" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
-
-                    <TextBox x:Name="txtNumber"
+                        <TextBox x:Name="txtCategory"
                          Grid.Row="3"
                          FontSize="42"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                         Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled"/>
+                         Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True"/>
+                    </Grid>
 
-                    <TextBlock Grid.Row="5" Grid.Column="1" Text="Pret (Lei)" FontWeight="Bold" FontSize="38" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+                    <Grid Grid.Row="3">
 
-                    <TextBox x:Name="txtPrice"
-                             Grid.Row="7"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".05*"/>
+                            <ColumnDefinition Width=".9*"/>
+                            <ColumnDefinition Width=".05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".52*"/>
+                            <RowDefinition Height=".06*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Vanzator" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+                        <TextBox x:Name="txtSeller"
+                             Grid.Row="3"
                              FontSize="42"
                              Style="{StaticResource CustomTextBox}"
                              SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" />
+                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" IsReadOnly="True" />
 
-                </Grid>
 
-                <Grid Grid.Row="5">
+                    </Grid>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".9*"/>
-                        <ColumnDefinition Width=".05*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="5">
 
-                    <Button x:Name="btnAdd" 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".05*"/>
+                            <ColumnDefinition Width=".9*"/>
+                            <ColumnDefinition Width=".05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".52*"/>
+                            <RowDefinition Height=".06*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Numar de telefon" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+                        <TextBox x:Name="txtNumber"
+                         Grid.Row="3"
+                         FontSize="42"
+                         Style="{StaticResource CustomTextBox}"
+                         SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
+                         Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True"/>
+
+
+
+                    </Grid>
+
+                    <Grid Grid.Row="7">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".05*"/>
+                            <ColumnDefinition Width=".9*"/>
+                            <ColumnDefinition Width=".05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".06*"/>
+                            <RowDefinition Height=".52*"/>
+                            <RowDefinition Height=".06*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="1"  Grid.Column="1" Text="Pret (Lei)" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+                        <TextBox x:Name="txtPrice"
+                             Grid.Row="3"
+                             FontSize="42"
+                             Style="{StaticResource CustomTextBox}"
+                             SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
+                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" IsReadOnly="True" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="9">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".05*"/>
+                            <ColumnDefinition Width=".9*"/>
+                            <ColumnDefinition Width=".05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="btnBack" 
                             Background="{StaticResource LightBlueBrush}"
                             BorderBrush="{StaticResource DarkBlueBrush}"
                             Style="{StaticResource RoundButton}"
                             Grid.Column="1"
-                            Content="Adauga anunt" 
-                            Foreground="Snow" 
-                            FontSize="42" 
-                            FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged" />
-                </Grid>
-
-                <Grid Grid.Row="7">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".9*"/>
-                        <ColumnDefinition Width=".05*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Button x:Name="btnHome" 
-                            Background="{StaticResource LightBlueBrush}"
-                            BorderBrush="{StaticResource DarkBlueBrush}"
-                            Style="{StaticResource RoundButton}"
-                            Grid.Column="1"
-                            Content="Acasa" 
+                            Content="Inapoi" 
                             Foreground="Snow" 
                             FontSize="48" 
                             FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged"/>
+                            SizeChanged="Button_SizeChanged" Click="btnBack_Click"/>
+                    </Grid>
+
                 </Grid>
 
             </Grid>
-
         </Grid>
-
     </Grid>
 </UserControl>

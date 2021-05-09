@@ -49,7 +49,7 @@ namespace Atestat
 
         private void btnAnunturi_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new AdsControlH();
+            this.Content = new AdsControlH(-1);
         }
     }
 }

@@ -14,10 +14,11 @@ namespace Atestat.Classes
         public DateTime date;
         public Ad(int id)
         {
-            Vars.conn.Open();
 
             try
             {
+                Vars.conn.Open();
+
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = Vars.conn;
                 cmd.CommandText = "select * from anunturi where id = @id";

@@ -31,7 +31,12 @@ namespace Atestat
 
         private void btnAnunturi_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new AdsControlH();
+            this.Content = new AdsControlH(-1);
+        }
+
+        private void btnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new UserPanel();
         }
     }
 }

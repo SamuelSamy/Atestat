@@ -62,7 +62,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged">
+                    SizeChanged="Button_SizeChanged" Click="btnAccount_Click">
 
 
 

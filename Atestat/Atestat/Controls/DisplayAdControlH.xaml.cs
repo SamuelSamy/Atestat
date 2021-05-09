@@ -21,9 +21,15 @@ namespace Atestat.Controls
     /// </summary>
     public partial class DisplayAdControlH : UserControl
     {
-        public DisplayAdControlH(int adID)
+        public int adID = 0, page;
+        public string searchBarText;
+
+        public const string key = "This Ad Is From The User Page And It Should Redirect Him To The User Panel ▬↓-:`┘y";
+        public DisplayAdControlH(int adID, string searchBarText, int adPage = -1)
         {
             InitializeComponent();
+
+            this.searchBarText = searchBarText;
 
             Ad newAd = new Ad(adID);
 
@@ -42,6 +48,18 @@ namespace Atestat.Controls
             AdImage.Source = new BitmapImage(new Uri(path));
             AdTitle.Text = newAd.title;
             AdPrice.Text = newAd.price.ToString() + " Lei";
+
+            this.adID = adID;
+
+            if (searchBarText == key)
+            {
+                page = adPage;
+            }
+            else
+            {
+                int len = Vars.adIds.FindIndex(x => x == adID);
+                page = len / 3 + 1;
+            }
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
@@ -76,7 +94,18 @@ namespace Atestat.Controls
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Content = new SingleAdView();
+            if (searchBarText == key)
+            {
+                /// Show Editable ad
+
+                ((((this.Parent as Grid).Parent as Grid).Parent as Grid).Parent as UserControl).Content = new AddAnAd(true, adID, page);
+            }
+            else
+            {
+                /// Show ViewOnly ad
+                
+                (((this.Parent as Grid).Parent as Grid).Parent as AdsControlH).Content = new SingleAdView(adID, page, searchBarText);
+            }
         }
     }
 }

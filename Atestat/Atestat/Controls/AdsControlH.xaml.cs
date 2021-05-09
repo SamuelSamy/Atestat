@@ -23,22 +23,31 @@ namespace Atestat.Controls
     /// </summary>
     public partial class AdsControlH : UserControl
     {
-        public AdsControlH()
-        {
-            InitializeComponent();    
-        }
-
         public const string watermark = "Cauta un anunt...";
 
-        public int[] ids = new int[1024];
         public string[] titluri = new string[1024];
-        public int pages = 0, currentPage = 1, len = 0, lenCats = 0;
+        public int pages = 0, currentPage, len = 0, lenCats = 0;
         public int[] catIds = new int[64];
+        public bool hasText = false;
 
-        public int getNo()
+        public AdsControlH(int page, string searchBarText = watermark)
         {
-            int len = 0;
+            InitializeComponent();
+            currentPage = page;
 
+            if (searchBarText != watermark)
+            {
+                searchBar.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                searchBar.FontWeight = FontWeights.UltraBold;
+            }
+
+            searchBar.Text = searchBarText;
+        }
+
+     
+
+        public void getNo()
+        {
             try
             {
                 Vars.conn.Open();
@@ -51,22 +60,21 @@ namespace Atestat.Controls
 
                 while (r.Read())
                 {
-                    ids[++len] = int.Parse(r["id"].ToString());
+                    Vars.adIds.Add(int.Parse(r["id"].ToString()));
                 }
 
                 r.Close();
                 Vars.conn.Close();
             }
-            catch
+            catch (Exception ex)
             {
                 if (Vars.conn.State == System.Data.ConnectionState.Open)
                 {
                     Vars.conn.Close();
                 }
                 MessageBox.Show("A aparut o eroare! Daca problema persista va rugam sa contactati un administrator!");
+                MessageBox.Show(ex.ToString());
             }
-
-            return len;
         }
 
         public string[] SelectCats()
@@ -86,7 +94,7 @@ namespace Atestat.Controls
                 int len = 1;
 
                 catIds[0] = -1;
-                cats[0] = "-";
+                cats[0] = "Toate categoriile";
 
                 while (r.Read())
                 {
@@ -114,19 +122,34 @@ namespace Atestat.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            len = getNo();
+            if (currentPage == -1)
+            {
+                Vars.adIds.Clear();
+                currentPage = 1;
+                getNo();
+            }
+
+            
+            len = Vars.adIds.Count;
             pages = len / 3 + Convert.ToInt32(len % 3 != 0);
 
-            for (int i = 1; i <= Math.Min(3, len); i++)
+            for (int c = 3, i = (currentPage - 1)* 3; i <= Math.Min(len - 1, currentPage * 3 - 1); i++, c += 2)
             {
-                DisplayAdControlH newAd = new DisplayAdControlH(ids[i]);
+                string text = searchBar.Text;
+
+                if (hasText == false)
+                {
+                    text = watermark;
+                }
+
+                DisplayAdControlH newAd = new DisplayAdControlH(Vars.adIds[i], text);
 
                 Ads.Children.Add(newAd);
-                Grid.SetRow(newAd, i * 2 + 1);
+                Grid.SetRow(newAd, c);
                 Grid.SetColumn(newAd, 1);
             }
 
-            txtPage.Text = "Pagina 1 / " + pages.ToString();
+            txtPage.Text = "Pagina " + currentPage + " / " + pages.ToString();
 
             string[] s = SelectCats();
 
@@ -140,7 +163,18 @@ namespace Atestat.Controls
                 btnAdd.Visibility = Visibility.Hidden;
             }
 
-            btnPrevPage.Visibility = Visibility.Hidden;
+            btnPrevPage.Visibility = Visibility.Visible;
+            btnNextPage.Visibility = Visibility.Visible;
+
+            if (currentPage == 1)
+            {
+                btnPrevPage.Visibility = Visibility.Hidden;
+            }
+
+            if (currentPage == pages)
+            {
+                btnNextPage.Visibility = Visibility.Hidden;
+            }
         }
 
         private void TextBox_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -208,17 +242,23 @@ namespace Atestat.Controls
         {
             for (int i = 0; i < Ads.Children.Count; i++)
             {
-               if (Ads.Children[i].GetType().ToString() == "Atestat.Controls.DisplayAdControlH")
+               if (Ads.Children[i].GetType() == typeof(DisplayAdControlH))
                 {
                     Ads.Children.RemoveAt(i);
                     i--;
                 }
             }
 
-            for (int c = 3, i = (currentPage - 1) * 3 + 1; i <= Math.Min(len, currentPage * 3); i++, c += 2)
+            for (int c = 3, i = (currentPage - 1) * 3; i <= Math.Min(len - 1, currentPage * 3 - 1); i++, c += 2)
             {
-                
-                DisplayAdControlH newAd = new DisplayAdControlH(ids[i]);
+                string text = searchBar.Text;
+
+                if (hasText == false)
+                {
+                    text = watermark;
+                }
+
+                DisplayAdControlH newAd = new DisplayAdControlH(Vars.adIds[i], text);
 
                 Ads.Children.Add(newAd);
                 Grid.SetRow(newAd, c);
@@ -261,19 +301,19 @@ namespace Atestat.Controls
                 {
                     Vars.conn.Open();
 
-                    ids = new int[1024];
+                    Vars.adIds.Clear();
 
-                    MySqlCommand cmd = new MySqlCommand();
+                    MySqlCommand cmd = new MySqlCommand();  
+
+
                     cmd.CommandText = "select * from anunturi";
                     cmd.Connection = Vars.conn;
 
                     MySqlDataReader r = cmd.ExecuteReader();
 
-                    len = 0;
-
                     while (r.Read())
                     {
-                        ids[++len] = int.Parse(r["id"].ToString());
+                        Vars.adIds.Add(int.Parse(r["id"].ToString()));
                     }
 
                     r.Close();
@@ -294,7 +334,7 @@ namespace Atestat.Controls
                 {
                     Vars.conn.Open();
 
-                    ids = new int[1024];
+                    Vars.adIds.Clear();
 
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.CommandText = "select * from anunturi where idCategorie = @idCategorie";
@@ -308,7 +348,7 @@ namespace Atestat.Controls
 
                     while (r.Read())
                     {
-                        ids[++len] = int.Parse(r["id"].ToString());
+                        Vars.adIds.Add(int.Parse(r["id"].ToString()));
                     }
 
                     r.Close();
@@ -326,18 +366,28 @@ namespace Atestat.Controls
 
             for (int i = 0; i < Ads.Children.Count; i++)
             {
-                if (Ads.Children[i].GetType().ToString() == "Atestat.Controls.DisplayAdControlH")
+                if (Ads.Children[i].GetType() == typeof(DisplayAdControlH))
                 {
                     Ads.Children.RemoveAt(i);
                     i--;
                 }
             }
 
+
+            len = Vars.adIds.Count;
             pages = len / 3 + Convert.ToInt32(len % 3 != 0);
+            currentPage = 1;
 
             for (int i = 1; i <= Math.Min(3, len); i++)
             {
-                DisplayAdControlH newAd = new DisplayAdControlH(ids[i]);
+                string text = searchBar.Text;
+
+                if (hasText == false)
+                {
+                    text = watermark;
+                }
+
+                DisplayAdControlH newAd = new DisplayAdControlH(Vars.adIds[i - 1], text);
 
                 Ads.Children.Add(newAd);
                 Grid.SetRow(newAd, i * 2 + 1);
@@ -361,6 +411,7 @@ namespace Atestat.Controls
                 btnNextPage.Visibility = Visibility.Visible;
             }
 
+            searchBar.Text = watermark;
         }
 
         bool runOnce = false;
@@ -369,6 +420,9 @@ namespace Atestat.Controls
         {
             if (runOnce)
             {
+                searchBar.Text = watermark;
+                searchBar.Foreground = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+                searchBar.FontWeight = FontWeights.Normal;
                 ChangeAds();
             }
 
@@ -378,65 +432,135 @@ namespace Atestat.Controls
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            ids = new int[1024];
+            Vars.adIds.Clear();
 
-            try
+            if (searchBar.Text == watermark)
             {
-                len = 1;
-
-                Vars.conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = Vars.conn;
-                
-                cmd.CommandText = "select * from anunturi where lower(titlu) like lower(@titlu)";
-                cmd.Parameters.AddWithValue("titlu", "%" +  searchBar.Text + "%");
-                
-                MySqlDataReader r = cmd.ExecuteReader();
-
-                while (r.Read())
+                hasText = false;
+                try
                 {
-                    ids[len] = int.Parse(r["id"].ToString());
+                    Vars.conn.Open();
 
-                    if ((r["titlu"].ToString()).ToLower() == searchBar.Text.ToLower())
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = Vars.conn;
+
+                    if (cmbCats.SelectedIndex == -1 || cmbCats.SelectedIndex == 0)
                     {
-                        int tempId = ids[len];
-                        ids[len] = ids[1];
-                        ids[1] = tempId;
+                        cmd.CommandText = "select * from anunturi";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "select * from anunturi where idCategorie = @idCategorie";
+                        cmd.Parameters.AddWithValue("idCategorie", catIds[cmbCats.SelectedIndex]);
                     }
 
-                    len++;
-                }
+                    MySqlDataReader r = cmd.ExecuteReader();
 
-                len--;
+                    while (r.Read())
+                    {
+                        Vars.adIds.Add(int.Parse(r["id"].ToString()));
 
-                r.Close();
-                Vars.conn.Close();
-            }
-            catch (Exception ex)
-            {
-                if (Vars.conn.State == System.Data.ConnectionState.Open)
-                {
+                        if ((r["titlu"].ToString()).ToLower() == searchBar.Text.ToLower())
+                        {
+                            int tempId = Vars.adIds[Vars.adIds.Count - 1];
+                            Vars.adIds[Vars.adIds.Count - 1] = Vars.adIds[0];
+                            Vars.adIds[0] = tempId;
+                        }
+                    }
+
+                    r.Close();
                     Vars.conn.Close();
                 }
-                //MessageBox.Show("A aparut o eroare! Daca problema persista va rugam sa contactati un administrator!");
-                MessageBox.Show(ex.ToString());
+                catch (Exception ex)
+                {
+                    if (Vars.conn.State == System.Data.ConnectionState.Open)
+                    {
+                        Vars.conn.Close();
+                    }
+                    //MessageBox.Show("A aparut o eroare! Daca problema persista va rugam sa contactati un administrator!");
+                    MessageBox.Show(ex.ToString());
+                }
             }
+            else
+            {
+                hasText = true;
+                try
+                {
+                    Vars.conn.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = Vars.conn;
+
+                    if (cmbCats.SelectedIndex == -1 || cmbCats.SelectedIndex == 0)
+                    {
+                        cmd.CommandText = "select * from anunturi where lower(titlu) like lower(@titlu)";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "select * from anunturi where lower(titlu) like lower(@titlu) and idCategorie = @idCategorie";
+                        cmd.Parameters.AddWithValue("idCategorie", catIds[cmbCats.SelectedIndex]);
+                    }
+
+                    cmd.Parameters.AddWithValue("titlu", "%" + searchBar.Text + "%");
+
+                    MySqlDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        Vars.adIds.Add(int.Parse(r["id"].ToString()));
+
+                        if ((r["titlu"].ToString()).ToLower() == searchBar.Text.ToLower())
+                        {
+                            int tempId = Vars.adIds[Vars.adIds.Count - 1];
+                            Vars.adIds[Vars.adIds.Count - 1] = Vars.adIds[0];
+                            Vars.adIds[0] = tempId;
+                        }
+
+                        len++;
+                    }
+
+
+                    r.Close();
+                    Vars.conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    if (Vars.conn.State == System.Data.ConnectionState.Open)
+                    {
+                        Vars.conn.Close();
+                    }
+                    //MessageBox.Show("A aparut o eroare! Daca problema persista va rugam sa contactati un administrator!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+            
+
+           
 
             for (int i = 0; i < Ads.Children.Count; i++)
             {
-                if (Ads.Children[i].GetType().ToString() == "Atestat.Controls.DisplayAdControlH")
+                if (Ads.Children[i].GetType() == typeof(DisplayAdControlH))
                 {
                     Ads.Children.RemoveAt(i);
                     i--;
                 }
             }
 
+            len = Vars.adIds.Count;
             pages = len / 3 + Convert.ToInt32(len % 3 != 0);
+            currentPage = 1;
 
             for (int i = 1; i <= Math.Min(3, len); i++)
             {
-                DisplayAdControlH newAd = new DisplayAdControlH(ids[i]);
+                string text = searchBar.Text;
+
+                if (hasText == false)
+                {
+                    text = watermark;
+                }
+
+                DisplayAdControlH newAd = new DisplayAdControlH(Vars.adIds[i - 1], text);
 
                 Ads.Children.Add(newAd);
                 Grid.SetRow(newAd, i * 2 + 1);
@@ -446,7 +570,7 @@ namespace Atestat.Controls
             btnPrevPage.Visibility = Visibility.Hidden;
             btnNextPage.Visibility = Visibility.Hidden;
 
-            if (pages > 0)
+            if (len > 0)
             {
                 txtPage.Text = "Pagina 1 / " + pages.ToString();
             }

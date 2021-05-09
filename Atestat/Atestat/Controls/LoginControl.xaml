@@ -100,7 +100,8 @@
                          FontSize="24"
                          Grid.Column="1"
                          Style="{StaticResource CustomTextBox}"
-                         SizeChanged="ControlSizeChanged">
+                         SizeChanged="ControlSizeChanged"
+                         Text="samy@gmail.com">
                 </TextBox>
 
 
@@ -131,6 +132,7 @@
                                 HorizontalContentAlignment="Left" 
                                 VerticalContentAlignment="Center"
                                 SizeChanged="ControlSizeChanged"
+                                Password="1Asamuel"
                                 />
 
                 <Grid Grid.Row="9" Grid.Column="1">

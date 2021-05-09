@@ -40,6 +40,7 @@ namespace Atestat
         {
             try
             {
+                bool ret = false;
                 Vars.conn.Open();
 
                 MySqlCommand cmd = new MySqlCommand();
@@ -54,23 +55,21 @@ namespace Atestat
 
                 if (r.Read())
                 {
-                    r.Close();
-                    Vars.conn.Close();
-                    return true;
+                    ret = true;
                 }
-                else
-                {
-                    r.Close();
-                    Vars.conn.Close();
-                }
-
-                return false;
+                
+                r.Close();
+                Vars.conn.Close();
+               
+                return ret;
 
             }
             catch
             {
                 if (Vars.conn.State == ConnectionState.Open)
+                {
                     Vars.conn.Close();
+                }
 
                 MessageBox.Show("Eroare!");
                 return true;

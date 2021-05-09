@@ -34,6 +34,9 @@
     <Compile Update="Controls\SingleAdView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\UserPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\AddAnAd.xaml">
@@ -61,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\SingleAdView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\UserPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Colors.xaml">

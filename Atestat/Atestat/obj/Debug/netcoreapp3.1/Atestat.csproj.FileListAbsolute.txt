@@ -7,7 +7,6 @@ D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\App.g.cs
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat_MarkupCompile.cache
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat_MarkupCompile.lref
-D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat.csprojAssemblyReference.cache
 D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Atestat.exe
 D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Atestat.deps.json
 D:\c#\ProiectAtestat\Atestat\Atestat\bin\Debug\netcoreapp3.1\Atestat.runtimeconfig.json
@@ -54,3 +53,6 @@ D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Resources\Images.ba
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Resources\Dictionary.baml
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\SingleAdView.g.cs
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\SingleAdView.baml
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\UserPanel.g.cs
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\UserPanel.baml
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Atestat.csprojAssemblyReference.cache

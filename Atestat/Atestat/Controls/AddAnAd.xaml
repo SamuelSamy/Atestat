@@ -28,7 +28,8 @@
                     FontSize="72"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
-                    Grid.Row="0">
+                    Grid.Row="0"
+                    x:Name="lblAction">
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect>
@@ -325,7 +326,12 @@
                             Foreground="Snow" 
                             FontSize="42" 
                             FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged" Click="btnAdd_Click" />
+                            SizeChanged="Button_SizeChanged" Click="btnAdd_Click">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                        </Button.Effect>
+                    </Button>
                 </Grid>
 
                 <Grid Grid.Row="7">
@@ -345,7 +351,12 @@
                             Foreground="Snow" 
                             FontSize="48" 
                             FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged" Click="btnHome_Click"/>
+                            SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                        </Button.Effect>
+                    </Button>
                 </Grid>
 
             </Grid>
