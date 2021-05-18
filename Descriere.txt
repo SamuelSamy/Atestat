@@ -19,7 +19,7 @@ Utilizatorul va avea acces la:              - toate operatiile anterioare
 Administratorul va avea acces la:           - toate operatiile anterioare
                                             - suspendarea conturilor temporar / permanent
                                             - revocarea dreptului de a publica anunturi temporar / permanent
-                                            - stergerea / modificarea unui anunt
+                                            - stergerea unui anunt
 
 Proprietarul va avea acces la:              - toate operatiile anterioare
                                             - adaugarea unui membru ca administator
@@ -28,7 +28,7 @@ Proprietarul va avea acces la:              - toate operatiile anterioare
 Dezvoltare ulterioara:
     - adaugarea unui noi trepte de acces: Utilizator Premium
     - salvarea anunturilor favorite 
-    - evaluarea unui vanzator
+    - evaluarea unui vanzatorc 
     - contactarea altor utilizatori prin intermediul platformei
     - Utilizator verificat  - publicarea anunturilor intr-o categorie speciala
                             - prioritate la contactarea administratorilor

@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:Atestat.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1600">
-    
+
     <UserControl.Resources>
-        <ResourceDictionary Source="/Atestat;component/Resources/Styles.xaml"/>
+        <ResourceDictionary Source="/Atestat;component/Resources/Dictionary.xaml"/>
     </UserControl.Resources>
 
     <Grid Background="White">
@@ -66,7 +66,6 @@
                     SizeChanged="Button_SizeChanged" Click="btnProfile_Click">
 
 
-
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
                 </Button.Effect>
@@ -90,7 +89,7 @@
                 </Button.Effect>
 
             </Button>
-            
+
             <Button x:Name="btnHome" 
                     Grid.Row="5"
                     Grid.Column="1"
@@ -145,6 +144,191 @@
 
             </Grid>
 
+            <Grid x:Name="ChangeProfile" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".7*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height=".1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Datele contului" Grid.Row="1" 
+                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                       FontSize="72" FontWeight="Bold"
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >
+                    <Label.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="2"/>
+                    </Label.Effect>
+                </Label>
+
+                <Grid Grid.Row="2" Background="{StaticResource WhiteBrush}">
+
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
+                        <ColumnDefinition Width=".05*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".85*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Nume utilizator:" Grid.Column="1" Grid.Row="1"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                           FontSize="48" FontWeight="Bold"
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+                    <TextBox x:Name="txtName"
+                         Grid.Row="3"
+                         FontSize="24"
+                         Grid.Column="3"
+                         Style="{StaticResource CustomTextBox}"
+                         SizeChanged="ControlSizeChanged"
+                         Text="">
+                    </TextBox>
+
+
+                </Grid>
+
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
+                        <ColumnDefinition Width=".05*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".85*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Adresa de mail:" Grid.Column="1" Grid.Row="1"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                           FontSize="48" FontWeight="Bold"
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+                    <TextBox x:Name="txtMail"
+                         Grid.Row="3"
+                         FontSize="24"
+                         Grid.Column="3"
+                         Style="{StaticResource CustomTextBox}"
+                         SizeChanged="ControlSizeChanged"
+                         Text="">
+                    </TextBox>
+
+                </Grid>
+
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
+                        <ColumnDefinition Width=".05*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".85*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Numar de telefon:" Grid.Column="1" Grid.Row="1"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                           FontSize="48" FontWeight="Bold"
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+                    <TextBox x:Name="txtNumber"
+                         Grid.Row="3"
+                         FontSize="28"
+                         Style="{StaticResource CustomTextBox}"
+                         SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
+                         Grid.Column="3" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" KeyDown="textBox_KeyDown"/>
+
+
+                </Grid>
+
+                <Grid Grid.Row="9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
+                        <ColumnDefinition Width=".05*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".85*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Parola:" Grid.Column="1" Grid.Row="1"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                           FontSize="48" FontWeight="Bold"
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+                    <TextBox x:Name="txtPassword"
+                         Grid.Row="3"
+                         FontSize="24"
+                         Grid.Column="3"
+                         Style="{StaticResource CustomTextBox}"
+                         SizeChanged="ControlSizeChanged"
+                         Text="">
+                    </TextBox>
+
+                </Grid>
+
+
+                <Grid Grid.Row="13">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".6*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".1*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".05*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="3" Style="{StaticResource RoundButton}"
+                            Content="Salveaza" Foreground="Snow"
+                            FontSize="48" Click="UpdateProfile">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                        </Button.Effect>
+
+                    </Button>
+
+                    <Button Grid.Column="1" Style="{StaticResource RoundButton}"
+                            Content="Inapoi" Foreground="Snow"
+                            FontSize="48" Click="BackButtonClick">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                        </Button.Effect>
+
+                    </Button>
+
+                </Grid>
+            </Grid>
+
             <Grid x:Name="Profile" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".1*"/>
@@ -174,17 +358,18 @@
                 </Label>
 
                 <Grid Grid.Row="2" Background="{StaticResource WhiteBrush}">
-                    
+
                 </Grid>
-                
+
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
                         <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".6*"/>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>         
-                    
+                    </Grid.ColumnDefinitions>
+
                     <Label Content="Nume utilizator:" Grid.Column="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
@@ -192,17 +377,18 @@
 
                     <Label x:Name="name" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                           FontSize="48" Foreground="{StaticResource BlackBrush}"
+                           FontSize="36" Foreground="{StaticResource BlackBrush}"
                            VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
                 </Grid>
 
                 <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
                         <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".55*"/>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Adresa de mail:" Grid.Column="1"
@@ -212,17 +398,18 @@
 
                     <Label x:Name="mail" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                           FontSize="48" Foreground="{StaticResource BlackBrush}"
+                           FontSize="36" Foreground="{StaticResource BlackBrush}"
                            VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
                 </Grid>
 
                 <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
                         <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".7*"/>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Numar de telefon:" Grid.Column="1"
@@ -232,17 +419,18 @@
 
                     <Label x:Name="phoneNo" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                           FontSize="48" Foreground="{StaticResource BlackBrush}"
+                           FontSize="36" Foreground="{StaticResource BlackBrush}"
                            VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
                 </Grid>
-                
+
                 <Grid Grid.Row="9">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
                         <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".65*"/>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Data inregistrare:" Grid.Column="1"
@@ -252,17 +440,18 @@
 
                     <Label x:Name="date" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                           FontSize="48" Foreground="{StaticResource BlackBrush}"
+                           FontSize="36" Foreground="{StaticResource BlackBrush}"
                            VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
                 </Grid>
 
                 <Grid Grid.Row="11">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".02*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".03*"/>
+                        <ColumnDefinition Width=".45*"/>
                         <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width=".65*"/>
-                        <ColumnDefinition Width=".05*"/>
-                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Anunturi pulicate:" Grid.Column="1"
@@ -272,7 +461,7 @@
 
                     <Label x:Name="adsCount" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                           FontSize="48" Foreground="{StaticResource BlackBrush}"
+                           FontSize="36" Foreground="{StaticResource BlackBrush}"
                            VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
                 </Grid>
@@ -287,7 +476,7 @@
                     <Button Grid.Column="1" Style="{StaticResource RoundButton}"
                             Content="Modifica" Foreground="Snow"
                             FontSize="48" Click="Button_Click">
-                        
+
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
                         </Button.Effect>
@@ -295,12 +484,10 @@
                     </Button>
 
                 </Grid>
-                
-                
-                
+
             </Grid>
-            
-            <Grid x:Name="Ads" Visibility="Hidden">
+
+            <Grid x:Name="Ads" Visibility="Hidden" Panel.ZIndex="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".03*"/>
                     <RowDefinition Height=".3*"/>

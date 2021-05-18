@@ -16,9 +16,6 @@ using Atestat.Controls;
 
 namespace Atestat
 {
-    /// <summary>
-    /// Interaction logic for MainControl.xaml
-    /// </summary>
     public partial class MainControl : UserControl
     {
         public MainControl()
@@ -26,20 +23,22 @@ namespace Atestat
             InitializeComponent();
         }
 
+        #region ControlsEvents
+
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-           /* BlurEffect b = new BlurEffect();
-            this.Effect = b;
-
-            DoubleAnimation anim = new DoubleAnimation();
-            anim.From = 0;
-            anim.To = 20;
-            anim.Duration = (Duration)TimeSpan.FromSeconds(.05);
-            anim.AutoReverse = true;
-
-            b.BeginAnimation(BlurEffect.RadiusProperty, anim);*/
-
             this.Content = new LoginControl();
+        }
+
+        private void btnAnunturi_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new AdvertisementsPage(-1);
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new HelpControl();
         }
 
         private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -47,9 +46,6 @@ namespace Atestat
             Functions.ControlResize(sender, e);
         }
 
-        private void btnAnunturi_Click(object sender, RoutedEventArgs e)
-        {
-            this.Content = new AdsControlH(-1);
-        }
+        #endregion
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Atestat.Classes;
 
 namespace Atestat
 {
@@ -22,28 +23,29 @@ namespace Atestat
     /// </summary>
     public partial class LoginControl : UserControl
     {
+        #region Variables
+        
+        bool Connected = false;
+
+        #endregion
+
         public LoginControl()
         {
             InitializeComponent();
         }
 
-        bool Connected = false;
+        #region ControlsEvents
 
-        /// <summary>
-        /// Checks if the mail address already exists in the database and if the password is correct    - true  -> save user's data
-        ///                                                                                             - false -> MessageBox.Show("The mail address is incorect");
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Vars.conn.Open();
+                Variables.conn.Open();
 
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.CommandText = "select * from utilizatori where mail = @mail";
-                cmd.Connection = Vars.conn;
+                cmd.Connection = Variables.conn;
 
                 cmd.Parameters.AddWithValue("mail", txtMail.Text);
 
@@ -51,17 +53,17 @@ namespace Atestat
 
                 if (r.Read() && r["parola"].ToString() == passBox.Password.ToString())
                 {
-                    User.id = int.Parse(r["id"].ToString());
-                    User.mail = r["mail"].ToString();
-                    User.name = r["nume"].ToString();
-                    User.registerDate = DateTime.Parse(r["dataI"].ToString());
-                    User.password = r["parola"].ToString();
-                    User.phone = r["nrTelefon"].ToString();
-                    User.type = r["tipCont"].ToString();
-                    User.loggedIn = true;
+                    ConnectedUser.id = int.Parse(r["id"].ToString());
+                    ConnectedUser.mail = r["mail"].ToString();
+                    ConnectedUser.name = r["nume"].ToString();
+                    ConnectedUser.registerDate = DateTime.Parse(r["dataI"].ToString());
+                    ConnectedUser.password = r["parola"].ToString();
+                    ConnectedUser.phone = r["nrTelefon"].ToString();
+                    ConnectedUser.loggedIn = true;
+                    ConnectedUser.type = int.Parse(r["tipCont"].ToString());
 
                     MessageBox.Show("Ati fost autentificat cu succes!");
-
+                    
 
                     Connected = true;
                 }
@@ -74,12 +76,12 @@ namespace Atestat
 
                 r.Close();
 
-                Vars.conn.Close();
+                Variables.conn.Close();
             }
             catch (Exception ex)
             {
-                if (Vars.conn.State == ConnectionState.Open)
-                    Vars.conn.Close();
+                if (Variables.conn.State == ConnectionState.Open)
+                    Variables.conn.Close();
 
                 txtMail.Text = "";
                 passBox.Password = "";
@@ -92,24 +94,9 @@ namespace Atestat
             }
         }
 
-
-
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            /*BlurEffect b = new BlurEffect();
-            this.Effect = b;
-
-            DoubleAnimation anim = new DoubleAnimation();
-            anim.From = 0;
-            anim.To = 20;
-            anim.Duration = (Duration)TimeSpan.FromSeconds(.05);
-            anim.AutoReverse = true;
-
-            b.BeginAnimation(BlurEffect.RadiusProperty, anim);*/
-
-            this.Content = new RegisterControl();
-     
-           
+            this.Content = new RegisterControl(); 
         }
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
@@ -131,5 +118,7 @@ namespace Atestat
         {
             this.Content = new MainControl();
         }
+
+        #endregion
     }
 }

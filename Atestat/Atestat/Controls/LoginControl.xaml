@@ -22,8 +22,8 @@
               Grid.Column="0" 
               Visibility="Visible"
               Background="Snow">
-            
-            
+
+
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -83,7 +83,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="2.5*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Viewbox  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Stretch="Uniform">
                         <TextBlock Text="Adresa de mail:"
                            TextAlignment="Left"
@@ -101,7 +101,7 @@
                          Grid.Column="1"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged"
-                         Text="samy@gmail.com">
+                         Text="fatu.samuel24@gmail.com">
                 </TextBox>
 
 
@@ -112,7 +112,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="2.5*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Viewbox   Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Stretch="Uniform">
                         <TextBlock Text="Parola:" 
                            TextAlignment="Left"
@@ -120,8 +120,8 @@
                            FontSize="24"/>
                     </Viewbox>
                 </Grid>
-                
-                
+
+
 
                 <PasswordBox    x:Name="passBox"
                                 Grid.Row="7"
@@ -132,7 +132,7 @@
                                 HorizontalContentAlignment="Left" 
                                 VerticalContentAlignment="Center"
                                 SizeChanged="ControlSizeChanged"
-                                Password="1Asamuel"
+                                Password="Samuel11"
                                 />
 
                 <Grid Grid.Row="9" Grid.Column="1">
@@ -143,7 +143,7 @@
                     </Grid.RowDefinitions>
 
                     <Viewbox Grid.Row="1" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        
+
                         <TextBlock Text="Ati uitat parola?" 
                            
                            VerticalAlignment="Stretch"
@@ -151,24 +151,30 @@
                            TextAlignment="Center"
                            FontSize="10"
                            Style="{StaticResource ForgotPassword}" FontWeight="Normal" MouseDown="TextBlock_MouseDown"/>
-                        
+
                     </Viewbox>
                 </Grid>
-                
-                
-                
+
+
+
 
                 <Grid Grid.Row="11" Grid.Column="1">
 
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width=".45*"/>
+                        <ColumnDefinition Width=".1*"/>
+                        <ColumnDefinition Width=".45*"/>
                     </Grid.ColumnDefinitions>
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height=".8*"/>
+                        <RowDefinition Height=".1*"/>
+                    </Grid.RowDefinitions>
+
                     <Button x:Name="btnLogin" 
-                            Grid.Column="0"
+                            Grid.Column="0" Grid.Row="1"
                             Background="{StaticResource LightBlueBrush}"
                             BorderBrush="{StaticResource DarkBlueBrush}"
                             Style="{StaticResource RoundButton}"
@@ -176,7 +182,7 @@
 
                             Content="Conectare" 
                             Foreground="Snow" 
-                            FontSize="32" 
+                            FontSize="36" 
                             FontWeight="Bold" 
                             
                             Click="btnLogin_Click"
@@ -189,7 +195,7 @@
                     </Button>
 
                     <Button x:Name="btnRegister" 
-                            Grid.Column="2"
+                            Grid.Column="2" Grid.Row="1"
                             Background="{StaticResource LightBlueBrush}"
                             BorderBrush="{StaticResource DarkBlueBrush}"
                             Style="{StaticResource RoundButton}"
@@ -197,7 +203,7 @@
 
                             Content="Inregistrare" 
                             Foreground="Snow" 
-                            FontSize="32" 
+                            FontSize="36" 
                             FontWeight="Bold" 
                             
                             Click="btnRegister_Click"
@@ -214,10 +220,10 @@
 
             </Grid>
 
-            
+
 
         </Grid>
-        
+
 
 
 
@@ -245,9 +251,9 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width=".075*"/>
+                    <ColumnDefinition Width=".85*"/>
+                    <ColumnDefinition Width=".075*"/>
                 </Grid.ColumnDefinitions>
 
                 <Button     x:Name="btnHome" 

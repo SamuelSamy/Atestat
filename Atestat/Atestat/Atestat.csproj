@@ -9,7 +9,11 @@
 
   <ItemGroup>
     <None Remove="Assets\ExclamationMark.png" />
+    <None Remove="Assets\Info.png" />
+    <None Remove="Assets\MarkedAsFav.png" />
     <None Remove="Assets\NoImage.png" />
+    <None Remove="Assets\NotMarkedAsFav.png" />
+    <None Remove="Assets\ReportButton.png" />
     <None Remove="Assets\RoundLogo.ico" />
     <None Remove="Assets\x.png" />
     <None Remove="Logo.png" />
@@ -35,10 +39,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\MarkedAsFav.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\NoImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\NotMarkedAsFav.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ReportButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\RoundLogo.ico">

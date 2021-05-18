@@ -4,5 +4,17 @@
     <ImageSource x:Key="NoImage">
         /Atestat;component/Assets/NoImage.png
     </ImageSource>
-    
+
+    <ImageSource x:Key="Favorite">
+        /Atestat;component/Assets/MarkedAsFav.png
+    </ImageSource>
+
+    <ImageSource x:Key="NotFavorite">
+        /Atestat;component/Assets/NotMarkedAsFav.png
+    </ImageSource>
+
+    <ImageSource x:Key="Info">
+        /Atestat;component/Assets/Info.png
+    </ImageSource>
+
 </ResourceDictionary>

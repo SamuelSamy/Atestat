@@ -1,17 +1,20 @@
 ﻿
 
-FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\AddAnAd.xaml;;
-FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\AdsControlH.xaml;;
-FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\DisplayAdControlH.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\AddAdvertisementPage.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\AdvertisementPreview.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\AdvertisementsPage.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\AdvertisementView.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\ForgotPasswordControl.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\HelpControl.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\LoginControl.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\MainControl.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\MainLogin.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\RegisterControl.xaml;;
-FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\SingleAdView.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\SettingsControl.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Controls\UserPanel.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\MainWindow.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Resources\Brushes.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Resources\Colors.xaml;;
 FD:\c#\ProiectAtestat\Atestat\Atestat\Resources\Styles.xaml;;
+FD:\c#\ProiectAtestat\Atestat\Atestat\CustomMessageBox.xaml;;
 

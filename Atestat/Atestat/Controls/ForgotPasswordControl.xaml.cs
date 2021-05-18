@@ -15,22 +15,26 @@ using System.Net;
 using System.IO;
 using System.Data;
 using MySql.Data.MySqlClient;
-
+using System.Text.RegularExpressions;
+using Atestat.Classes;
 
 namespace Atestat
 {
-    /// <summary>
-    /// Interaction logic for ForogtPasswordControl.xaml
-    /// </summary>
+
     public partial class ForgotPasswordControl : UserControl
     {
+        #region Variables
+
+        public string mailAdress = "";
+        public string code = "";
+
+        #endregion
         public ForgotPasswordControl()
         {
             InitializeComponent();
         }
 
-        public string mailAdress = "";
-        public string code = "";
+        #region ControlsEvents
         private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Functions.ControlResize(sender, e);
@@ -44,19 +48,6 @@ namespace Atestat
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             this.Content = new MainControl();
-        }
-
-        private bool IsValidAddress(string mail)
-        {
-            try
-            {
-                MailAddress address = new MailAddress(mail);
-                return address.Address == mail;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         private void txtMail_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,30 +70,29 @@ namespace Atestat
 
         private void passBox_KeyDown(object sender, KeyEventArgs e)
         {
-            /*if (IsValidPassword(passBox.Password.ToString(), false) < (int)PasswordRequirements.Capital + (int)PasswordRequirements.Digit + (int)PasswordRequirements.Length)
-            {
-                string text = passBox.Password.ToString();
-                passBox.Style = (Resources["CustomPasswordBoxWrong"] as Style);
-                passBox.Password = text;
-  
 
-            }
-            else
-            {
-                string text = passBox.Password.ToString();
-                passBox.Style = (Resources["CustomPasswordBox"] as Style);
-                passBox.Password = text;
-            }*/
         }
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
+            if (!AllAreCompleted())
+            {
+                MessageBox.Show("Va rugam sa completati toate casutele!");
+                return;
+            }
+
+            if (IsValidPassword(passBox.Password) != (int)PasswordRequirements.All)
+            {
+                MessageBox.Show("Parola introdusa nu respecta criteriile!");
+                return;
+            }
+
             try
             {
-                Vars.conn.Open();
+                Variables.conn.Open();
 
                 MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = Vars.conn;
+                cmd.Connection = Variables.conn;
                 cmd.CommandText = "update utilizatori set parola = @parola where mail = @mail";
 
                 cmd.Parameters.AddWithValue("parola", passBox.Password);
@@ -112,60 +102,19 @@ namespace Atestat
                 {
                     MessageBox.Show("Parola dumneavostra a fost schimbata cu succes!");
                     this.Content = new MainControl();
-                }   
+                }
                 else
                 {
                     MessageBox.Show("A aparut o eroare! Daca problema persista contactati un administrator!");
                 }
-                Vars.conn.Close();
+                Variables.conn.Close();
             }
             catch
             {
-                if (Vars.conn.State == ConnectionState.Open)
-                    Vars.conn.Close();
+                if (Variables.conn.State == ConnectionState.Open)
+                    Variables.conn.Close();
 
                 MessageBox.Show("A aparut o eroare! Daca problema persista contactati un administrator!");
-            }
-        }
-
-        public string GenerateCode()
-        {
-            string code = "";
-
-            Random r = new Random();
-
-            for (int i = 0; i < 8; i++)
-            {
-                code += r.Next(0, 10).ToString();
-            }
-
-            return code;
-        }
-
-        public bool SendMail()
-        { 
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(Vars.MailAdress);
-                mail.To.Add(mailAdress);
-                mail.Subject = "Recuperare parola";
-                code = GenerateCode();
-                mail.Body = "Codul pentru recuperarea parolei dumneavostra este: " + code;
-
-
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                SmtpServer.Port = 587;
-                SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new NetworkCredential(Vars.MailAdress, Vars.MailPass);
-                SmtpServer.EnableSsl = true;
-
-                SmtpServer.Send(mail);
-                return true;
-            }
-            catch
-            {
-                return false;
             }
         }
 
@@ -178,7 +127,7 @@ namespace Atestat
             }
 
             mailAdress = txtMail.Text;
-         
+
             if (SendMail() == true)
             {
                 grid1.Visibility = Visibility.Hidden;
@@ -204,5 +153,101 @@ namespace Atestat
             }
 
         }
+
+        #endregion
+
+        #region CustomFunctions
+        private bool IsValidAddress(string mail)
+        {
+            try
+            {
+                MailAddress address = new MailAddress(mail);
+                return address.Address == mail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        
+        public bool AllAreCompleted()
+        {
+            return (!String.IsNullOrEmpty(passBox.Password) && !String.IsNullOrEmpty(passBoxConf.Password));
+        }
+
+        private int IsValidPassword(string password, bool match = true)
+        {
+            int Value = (int)PasswordRequirements.None;
+
+            if (password == passBoxConf.Password && match)
+            {
+                Value |= (int)PasswordRequirements.Match;
+            }
+
+            if (password.Length > 7)
+            {
+                Value |= (int)PasswordRequirements.Length;
+            }
+
+            Regex r = new Regex(@"[0-9]");
+
+            if (r.Matches(password).Count > 0)
+            {
+                Value |= (int)PasswordRequirements.Digit;
+            }
+
+            r = new Regex(@"[A-Z]");
+
+            if (r.Matches(password).Count > 0)
+            {
+                Value |= (int)PasswordRequirements.Capital;
+            }
+
+            return Value;
+        }
+
+        public string GenerateCode()
+        {
+            string code = "";
+
+            Random r = new Random();
+
+            for (int i = 0; i < 8; i++)
+            {
+                code += r.Next(0, 10).ToString();
+            }
+
+            return code;
+        }
+
+
+        public bool SendMail()
+        { 
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(Variables.MailAdress);
+                mail.To.Add(mailAdress);
+                mail.Subject = "Recuperare parola";
+                code = GenerateCode();
+                mail.Body = "Codul pentru recuperarea parolei dumneavostra este: " + code;
+
+
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                SmtpServer.Port = 587;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new NetworkCredential(Variables.MailAdress, Variables.MailPass);
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

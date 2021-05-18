@@ -41,10 +41,10 @@ namespace Atestat
             try
             {
                 bool ret = false;
-                Vars.conn.Open();
+                Variables.conn.Open();
 
                 MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = Vars.conn;
+                cmd.Connection = Variables.conn;
                 cmd.CommandText = "select * from utilizatori where mail = @mail";
 
                 cmd.Parameters.AddWithValue("mail", mail);
@@ -59,16 +59,16 @@ namespace Atestat
                 }
                 
                 r.Close();
-                Vars.conn.Close();
+                Variables.conn.Close();
                
                 return ret;
 
             }
             catch
             {
-                if (Vars.conn.State == ConnectionState.Open)
+                if (Variables.conn.State == ConnectionState.Open)
                 {
-                    Vars.conn.Close();
+                    Variables.conn.Close();
                 }
 
                 MessageBox.Show("Eroare!");

@@ -7,16 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Controls\AddAnAd.xaml.cs">
+    <Compile Update="Controls\AddAdvertisementPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\AdsControlH.xaml.cs">
+    <Compile Update="Controls\AdvertisementsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\DisplayAdControlH.xaml.cs">
+    <Compile Update="Controls\AdvertisementPreview.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\ForgotPasswordControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HelpControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\LoginControl.xaml.cs">
@@ -31,24 +34,33 @@
     <Compile Update="Controls\RegisterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\SingleAdView.xaml.cs">
+    <Compile Update="Controls\SettingsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\AdvertisementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\UserPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CustomMessageBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\AddAnAd.xaml">
+    <Page Update="Controls\AddAdvertisementPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\AdsControlH.xaml">
+    <Page Update="Controls\AdvertisementsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\DisplayAdControlH.xaml">
+    <Page Update="Controls\AdvertisementPreview.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ForgotPasswordControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HelpControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\LoginControl.xaml">
@@ -63,10 +75,16 @@
     <Page Update="Controls\RegisterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\SingleAdView.xaml">
+    <Page Update="Controls\SettingsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\AdvertisementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\UserPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CustomMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Colors.xaml">
