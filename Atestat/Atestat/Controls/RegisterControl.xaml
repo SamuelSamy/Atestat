@@ -33,10 +33,65 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height=".025*"/>
-                <RowDefinition Height=".95*"/>
-                <RowDefinition Height=".025*"/>
+                <RowDefinition Height=".9625*"/>
+                <RowDefinition Height=".0125*"/>
             </Grid.RowDefinitions>
 
+            <Grid Grid.Row="1" Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7.2*"/>
+                    <ColumnDefinition Width=".8*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="3.6*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="NameToolTip" Visibility="Hidden" Grid.Row="2" Source="/Atestat;component/Assets/ExclamationMark.png" ToolTip="Numele trebuie sa contina cel putin 3 caractere!">
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="8" Color="#FF8B1313"/>
+                        </Image.Effect>
+                    </Image>
+
+                    <Image x:Name="MailToolTip" Visibility="Hidden"  Grid.Row="5" Source="/Atestat;component/Assets/ExclamationMark.png" ToolTip="Aceasta adresa nu este valida!">
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="8" Color="#FF8B1313"/>
+                        </Image.Effect>
+                    </Image>
+
+                    <Image x:Name="PasswordToolTip1" Visibility="Hidden"  Grid.Row="8" Source="/Atestat;component/Assets/ExclamationMark.png" ToolTip="Parola trebuie sa contina cel putin 8 caractere, o litera mare, o cifra si un simbol! ">
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="8" Color="#FF8B1313"/>
+                        </Image.Effect>
+
+                    </Image>
+
+                    <Image x:Name="PasswordToolTip2" Visibility="Hidden"  Grid.Row="11" Source="/Atestat;component/Assets/ExclamationMark.png" ToolTip="Parolele trebuie sa corespunda!">
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="8" Color="#FF8B1313"/>
+                        </Image.Effect>
+
+                    </Image>
+
+                </Grid>
+                
+          
+            </Grid>
+            
             <Grid Grid.Row="1"
                   Grid.Column="1">
 
@@ -84,9 +139,9 @@
                     <!-- 17. Nothing -->
                     <RowDefinition Height=".5*"/>
                     <!-- 18. PasswordBox - ConfirmPassword -->
-                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.75*"/>
                     <!-- 19. Nothing -->
-                    <RowDefinition Height=".15*"/>
+                    <RowDefinition Height=".1*"/>
 
                 </Grid.RowDefinitions>
 
@@ -108,10 +163,10 @@
                            HorizontalAlignment="Left"
                            Grid.Column="1"
                            Grid.Row="1">
-                        <TextBlock Text="Nume:"
+                        <TextBlock Text="Nume:" SizeChanged="ControlSizeChanged"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"/>
+                           FontSize="24" Tag="24"/>
                     </Viewbox>
 
                 </Grid>
@@ -123,8 +178,8 @@
                          Grid.Row="2"
                          Grid.Column="1"
                          FontSize="24"
-                         Text="samy"
-                         Style="{StaticResource CustomTextBox}" TextChanged="txtName_TextChanged"/>
+                         Text="" SizeChanged="ControlSizeChanged"
+                         Style="{StaticResource CustomTextBox}" TextChanged="txtName_TextChanged" Tag="24"/>
 
                 <Grid Grid.Row="4"
                       Grid.Column="1">
@@ -139,10 +194,10 @@
                            Stretch="Uniform"
                            Grid.Column="1"
                            Grid.Row="1">
-                        <TextBlock Text="Adresa de mail:"
+                        <TextBlock Text="Adresa de mail:" SizeChanged="ControlSizeChanged"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"/>
+                           FontSize="24" Tag="24"/>
                     </Viewbox>
                 </Grid>
                 
@@ -152,8 +207,8 @@
                          Grid.Row="6"
                          Grid.Column="1"
                          FontSize="24" 
-                         Text="samy@gmail.com"
-                         Style="{StaticResource CustomTextBox}" TextChanged="txtMail_TextChanged"/>
+                         Text="" SizeChanged="ControlSizeChanged"
+                         Style="{StaticResource CustomTextBox}" TextChanged="txtMail_TextChanged" Tag="24"/>
 
                 <Grid Grid.Row="8"
                       Grid.Column="1">
@@ -167,26 +222,20 @@
                     <Viewbox   Stretch="Uniform"
                            HorizontalAlignment="Left"
                            Grid.Row="1">
-                        <TextBlock Text="Parola:" 
+                        <TextBlock Text="Parola:"  SizeChanged="ControlSizeChanged"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"/>
+                           FontSize="24" Tag="24"/>
                     </Viewbox>
 
                 </Grid>
                 
-
-
-                <PasswordBox    x:Name="passBox"
-                                Grid.Row="10"
-                                Grid.Column="1"
-                                Style="{StaticResource CustomPasswordBox}"
-                                FontSize="24"
-                                Foreground="{StaticResource BlackBrush}" 
-                                HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" KeyDown="passBox_KeyDown"
-                                Password="1Asamuel"
-                                />
+                <TextBox x:Name="txtPass1" Visibility="Visible"
+                         Grid.Row="10"
+                         Grid.Column="1"
+                         FontSize="48" 
+                         Text="" SizeChanged="ControlSizeChanged"
+                         Style="{StaticResource CustomTextBox}" Tag="48" PreviewKeyDown="txtPass_PreviewKeyDown" PreviewTextInput="txtPass_PreviewTextInput" FontWeight="Bold"/>
 
                 <Grid Grid.Row="12"
                       Grid.Column="1">
@@ -200,37 +249,31 @@
                     <Viewbox   Stretch="Uniform"
                            HorizontalAlignment="Left"
                            Grid.Row="1">
-                        <TextBlock Text="Confirma parola:" 
+                        <TextBlock Text="Confirma parola:" SizeChanged="ControlSizeChanged"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"/>
+                           FontSize="24" Tag="24"/>
                     </Viewbox>
 
                 </Grid>
 
-
-
-                <PasswordBox    x:Name="passBoxConf"
-                                Grid.Row="14"
-                                Grid.Column="1"
-                                Style="{StaticResource CustomPasswordBox}"
-                                FontSize="24"
-                                Foreground="{StaticResource BlackBrush}" 
-                                HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" KeyDown="passBox_KeyDown"
-                                Password="1Asamuel"
-                                />
+                <TextBox x:Name="txtPass2" Visibility="Visible"
+                         Grid.Row="14"
+                         Grid.Column="1"
+                         FontSize="48" 
+                         Text="" SizeChanged="ControlSizeChanged"
+                         Style="{StaticResource CustomTextBox}" PreviewKeyDown="txtPass_PreviewKeyDown" PreviewTextInput="txtPass_PreviewTextInput" Tag="48" FontWeight="Bold"/>
 
                 <Viewbox   Grid.Row="16"
                            Grid.Column="1"
                            Stretch="Uniform"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center">
-                    <TextBlock Text="Aveti deja un cont? Click aici pentru a va conecta!"   
+                    <TextBlock Text="Aveti deja un cont? Click aici pentru a va conecta!" SizeChanged="ControlSizeChanged"  
                            TextAlignment="Left"
                            FontSize="24"
                            Style="{StaticResource ForgotPassword}" 
-                           MouseDown="AlreadyHasAccount_MouseDown"/>
+                           MouseDown="AlreadyHasAccount_MouseDown" Tag="24"/>
                 </Viewbox>
 
                 <Grid Grid.Row="18"
@@ -252,10 +295,10 @@
 
                             Content="Inregistrare" 
                             Foreground="Snow" 
-                            FontSize="32" 
+                            FontSize="36" 
                             FontWeight="Bold" 
                             
-                            Click="btnRegister_Click" SizeChanged="btnRegister_SizeChanged">
+                            Click="btnRegister_Click" SizeChanged="ControlSizeChanged" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -325,9 +368,9 @@
                             Grid.Column="1"
                             Content="Acasa" 
                             Foreground="Snow" 
-                            FontSize="36" 
+                            FontSize="42" 
                             FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnHome_Click" Tag="42">
 
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -19,38 +20,76 @@ namespace Atestat
     {
         #region Variables
 
+        public float AnimationTime = .10f;
+
         public Color color = Color.FromRgb(100, 100, 100);
 
         public string message = "";
         public SolidColorBrush colorBrush = new SolidColorBrush();
 
-        UserControl ControlParent;
+        Window owner;
 
         #endregion
-        public CustomMessageBox(int ColorType, string Message, UserControl ControlParent)
+        public CustomMessageBox(int ColorType, string Message, UserControl ControlParent, MessageBoxButton button)
         {
             InitializeComponent();
 
+            if (button == MessageBoxButton.YesNo)
+            {
+                YesNoButtons.Visibility = Visibility.Visible;
+                OkButton.Visibility = Visibility.Hidden;
+            }
+            else if (button == MessageBoxButton.OK)
+            {
+                YesNoButtons.Visibility = Visibility.Hidden;
+                OkButton.Visibility = Visibility.Visible;
+            }
+
+
+
             switch (ColorType)
             {
-                case (int)MessageBoxColorTypes.green: color.G = 100;
-                    return;
+                case (int)MessageBoxColorTypes.green:   
+                    color.G = 255;
 
-                case (int)MessageBoxColorTypes.red: color.R = 100;
-                    return;
+                    Icon.Source = (Resources["Info"] as ImageSource);
+                    break;
 
-                case (int)MessageBoxColorTypes.yellow: color.B = 100;
-                    return;
+                case (int)MessageBoxColorTypes.red:     
+                    color.R = 255;
+
+                    break;
+
+                case (int)MessageBoxColorTypes.yellow:  
+                    color.R = 255;
+                    color.G = 255;
+
+                    Icon.Source = (Resources["Qustion"] as ImageSource);
+                    break;
             }
 
             colorBrush = new SolidColorBrush(color);
 
-            TextBlock.Text = Message;
+            textBlock.Text = Message;
 
-            this.ControlParent = ControlParent;
+            Object e = ControlParent;
+
+            while (!(e is MainWindow))
+            {
+                e = (e as FrameworkElement).Parent;
+            }
+
+            owner = e as MainWindow;
+
+            DoubleAnimation anim = new DoubleAnimation();
+            anim.From = 0;
+            anim.To = .95;
+            anim.Duration = (Duration)TimeSpan.FromSeconds(AnimationTime);
+
+            this.BeginAnimation(UIElement.OpacityProperty, anim);
         }
 
-        #region SelectAnswer
+        #region CloseFunctions
 
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
@@ -64,68 +103,52 @@ namespace Atestat
             this.Close();
         }
 
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            this.Close();
+        }
+
         #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         { 
             Border.Background = colorBrush;
-            TextBlock.Text = message;
 
-            this.Height = ControlParent.ActualHeight / 1.5;
-            this.Width = ControlParent.ActualWidth / 1.5;
+            this.Height = owner.ActualHeight / 1.5;
+            this.Width = owner.ActualWidth / 1.5;
 
-            this.Left = Owner.Left + (ControlParent.ActualWidth - this.ActualWidth) / 2;
-            this.Top = Owner.Top + (ControlParent.ActualHeight - this.ActualHeight) / 2;
+            this.Left = owner.Left + (owner.ActualWidth - this.ActualWidth) / 2;
+            this.Top = owner.Top + (owner.ActualHeight - this.ActualHeight) / 2;
+
+
+            BlurEffect b = new BlurEffect();
+            owner.Effect = b;
 
             DoubleAnimation anim = new DoubleAnimation();
             anim.From = 0;
-            anim.To = 0.75;
-            anim.Duration = (Duration)TimeSpan.FromSeconds(.3);
+            anim.To = 20;
+            anim.Duration = (Duration)TimeSpan.FromSeconds(AnimationTime);
 
-            this.BeginAnimation(UIElement.OpacityProperty, anim);            
+            b.BeginAnimation(BlurEffect.RadiusProperty, anim);
         }
 
-        #region ResizeFunctions
-
-        private void btnYes_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Size n = e.NewSize;
-            Size o = e.PreviousSize;
+            BlurEffect b = new BlurEffect();
+            owner.Effect = b;
 
-            double l = n.Width / o.Width;
+            DoubleAnimation anim = new DoubleAnimation();
+            anim.From = 20;
+            anim.To = 0;
+            anim.Duration = (Duration)TimeSpan.FromSeconds(AnimationTime);
 
-            if (l != double.PositiveInfinity)
-            {
-                btnYes.FontSize *= l;
-            }
+            b.BeginAnimation(BlurEffect.RadiusProperty, anim);
         }
 
-        private void btnNo_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Size n = e.NewSize;
-            Size o = e.PreviousSize;
-
-            double l = n.Width / o.Width;
-
-            if (l != double.PositiveInfinity)
-            {
-                btnNo.FontSize *= l;
-            }
+            
         }
-
-        private void TextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Size n = e.NewSize;
-            Size o = e.PreviousSize;
-
-            double l = n.Width / o.Width;
-
-            if (l != double.PositiveInfinity)
-            {
-                TextBlock.FontSize *= l;
-            }
-        }
-
-        #endregion
     }
 }

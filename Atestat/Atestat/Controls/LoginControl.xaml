@@ -85,10 +85,10 @@
                     </Grid.RowDefinitions>
 
                     <Viewbox  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Stretch="Uniform">
-                        <TextBlock Text="Adresa de mail:"
+                        <TextBlock Text="Adresa de mail:" SizeChanged="ControlSizeChanged"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"/>
+                           FontSize="24" Tag="24"/>
                     </Viewbox>
                 </Grid>
 
@@ -101,7 +101,7 @@
                          Grid.Column="1"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged"
-                         Text="fatu.samuel24@gmail.com">
+                         Text="fatu.samuel24@gmail.com" Tag="24">
                 </TextBox>
 
 
@@ -114,10 +114,10 @@
                     </Grid.RowDefinitions>
 
                     <Viewbox   Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" Stretch="Uniform">
-                        <TextBlock Text="Parola:" 
+                        <TextBlock Text="Parola:" SizeChanged="ControlSizeChanged"
                            TextAlignment="Left"
                            Foreground="{StaticResource BlackBrush}"
-                           FontSize="24"/>
+                           FontSize="24" Tag="24"/>
                     </Viewbox>
                 </Grid>
 
@@ -132,7 +132,7 @@
                                 HorizontalContentAlignment="Left" 
                                 VerticalContentAlignment="Center"
                                 SizeChanged="ControlSizeChanged"
-                                Password="Samuel11"
+                                Password="Samuel11" Tag="26"
                                 />
 
                 <Grid Grid.Row="9" Grid.Column="1">
@@ -146,11 +146,14 @@
 
                         <TextBlock Text="Ati uitat parola?" 
                            
-                           VerticalAlignment="Stretch"
-                           HorizontalAlignment="Stretch"
-                           TextAlignment="Center"
-                           FontSize="10"
-                           Style="{StaticResource ForgotPassword}" FontWeight="Normal" MouseDown="TextBlock_MouseDown"/>
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   TextAlignment="Center"
+                                   FontSize="10"
+
+                                   SizeChanged="ControlSizeChanged"
+                           
+                                   Style="{StaticResource ForgotPassword}" FontWeight="Normal" MouseDown="TextBlock_MouseDown" Tag="10"/>
 
                     </Viewbox>
                 </Grid>
@@ -186,7 +189,7 @@
                             FontWeight="Bold" 
                             
                             Click="btnLogin_Click"
-                            SizeChanged="ControlSizeChanged">
+                            SizeChanged="ControlSizeChanged" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -207,7 +210,7 @@
                             FontWeight="Bold" 
                             
                             Click="btnRegister_Click"
-                            SizeChanged="ControlSizeChanged">
+                            SizeChanged="ControlSizeChanged" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -264,9 +267,9 @@
                             Grid.Column="1"
                             Content="Acasa" 
                             Foreground="Snow" 
-                            FontSize="36" 
+                            FontSize="42" 
                             FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnHome_Click" Tag="42">
 
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

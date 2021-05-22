@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atestat" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="" Height="900" Width="1600" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="" Height="900" Width="1600" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="CanResize">
 
 </Window>

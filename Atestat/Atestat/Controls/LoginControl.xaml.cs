@@ -51,19 +51,19 @@ namespace Atestat
 
                 MySqlDataReader r = cmd.ExecuteReader();
 
-                if (r.Read() && r["parola"].ToString() == passBox.Password.ToString())
+                if (r.Read() && r["parola"].ToString() == Functions.MD5Hash(passBox.Password.ToString()))
                 {
                     ConnectedUser.id = int.Parse(r["id"].ToString());
                     ConnectedUser.mail = r["mail"].ToString();
                     ConnectedUser.name = r["nume"].ToString();
                     ConnectedUser.registerDate = DateTime.Parse(r["dataI"].ToString());
-                    ConnectedUser.password = r["parola"].ToString();
+                    ConnectedUser.password = passBox.Password.ToString();
                     ConnectedUser.phone = r["nrTelefon"].ToString();
                     ConnectedUser.loggedIn = true;
                     ConnectedUser.type = int.Parse(r["tipCont"].ToString());
 
-                    MessageBox.Show("Ati fost autentificat cu succes!");
-                    
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Ati fost autentificat cu succes!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
 
                     Connected = true;
                 }
@@ -71,7 +71,8 @@ namespace Atestat
                 {
                     txtMail.Text = "";
                     passBox.Password = "";
-                    MessageBox.Show("Datele introduse nu sunt corecte!");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Datele introduse nu sunt corecte!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
 
                 r.Close();
@@ -85,7 +86,8 @@ namespace Atestat
 
                 txtMail.Text = "";
                 passBox.Password = "";
-                MessageBox.Show("Eroare in procesul de conectare! Daca problema persista, contactati un administrator!\n" + ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             if (Connected)
@@ -101,12 +103,7 @@ namespace Atestat
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-             Functions.ControlResize(sender, e);
-        }
-
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
+             Functions.ControlResize(sender, e, this);
         }
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)

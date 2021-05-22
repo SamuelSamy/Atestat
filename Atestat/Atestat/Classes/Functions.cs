@@ -6,31 +6,49 @@ using System.Windows;
 using System.Windows.Controls;
 using MySql.Data.MySqlClient;
 using Atestat.Classes;
+using System.Security.Cryptography;
 
 namespace Atestat
 {
     class Functions
     {
       
-        public static void ControlResize(object sender, SizeChangedEventArgs e)
+        public static void ControlResize(object sender, SizeChangedEventArgs e, UserControl control)
         {
-            //double scale = (e.NewSize.Width * e.NewSize.Width + e.NewSize.Height * e.NewSize.Height) / (e.PreviousSize.Width * e.PreviousSize.Width + e.PreviousSize.Height * e.PreviousSize.Height);
-            double scale = e.NewSize.Width / e.PreviousSize.Width;
+            Object obj = control;
+
+            while (!(obj is MainWindow))
+            {
+                obj = (obj as FrameworkElement).Parent;
+            }
+
+            Window owner = obj as MainWindow;
+
+            double scale = Math.Min(owner.Width / Variables.WindowW, owner.Height / Variables.WindowH);
+
 
             if (scale != double.PositiveInfinity && scale != 0)
             {
                 switch (sender.GetType().Name)
                 {
                     case "TextBox":
-                        (sender as TextBox).FontSize   *= scale;
+                        (sender as TextBox).FontSize = double.Parse((sender as TextBox).Tag.ToString()) * scale;
                         break;
 
                     case "Button":
-                        (sender as Button).FontSize    *= scale;
+                        (sender as Button).FontSize = double.Parse((sender as Button).Tag.ToString()) * scale;
                         break;
 
-                    case "TextBlock":
-                        (sender as TextBlock).FontSize *= scale;
+                    case "PasswordBox":
+                        (sender as PasswordBox).FontSize = double.Parse((sender as PasswordBox).Tag.ToString()) * scale;
+                        break;
+
+                    case "Label":
+                        (sender as Label).FontSize = double.Parse((sender as Label).Tag.ToString()) * scale;
+                        break;
+
+                    case "ComboBox":
+                        (sender as ComboBox).FontSize = double.Parse((sender as ComboBox).Tag.ToString()) * scale;
                         break;
                 }
             }
@@ -71,9 +89,24 @@ namespace Atestat
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show("Eroare!");
                 return true;
             }
+        }
+
+        public static string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
         }
     }
 }

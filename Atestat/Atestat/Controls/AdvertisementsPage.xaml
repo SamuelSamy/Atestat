@@ -48,7 +48,19 @@
                     <ColumnDefinition Width=".1*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="txtPage" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".7*"/>
+                        <RowDefinition Height=".15*"/>
+                    </Grid.RowDefinitions>
+
+                    <Viewbox Grid.Row="1">
+                        <TextBlock  x:Name="txtPage" Grid.Row="1" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Tag="36" TextAlignment="Center"/>
+                    </Viewbox>
+
+                </Grid>
+                
 
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -62,7 +74,7 @@
                         <ColumnDefinition Width=".8*"/>
                         <ColumnDefinition Width=".15*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnNextPage" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click">
+                    <Button x:Name="btnNextPage" SizeChanged="ControlSizeChanged" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click" Tag="48">
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
                         </Button.Effect>
@@ -82,7 +94,7 @@
                         <ColumnDefinition Width=".8*"/>
                         <ColumnDefinition Width=".15*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnPrevPage" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click">
+                    <Button x:Name="btnPrevPage" SizeChanged="ControlSizeChanged" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click" Tag="48">
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
                         </Button.Effect>
@@ -102,7 +114,7 @@
                 </Grid.RowDefinitions>
 
 
-                <TextBox Style="{StaticResource CustomTextBox}" x:Name="searchBar" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="0,0,0,0" Text="Cauta un anunt..." TextWrapping="Wrap" VerticalAlignment="Stretch" FontFamily="Times New Roman" FontSize="42" TextAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FlowDirection="LeftToRight" HorizontalScrollBarVisibility="Auto" SizeChanged="TextBox_SizeChanged" PreviewTextInput="searchBar_PreviewTextInput" GotKeyboardFocus="searchBar_GotKeyboardFocus" LostFocus="searchBar_LostFocus" Foreground="#BF000000" Background="White" BorderBrush="#FF006496" FontWeight="Normal" BorderThickness="5,5,5,5">
+                <TextBox Style="{StaticResource CustomTextBox}" x:Name="searchBar" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Text="Cauta un anunt..." TextWrapping="Wrap" VerticalAlignment="Stretch" FontFamily="Times New Roman" FontSize="42" TextAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FlowDirection="LeftToRight" HorizontalScrollBarVisibility="Auto" SizeChanged="ControlSizeChanged" PreviewTextInput="searchBar_PreviewTextInput" GotKeyboardFocus="searchBar_GotKeyboardFocus" LostFocus="searchBar_LostFocus" Foreground="#BF000000" Background="White" BorderBrush="#FF006496" FontWeight="Normal" BorderThickness="5,5,5,5" Tag="42">
                     <TextBox.Effect>
                         <DropShadowEffect/>
                     </TextBox.Effect>
@@ -143,16 +155,18 @@
                     <RowDefinition Height=".05*"/>
                 </Grid.RowDefinitions>
 
-                <Button Style="{StaticResource RoundButton}" x:Name="searchButton" Grid.Column="1" Grid.Row="1" Content="Cauta acum 🔍" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold" Cursor="Hand" Foreground="White" SizeChanged="Button_SizeChanged" AutomationProperties.IsOffscreenBehavior="Onscreen" FlowDirection="RightToLeft" Padding="0,0,0,0" Grid.IsSharedSizeScope="True" Background="{StaticResource LightBlueBrush}" Click="searchButton_Click">
+                <Button Style="{StaticResource RoundButton}" x:Name="searchButton" Grid.Column="1" Grid.Row="1" Content="Cauta acum 🔍" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36" FontFamily="Times New Roman" FontWeight="Bold" Cursor="Hand" Foreground="White" SizeChanged="ControlSizeChanged" AutomationProperties.IsOffscreenBehavior="Onscreen" FlowDirection="RightToLeft" Padding="0,0,0,0" Grid.IsSharedSizeScope="True" Background="{StaticResource LightBlueBrush}" Click="searchButton_Click" Tag="36">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10" Direction="200"/>
                     </Button.Effect>
                 </Button>
             </Grid>
-            
 
 
-            <TextBlock Grid.Row="2" Text="Categorie:" FontWeight="Bold" FontSize="48" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+
+            <Viewbox Grid.Row="2">
+                <TextBlock   Text="Categorie:" FontWeight="Bold" FontSize="48" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Tag="48" TextAlignment="Left" />
+            </Viewbox>
 
 
             <Grid Grid.Row="4" Grid.ColumnSpan="2">
@@ -162,7 +176,7 @@
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <ComboBox x:Name="cmbCats" Grid.Column="1" FontSize="24" SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cmbCats_SelectionChanged"/>
+                <ComboBox SizeChanged="ControlSizeChanged" x:Name="cmbCats" Grid.Column="1" FontSize="24" SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cmbCats_SelectionChanged" Tag="24"/>
 
             </Grid>
 
@@ -189,7 +203,7 @@
                     Content="Acasa" 
                     Foreground="Snow" 
                     FontSize="36"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ControlSizeChanged" Click="btnHome_Click" Tag="36">
 
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -222,7 +236,7 @@
                         Content="Adauga anunt" 
                         Foreground="Snow" 
                         FontSize="36"
-                        FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnAdd_Click">
+                        FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ControlSizeChanged" Click="btnAdd_Click" Tag="36">
 
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

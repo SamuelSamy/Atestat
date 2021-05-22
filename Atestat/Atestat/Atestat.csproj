@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Error.png" />
     <None Remove="Assets\ExclamationMark.png" />
     <None Remove="Assets\Info.png" />
     <None Remove="Assets\MarkedAsFav.png" />
     <None Remove="Assets\NoImage.png" />
     <None Remove="Assets\NotMarkedAsFav.png" />
+    <None Remove="Assets\Qustion.png" />
     <None Remove="Assets\ReportButton.png" />
     <None Remove="Assets\RoundLogo.ico" />
     <None Remove="Assets\x.png" />
@@ -20,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\ExclamationMark.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -52,6 +57,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\NotMarkedAsFav.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Qustion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\ReportButton.png">

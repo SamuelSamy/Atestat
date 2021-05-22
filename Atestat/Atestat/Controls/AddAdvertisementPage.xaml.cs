@@ -59,12 +59,7 @@ namespace Atestat.Controls
         #region ControlsEvents
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Functions.ControlResize(sender, e);
-        }
-
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
+            Functions.ControlResize(sender, e, this);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -133,7 +128,9 @@ namespace Atestat.Controls
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show("A aparut o eroare, daca problema persista va rugam sa contactati un administrator!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+
             }
 
             if (EditView)
@@ -208,7 +205,8 @@ namespace Atestat.Controls
                         Variables.conn.Close();
                     }
 
-                    MessageBox.Show(ex.ToString());
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
             else
@@ -235,7 +233,8 @@ namespace Atestat.Controls
                         Variables.conn.Close();
                     }
 
-                    MessageBox.Show(ex.ToString());
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
         }
@@ -299,37 +298,48 @@ namespace Atestat.Controls
         {
             if (txtTitle.Text == "")
             {
-                MessageBox.Show("Va rugam sa adaugati un titlu!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa adaugati un titlu!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+             
                 return false;
             }
 
             if (txtDesc.Text == "")
             {
-                MessageBox.Show("Va rugam sa adaugati descrierea produsului!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa adaugati descrierea produsului!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+
                 return false;
             }
 
             if (nrImg == 0)
             {
-                MessageBox.Show("Va rugam sa adaugati cel putin o imagine!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa adaugati cel putin o imagine!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+
                 return false;
             }
 
             if (cmbCats.SelectedIndex == -1 || cmbCats.SelectedIndex == 0)
             {
-                MessageBox.Show("Va rugam sa selectati categoria in care doriti sa publicati anuntul!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa selectati o categorie!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
                 return false;
             }
 
             if (txtPrice.Text == "")
             {
-                MessageBox.Show("Va rugam sa adaugati un pret produsului!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa adaugati un pret produsului!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+          
                 return false;
             }
 
             if (txtNumber.Text == "")
             {
-                MessageBox.Show("Va rugam sa adaugati un numar de telefon!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa adaugati un numar de telefon!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+
                 return false;
             }
 
@@ -413,12 +423,15 @@ namespace Atestat.Controls
                    
                 }
 
-                MessageBox.Show("anunt modificat!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost modificat cu succes!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+
                 return true;
             }
             else
             {
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
                 return false;
             }
         }
@@ -463,12 +476,15 @@ namespace Atestat.Controls
                     }
                 }
 
-                MessageBox.Show("anunt publicat!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost publicat cu succes!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+
                 return true;
             }
             else
             {
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
                 return false;
             }
         }

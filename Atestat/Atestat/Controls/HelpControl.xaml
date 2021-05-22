@@ -44,8 +44,8 @@
                     Content="Tutorial" 
                     Foreground="Snow" 
                     FontSize="36"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" 
-                    Click="btnTutorial_Click">
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ControlSizeChanged" 
+                    Click="btnTutorial_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -62,7 +62,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged" Click="btnContact_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnContact_Click" Tag="36">
 
 
 
@@ -82,7 +82,7 @@
                     Foreground="Snow"
                     FontSize="36" 
                     FontWeight="Bold"
-                    SizeChanged="Button_SizeChanged" Click="btnBack_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnBack_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

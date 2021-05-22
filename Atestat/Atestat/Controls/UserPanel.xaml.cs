@@ -15,6 +15,8 @@ using System.Data;
 using System.Windows.Media.Animation;
 
 using Atestat.Classes;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace Atestat.Controls
 {
@@ -27,6 +29,8 @@ namespace Atestat.Controls
         public bool btnProfileEnabled = true, btnAdsEnabled = true;
 
         public const string key = "This Ad Is From The User Page And It Should Redirect Him To The User Panel ▬↓-:`┘y";
+
+        string password1 = "", password2 = "";
 
         #endregion
         public UserPanel(int adPage = -1)
@@ -52,10 +56,6 @@ namespace Atestat.Controls
         }
 
         #region ControlsEvents
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
-        }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +96,7 @@ namespace Atestat.Controls
                 mail.Content = ConnectedUser.mail;
                 date.Content = ConnectedUser.registerDate;
                 phoneNo.Content = ConnectedUser.phone;
+                password1 = ConnectedUser.password;
 
                 int ads = getAds();
 
@@ -160,7 +161,8 @@ namespace Atestat.Controls
             ConnectedUser.type = 0;
             ConnectedUser.loggedIn = false;
 
-            MessageBox.Show("Ati fost deconectat cu succes!");
+            CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Ati fost deconectat cu succes!", this, MessageBoxButton.OK);
+            cmb.ShowDialog();
 
             this.Content = new MainControl();
         }
@@ -216,7 +218,7 @@ namespace Atestat.Controls
                 cmd.Parameters.AddWithValue("nume", txtName.Text);
                 cmd.Parameters.AddWithValue("mail", txtMail.Text);
                 cmd.Parameters.AddWithValue("nrTelefon", txtNumber.Text);
-                cmd.Parameters.AddWithValue("parola", txtPassword.Text);
+                cmd.Parameters.AddWithValue("parola", Functions.MD5Hash(txtPassword.Text));
                 cmd.Parameters.AddWithValue("id", ConnectedUser.id);
 
                 if (cmd.ExecuteNonQuery() != 0)
@@ -225,7 +227,10 @@ namespace Atestat.Controls
                     ConnectedUser.mail = txtMail.Text;
                     ConnectedUser.phone = txtNumber.Text;
                     ConnectedUser.password = txtPassword.Text;
-                    MessageBox.Show("Datele au fost modificate");
+
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Datele dumneavoastra au fost modificate cu succes!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
+
                     ChangeProfile.Visibility = Visibility.Hidden;
                     Profile.Visibility = Visibility.Visible;
 
@@ -243,7 +248,8 @@ namespace Atestat.Controls
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show("A aparut o eroare! Daca problema persista va rugam contactati un administrator");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -279,7 +285,7 @@ namespace Atestat.Controls
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Functions.ControlResize(sender, e);
+            Functions.ControlResize(sender, e, this);
         }
 
         private void textBox_KeyDown(object sender, KeyEventArgs e)
@@ -323,9 +329,161 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show("A aparut o eroare! Daca problema persista va rugam contactati un administrator");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
+        }
+
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int caretPos = txtName.CaretIndex;
+            string text = txtName.Text;
+
+            if (txtName.Text.Trim().Length < 3)
+            {
+                txtName.Style = (Resources["CustomTextBoxWrong"] as Style);
+            }
+            else
+            {
+                txtName.Style = (Resources["CustomTextBox"] as Style);
+            }
+
+            txtName.Text = text;
+            txtName.CaretIndex = caretPos;
+
+        }
+
+        private void txtMail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int caretPos = txtMail.CaretIndex;
+            string mail = txtMail.Text;
+
+            if (txtMail.Text.Length <= 1 || !IsValidAddress(txtMail.Text))
+            {
+                txtMail.Style = (Resources["CustomTextBoxWrong"] as Style);
+            }
+            else
+            {
+                txtMail.Style = (Resources["CustomTextBox"] as Style);
+            }
+
+            txtMail.Text = mail;
+            txtMail.CaretIndex = caretPos;
+        }
+
+        private void txtPass_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox txtPass = sender as TextBox;
+
+            int caretPos = txtPass.CaretIndex;
+
+            string password = password1;
+
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true;
+            }
+
+            if (e.Key == Key.Back)
+            {
+                if (txtPass.SelectionLength != 0)
+                {
+                    password = password.Remove(txtPass.SelectionStart, txtPass.SelectionLength);
+                }
+                else if (caretPos != 0)
+                {
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+                    {
+                        password = password.Remove(0, caretPos);
+                    }
+                    else
+                    {
+                        password = password.Remove(caretPos - 1, 1);
+                    }
+                }
+            }
+
+            if (e.Key == Key.Delete && caretPos != password.Length)
+            {
+                if (txtPass.SelectionLength != 0)
+                {
+                    password = password.Remove(txtPass.SelectionStart, txtPass.SelectionLength);
+                }
+                else if (caretPos != password.Length)
+                {
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+                    {
+                        password = password.Remove(caretPos, password.Length - caretPos);
+                    }
+                    else
+                    {
+                        password = password.Remove(caretPos, 1);
+                    }
+                }
+
+            }
+
+            if (e.Key == Key.Space)
+            {
+                password = password.Insert(caretPos, " ");
+                txtPass.Text = txtPass.Text.Insert(caretPos, "•");
+                txtPass.CaretIndex = caretPos + 1;
+                e.Handled = true;
+            }
+
+            password1 = password;
+
+            CheckPasswords(password, txtPass, txtPass.CaretIndex);
+        }
+
+        private void txtPass_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox txtPass = sender as TextBox;
+
+            int caretPos = txtPass.CaretIndex;
+
+            string key = e.Text;
+            string password = "";
+
+            password1 = password1.Insert(caretPos, key);
+            password = password1;
+
+            e.Handled = true;
+            txtPass.Text = txtPass.Text.Insert(caretPos, "•");
+            txtPass.CaretIndex = caretPos + 1;
+
+            CheckPasswords(password, txtPass, txtPass.CaretIndex);
+
+        }
+
+        private bool IsValidAddress(string mail)
+        {
+            try
+            {
+                MailAddress address = new MailAddress(mail);
+                return address.Address == mail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void CheckPasswords(string password, TextBox txtPass, int caretPos)
+        {
+            string s1 = txtPassword.Text;
+
+            if (IsValidPassword(password) < (int)PasswordRequirements.All)
+            {
+                txtPass.Style = (Resources["CustomTextBoxWrong"] as Style);
+            }
+            else
+            {
+                txtPass.Style = (Resources["CustomTextBox"] as Style);
+            }
+
+            txtPass.Text = s1;
+            txtPass.CaretIndex = caretPos;
         }
 
         public int getAds()
@@ -363,6 +521,36 @@ namespace Atestat.Controls
             }
 
             return ads;
+        }
+
+        private int IsValidPassword(string password, bool match = true)
+        {
+            int Value = (int)PasswordRequirements.None;
+
+            Value |= (int)PasswordRequirements.Match;
+            
+
+            if (password.Length > 7)
+            {
+                Value |= (int)PasswordRequirements.Length;
+            }
+
+            Regex r = new Regex(@"[0-9]");
+
+            if (r.Matches(password).Count > 0)
+            {
+                Value |= (int)PasswordRequirements.Digit;
+            }
+
+            r = new Regex(@"[A-Z]");
+
+            if (r.Matches(password).Count > 0)
+            {
+                Value |= (int)PasswordRequirements.Capital;
+            }
+
+            return Value;
+
         }
 
         public void UpdateAds()

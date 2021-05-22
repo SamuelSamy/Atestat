@@ -58,7 +58,7 @@
                             </EventTrigger.Actions>
                         </EventTrigger>
 
-                        <EventTrigger RoutedEvent="Button.Click">
+                        <EventTrigger RoutedEvent="Button.PreviewMouseDown">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -128,7 +128,7 @@
                     <Border x:Name="Border" 
                                     CornerRadius="16" 
                                     BorderThickness="{TemplateBinding BorderThickness}" 
-                                    BorderBrush="{StaticResource RedkBrush}" 
+                                    BorderBrush="{StaticResource RedBrush}" 
                                     Background="{StaticResource WhiteBrush}">
 
                         <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost"/>
@@ -207,7 +207,7 @@
                 <Setter Property="TextDecorations" Value="Underline"/>
             </Trigger>
 
-            <EventTrigger RoutedEvent="Button.Click">
+            <EventTrigger RoutedEvent="Button.PreviewMouseDown">
                 <EventTrigger.Actions>
                     <BeginStoryboard>
                         <Storyboard>

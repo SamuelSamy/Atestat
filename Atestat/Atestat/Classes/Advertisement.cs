@@ -81,8 +81,6 @@ namespace Atestat.Classes
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show("A aparut o eroare! Daca problema persista va rugam sa contactati un administrator!");
             }
         }
 
@@ -113,8 +111,6 @@ namespace Atestat.Classes
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show("Eroare");
             }
 
             return succes;

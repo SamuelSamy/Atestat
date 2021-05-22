@@ -40,9 +40,9 @@
                             <RowDefinition Height=".15*"/>
                             <RowDefinition Height=".025*"/>
                             <RowDefinition Height=".4*"/>
-                            <RowDefinition Height=".05*"/>
-                            <RowDefinition Height=".2*"/>
-                            <RowDefinition Height=".015*"/>
+                            <RowDefinition Height=".03*"/>
+                            <RowDefinition Height=".175*"/>
+                            <RowDefinition Height=".025*"/>
                         </Grid.RowDefinitions>
 
                         <TextBlock
@@ -93,7 +93,7 @@
                                      Grid.Row="4" Grid.Column="1"
                                      FontSize="24"
                                      Style="{StaticResource CustomTextBox}"
-                                     SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"/>
+                                     SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" Tag="24"/>
                         </Grid>
 
                         <Grid Grid.Row="6">
@@ -115,7 +115,11 @@
                                     Foreground="Snow" 
                                     FontSize="48" 
                                     FontWeight="Bold" 
-                                    SizeChanged="Button_SizeChanged" Click="btnSendReport_Click"/>
+                                    SizeChanged="ControlSizeChanged" Click="btnSendReport_Click" Tag="48">
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                                </Button.Effect>
+                            </Button>
 
                             <Button x:Name="btnCancel" 
                                     Background="{StaticResource LightBlueBrush}"
@@ -126,7 +130,11 @@
                                     Foreground="Snow" 
                                     FontSize="48" 
                                     FontWeight="Bold" 
-                                    SizeChanged="Button_SizeChanged" Click="btnCancel_Click"/>
+                                    SizeChanged="ControlSizeChanged" Click="btnCancel_Click" Tag="48">
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                                </Button.Effect>
+                            </Button>
                         </Grid>
 
                     </Grid>
@@ -156,9 +164,9 @@
                             <RowDefinition Height=".25*"/>
                             <RowDefinition Height=".025*"/>
                             <RowDefinition Height=".4*"/>
-                            <RowDefinition Height=".05*"/>
+                            <RowDefinition Height=".03*"/>
                             <RowDefinition Height=".15*"/>
-                            <RowDefinition Height=".015*"/>
+                            <RowDefinition Height=".03*"/>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
@@ -194,7 +202,7 @@
                                      Grid.Row="4" Grid.Column="1"
                                      FontSize="24"
                                      Style="{StaticResource CustomTextBox}"
-                                     SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" IsReadOnly="True"/>
+                                     SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True" IsReadOnly="True" Tag="24"/>
                         </Grid>
 
                         <Grid Grid.Row="5" Grid.Column="1">
@@ -216,7 +224,11 @@
                                     Foreground="Snow" 
                                     FontSize="22" 
                                     FontWeight="Bold" 
-                                    SizeChanged="Button_SizeChanged" Click="btnVerify_Click"/>
+                                    SizeChanged="ControlSizeChanged" Click="btnVerify_Click" Tag="22">
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                                </Button.Effect>
+                            </Button>
 
                             <Button x:Name="btnBackInfo" 
                                     Background="{StaticResource LightBlueBrush}"
@@ -227,7 +239,11 @@
                                     Foreground="Snow" 
                                     FontSize="22" 
                                     FontWeight="Bold" 
-                                    SizeChanged="Button_SizeChanged" Click="btnBackInfo_Click"/>
+                                    SizeChanged="ControlSizeChanged" Click="btnBackInfo_Click" Tag="22">
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                                </Button.Effect>
+                            </Button>
 
                             <Button x:Name="btnDeleteAdd" 
                                     Background="{StaticResource LightBlueBrush}"
@@ -238,7 +254,11 @@
                                     Foreground="Snow" 
                                     FontSize="22" 
                                     FontWeight="Bold" 
-                                    SizeChanged="Button_SizeChanged" Click="btnDeleteAdd_Click"/>
+                                    SizeChanged="ControlSizeChanged" Click="btnDeleteAdd_Click" Tag="22">
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+                                </Button.Effect>
+                            </Button>
                         </Grid>
 
                     </Grid>
@@ -275,7 +295,7 @@
                         <RowDefinition Height=".05*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource NoHoverButton}" BorderThickness="3.5" BorderBrush="{StaticResource RedkBrush}"  FontWeight="Bold" FontSize="24" Content="X" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Segoe UI" Click="Button_Click"/>
+                    <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource NoHoverButton}" BorderThickness="3.5" BorderBrush="{StaticResource RedBrush}"  FontWeight="Bold" FontSize="24" Content="X" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Segoe UI" Click="Button_Click"/>
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
@@ -347,19 +367,18 @@
                     <ColumnDefinition Width=".005*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock  x:Name="txtTtile"
+                <Viewbox Grid.Row="0" Grid.Column="2">
+                    <TextBlock  x:Name="txtTtile"
                     Text="-"
                     TextAlignment="Left"
                     FontWeight="Bold"
                     Foreground="{StaticResource BlackBrush}"
                     FontSize="48"
                     HorizontalAlignment="Center" 
-                    VerticalAlignment="Center"
-                    Grid.Column="2">
-                    <TextBlock.Effect>
-                        <DropShadowEffect/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                    VerticalAlignment="Center" SizeChanged="ControlSizeChanged"
+                    Grid.Column="2" Tag="48"/>
+                </Viewbox>
+                
 
                 <Grid Grid.Column="3" x:Name="ReportIcon">
                     <Grid.RowDefinitions>
@@ -410,28 +429,33 @@
                         </Grid.RowDefinitions>
 
 
-                        <TextBlock  Text="Descriere"
+                        <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+                            <TextBlock  Text="Descriere"
                             TextAlignment="Left"
                             FontWeight="Bold"
                             Foreground="{StaticResource BlackBrush}"
                             FontSize="36"
                             HorizontalAlignment="Left" 
                             VerticalAlignment="Center"
-                            Grid.Row="1"
-                            Grid.Column="1"/>
+                            Grid.Row="1" SizeChanged="ControlSizeChanged"
+                            Grid.Column="1" Tag="36"/>
+                        </Viewbox>
+                        
+                        
 
 
                         <TextBox x:Name="txtDesc"
-                         Grid.Row="3"
-                         FontSize="24"
-                         Style="{StaticResource CustomTextBox}"
-                         SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"
-                         Grid.Column="1" IsReadOnly="True"/>
+                                 Grid.Row="3"
+                                 FontSize="24"
+                                 Style="{StaticResource CustomTextBox}"
+                                 SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" VerticalContentAlignment="Top" AcceptsReturn="True"
+                                 Grid.Column="1" IsReadOnly="True" Tag="24"/>
                     </Grid>
 
                     <Grid x:Name="gridPhotos" Grid.Row="5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height=".28*"/>
+                            <RowDefinition Height=".075*"/>
+                            <RowDefinition Height=".22*"/>
                             <RowDefinition Height=".02*"/>
                             <RowDefinition Height=".7*"/>
                         </Grid.RowDefinitions>
@@ -442,15 +466,18 @@
                             <ColumnDefinition Width=".025*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Fotografii"
+                        <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+                            <TextBlock Text="Fotografii"
                                 TextAlignment="Left"
                                 FontWeight="Bold"
                                 Foreground="{StaticResource BlackBrush}"
                                 FontSize="36"
-                                Grid.Row="0" 
-                                Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-                        <Grid Grid.Row="2"
+                                Grid.Row="0"  SizeChanged="ControlSizeChanged"
+                                Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Tag="36"/>
+                        </Viewbox>
+                        
+                        
+                        <Grid Grid.Row="3"
                           Grid.Column="1"
                           x:Name="Images">
 
@@ -509,20 +536,22 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".06*"/>
-                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".35*"/>
                             <RowDefinition Height=".06*"/>
                             <RowDefinition Height=".52*"/>
                             <RowDefinition Height=".06*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Categorie" FontWeight="Bold" FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+                        <Viewbox Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Categorie" FontWeight="Bold" FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" />
+                        </Viewbox>
 
                         <TextBox x:Name="txtCategory"
-                         Grid.Row="3"
-                         FontSize="42"
-                         Style="{StaticResource CustomTextBox}"
-                         SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                         Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True"/>
+                                 Grid.Row="3"
+                                 FontSize="24"
+                                 Style="{StaticResource CustomTextBox}"
+                                 SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
+                                 Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" Tag="24"/>
                     </Grid>
 
                     <Grid Grid.Row="3">
@@ -535,20 +564,23 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".06*"/>
-                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".35*"/>
                             <RowDefinition Height=".06*"/>
                             <RowDefinition Height=".52*"/>
                             <RowDefinition Height=".06*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Vanzator" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+                        <Viewbox Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Vanzator" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+                        </Viewbox>
 
                         <TextBox x:Name="txtSeller"
                              Grid.Row="3"
-                             FontSize="42"
+                             FontSize="32"
                              Style="{StaticResource CustomTextBox}"
                              SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" IsReadOnly="True" />
+                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" IsReadOnly="True" Tag="32" />
 
 
                     </Grid>
@@ -563,20 +595,24 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".06*"/>
-                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".35*"/>
                             <RowDefinition Height=".06*"/>
                             <RowDefinition Height=".52*"/>
                             <RowDefinition Height=".06*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Numar de telefon" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+                        <Viewbox Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Numar de telefon" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+                        </Viewbox>
+                        
 
                         <TextBox x:Name="txtNumber"
                          Grid.Row="3"
                          FontSize="42"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                         Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True"/>
+                         Grid.Column="1" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" Tag="42"/>
 
 
 
@@ -592,20 +628,24 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".06*"/>
-                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".35*"/>
                             <RowDefinition Height=".06*"/>
                             <RowDefinition Height=".52*"/>
                             <RowDefinition Height=".06*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="1"  Grid.Column="1" Text="Pret (Lei)" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+                        <Viewbox Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                            <TextBlock Grid.Row="1"  Grid.Column="1" Text="Pret (Lei)" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
+                        </Viewbox>
+                        
 
                         <TextBox x:Name="txtPrice"
                              Grid.Row="3"
                              FontSize="42"
                              Style="{StaticResource CustomTextBox}"
                              SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" IsReadOnly="True" />
+                             Grid.Column="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" MaxLength="15" IsReadOnly="True" Tag="42" />
 
                     </Grid>
 
@@ -626,7 +666,7 @@
                             Foreground="Snow" 
                             FontSize="48" 
                             FontWeight="Bold" 
-                            SizeChanged="Button_SizeChanged" Click="btnBack_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnBack_Click" Tag="48">
 
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

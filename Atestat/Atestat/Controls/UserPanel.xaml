@@ -46,7 +46,7 @@
                     Content="Anunturile mele" 
                     Foreground="Snow" 
                     FontSize="36"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnAnunturi_Click">
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ControlSizeChanged" Click="btnAnunturi_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -63,7 +63,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged" Click="btnProfile_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnProfile_Click" Tag="36">
 
 
                 <Button.Effect>
@@ -82,7 +82,7 @@
                     Foreground="Snow"
                     FontSize="36" 
                     FontWeight="Bold"
-                    SizeChanged="Button_SizeChanged" Click="btnLogout_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnLogout_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -100,7 +100,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnHome_Click" Tag="36">
 
 
 
@@ -114,7 +114,7 @@
 
         <Grid Grid.Column="1" x:Name="ControlGrid">
 
-            <Grid x:Name="gridLogo" Grid.Column="1" Visibility="Visible" Grid.ColumnSpan="2">
+            <Grid x:Name="gridLogo" Grid.Column="1" Visibility="Hidden" Grid.ColumnSpan="2">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -144,7 +144,7 @@
 
             </Grid>
 
-            <Grid x:Name="ChangeProfile" Visibility="Hidden">
+            <Grid x:Name="ChangeProfile" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".1*"/>
                     <RowDefinition Height=".7*"/>
@@ -163,10 +163,10 @@
                     <RowDefinition Height=".1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Datele contului" Grid.Row="1" 
+                <Label SizeChanged="ControlSizeChanged" Content="Datele contului" Grid.Row="1" 
                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                        FontSize="72" FontWeight="Bold"
-                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Tag="72" >
                     <Label.Effect>
                         <DropShadowEffect BlurRadius="5" ShadowDepth="2"/>
                     </Label.Effect>
@@ -190,10 +190,10 @@
                         <RowDefinition Height=".85*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Nume utilizator:" Grid.Column="1" Grid.Row="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Nume utilizator:" Grid.Column="1" Grid.Row="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
                     <TextBox x:Name="txtName"
                          Grid.Row="3"
@@ -201,7 +201,8 @@
                          Grid.Column="3"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged"
-                         Text="">
+                         TextChanged="txtName_TextChanged"
+                         Text="" Tag="24">
                     </TextBox>
 
 
@@ -221,18 +222,18 @@
                         <RowDefinition Height=".85*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Adresa de mail:" Grid.Column="1" Grid.Row="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Adresa de mail:" Grid.Column="1" Grid.Row="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
                     <TextBox x:Name="txtMail"
                          Grid.Row="3"
                          FontSize="24"
                          Grid.Column="3"
                          Style="{StaticResource CustomTextBox}"
-                         SizeChanged="ControlSizeChanged"
-                         Text="">
+                         SizeChanged="ControlSizeChanged" TextChanged="txtMail_TextChanged"
+                         Text="" Tag="24">
                     </TextBox>
 
                 </Grid>
@@ -251,17 +252,17 @@
                         <RowDefinition Height=".85*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Numar de telefon:" Grid.Column="1" Grid.Row="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Numar de telefon:" Grid.Column="1" Grid.Row="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
                     <TextBox x:Name="txtNumber"
                          Grid.Row="3"
                          FontSize="28"
                          Style="{StaticResource CustomTextBox}"
                          SizeChanged="ControlSizeChanged" VerticalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Center"
-                         Grid.Column="3" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" KeyDown="textBox_KeyDown"/>
+                         Grid.Column="3" MaxLength="10" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Disabled" KeyDown="textBox_KeyDown" Tag="28"/>
 
 
                 </Grid>
@@ -280,18 +281,18 @@
                         <RowDefinition Height=".85*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Parola:" Grid.Column="1" Grid.Row="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Parola:" Grid.Column="1" Grid.Row="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
                     <TextBox x:Name="txtPassword"
                          Grid.Row="3"
                          FontSize="24"
                          Grid.Column="3"
                          Style="{StaticResource CustomTextBox}"
-                         SizeChanged="ControlSizeChanged"
-                         Text="">
+                         SizeChanged="ControlSizeChanged"  PreviewKeyDown="txtPass_PreviewKeyDown" PreviewTextInput="txtPass_PreviewTextInput" 
+                         Text="" Tag="24">
                     </TextBox>
 
                 </Grid>
@@ -307,8 +308,8 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="3" Style="{StaticResource RoundButton}"
-                            Content="Salveaza" Foreground="Snow"
-                            FontSize="48" Click="UpdateProfile">
+                            Content="Salveaza" Foreground="Snow" SizeChanged="ControlSizeChanged"
+                            FontSize="48" Click="UpdateProfile" Tag="48">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -317,8 +318,8 @@
                     </Button>
 
                     <Button Grid.Column="1" Style="{StaticResource RoundButton}"
-                            Content="Inapoi" Foreground="Snow"
-                            FontSize="48" Click="BackButtonClick">
+                            Content="Inapoi" Foreground="Snow" SizeChanged="ControlSizeChanged"
+                            FontSize="48" Click="BackButtonClick" Tag="48">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -348,10 +349,10 @@
                     <RowDefinition Height=".1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Datele contului" Grid.Row="1" 
+                <Label SizeChanged="ControlSizeChanged" Content="Datele contului" Grid.Row="1" 
                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                        FontSize="72" FontWeight="Bold"
-                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >
+                       VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Tag="72" >
                     <Label.Effect>
                         <DropShadowEffect BlurRadius="5" ShadowDepth="2"/>
                     </Label.Effect>
@@ -370,15 +371,15 @@
                         <ColumnDefinition Width=".05*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Nume utilizator:" Grid.Column="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Nume utilizator:" Grid.Column="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
-                    <Label x:Name="name" Content="Text de test" Grid.Column="3"
+                    <Label SizeChanged="ControlSizeChanged" x:Name="name" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="36" Foreground="{StaticResource BlackBrush}"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="36"/>
 
                 </Grid>
 
@@ -391,15 +392,15 @@
                         <ColumnDefinition Width=".05*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Adresa de mail:" Grid.Column="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Adresa de mail:" Grid.Column="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
-                    <Label x:Name="mail" Content="Text de test" Grid.Column="3"
+                    <Label SizeChanged="ControlSizeChanged" x:Name="mail" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="36" Foreground="{StaticResource BlackBrush}"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="36"/>
 
                 </Grid>
 
@@ -412,15 +413,15 @@
                         <ColumnDefinition Width=".05*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Numar de telefon:" Grid.Column="1"
+                    <Label SizeChanged="ControlSizeChanged" Content="Numar de telefon:" Grid.Column="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
-                    <Label x:Name="phoneNo" Content="Text de test" Grid.Column="3"
+                    <Label SizeChanged="ControlSizeChanged" x:Name="phoneNo" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="36" Foreground="{StaticResource BlackBrush}"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="36"/>
 
                 </Grid>
 
@@ -433,15 +434,15 @@
                         <ColumnDefinition Width=".05*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Data inregistrare:" Grid.Column="1"
+                    <Label  SizeChanged="ControlSizeChanged" Content="Data inregistrare:" Grid.Column="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
-                    <Label x:Name="date" Content="Text de test" Grid.Column="3"
+                    <Label SizeChanged="ControlSizeChanged" x:Name="date" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="36" Foreground="{StaticResource BlackBrush}"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="36"/>
 
                 </Grid>
 
@@ -454,15 +455,15 @@
                         <ColumnDefinition Width=".05*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Anunturi pulicate:" Grid.Column="1"
+                    <Label  SizeChanged="ControlSizeChanged" Content="Anunturi pulicate:" Grid.Column="1"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="48" FontWeight="Bold"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="48"/>
 
-                    <Label x:Name="adsCount" Content="Text de test" Grid.Column="3"
+                    <Label SizeChanged="ControlSizeChanged" x:Name="adsCount" Content="Text de test" Grid.Column="3"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                            FontSize="36" Foreground="{StaticResource BlackBrush}"
-                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                           VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Tag="36"/>
 
                 </Grid>
 
@@ -474,8 +475,8 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="1" Style="{StaticResource RoundButton}"
-                            Content="Modifica" Foreground="Snow"
-                            FontSize="48" Click="Button_Click">
+                            Content="Modifica" Foreground="Snow" SizeChanged="ControlSizeChanged"
+                            FontSize="48" Click="Button_Click" Tag="48">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -513,7 +514,7 @@
                         <ColumnDefinition Width=".1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock x:Name="txtPage" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txtPage" SizeChanged="ControlSizeChanged" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="36"/>
 
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -527,7 +528,7 @@
                             <ColumnDefinition Width=".8*"/>
                             <ColumnDefinition Width=".15*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnNextPage" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click">
+                        <Button x:Name="btnNextPage" SizeChanged="ControlSizeChanged" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click" Tag="48">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
                             </Button.Effect>
@@ -547,7 +548,7 @@
                             <ColumnDefinition Width=".8*"/>
                             <ColumnDefinition Width=".15*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnPrevPage" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click">
+                        <Button x:Name="btnPrevPage" SizeChanged="ControlSizeChanged" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click" Tag="48">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
                             </Button.Effect>

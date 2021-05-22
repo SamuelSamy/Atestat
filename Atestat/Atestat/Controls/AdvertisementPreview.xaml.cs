@@ -110,17 +110,28 @@ namespace Atestat.Controls
                 UserControl uc = ((((this.Parent as Grid).Parent as Grid).Parent as Grid).Parent as UserControl);
                 UserPanel up = (uc as UserPanel);
 
-                if (ad.DeleteFromDataBase())
-                {
-                    up.ads.RemoveAt(up.ads.FindIndex(x => x == adID));
-                    up.ResetAds();
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.yellow, "Sunteti sigur ca doriti sa stergeti acest anunt?", up, MessageBoxButton.YesNo);
 
-                    MessageBox.Show("Anunt sters cu succes!");
-                }
-                else
+
+                if (cmb.ShowDialog() == true)
                 {
-                    MessageBox.Show("A aparut o eroare");
+                    if (ad.DeleteFromDataBase())
+                    {
+                        up.ads.RemoveAt(up.ads.FindIndex(x => x == adID));
+                        up.ResetAds();
+
+                        cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost sters cu succes!", up, MessageBoxButton.OK);
+                        cmb.ShowDialog();
+
+                    }
+                    else
+                    {
+                        cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", up, MessageBoxButton.OK);
+                        cmb.ShowDialog();
+                    }
                 }
+
+
 
             }
             else if (fromControl == (int)ControlTypes.AdvertisementsPage)
@@ -128,16 +139,25 @@ namespace Atestat.Controls
                 UserControl uc = (((this.Parent as Grid).Parent as Grid).Parent as UserControl);
                 AdvertisementsPage ac = (uc as AdvertisementsPage);
 
-                if (ad.DeleteFromDataBase())
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.yellow, "Sunteti sigur ca doriti sa stergeti acest anunt?", ac, MessageBoxButton.YesNo);
+
+                if (cmb.ShowDialog() == true)
                 {
-                    ac.adIds.RemoveAt(ac.adIds.FindIndex(x => x == adID));
-                    ac.ResetAds();
-                    MessageBox.Show("Anunt sters cu succes!");
+                    if (ad.DeleteFromDataBase())
+                    {
+                        ac.adIds.RemoveAt(ac.adIds.FindIndex(x => x == adID));
+                        ac.ResetAds();
+                        cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost sters cu succes!", uc, MessageBoxButton.OK);
+                        cmb.ShowDialog();
+                    }
+                    else
+                    {
+                        cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", uc, MessageBoxButton.OK);
+                        cmb.ShowDialog();
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("A aparut o eroare");
-                }
+
+
             }
 
         }
@@ -196,8 +216,6 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-
-                    MessageBox.Show("Eroare");
                 }
             }
             else
@@ -232,8 +250,6 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -309,7 +325,28 @@ namespace Atestat.Controls
             {
                 RemoveImage.Visibility = Visibility.Visible;
             }
-        }        
+        }
+
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            /// YES AH YES
+
+            /*if (fromControl == (int)ControlTypes.UserPanel)
+            {
+                 Functions.ControlResize(sender, e, (((this.Parent as Grid).Parent as Grid).Parent as Grid).Parent as UserControl);
+            }
+            else if (fromControl == (int)ControlTypes.AdvertisementsPage)
+            {
+                Functions.ControlResize(sender, e, ((this.Parent as Grid).Parent as Grid).Parent as AdvertisementsPage);
+            }
+            else if (fromControl == (int)ControlTypes.AdminPanel)
+            {
+                Functions.ControlResize(sender, e, (((this.Parent as Grid).Parent as Grid).Parent as Grid).Parent as UserControl);
+            }*/
+
+
+            Functions.ControlResize(sender, e, this);
+        }
 
         public void ToggleFavoriteButton()
         {
@@ -385,7 +422,8 @@ namespace Atestat.Controls
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return isFav;

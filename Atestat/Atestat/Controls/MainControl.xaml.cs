@@ -41,11 +41,13 @@ namespace Atestat
             this.Content = new HelpControl();
         }
 
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
-        }
+        #endregion
 
+        #region CustomFunctions
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Functions.ControlResize(sender, e, this);
+        }
         #endregion
     }
 }

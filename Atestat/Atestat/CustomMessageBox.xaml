@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atestat"
         mc:Ignorable="d"
-        Title="CustomMessageBox" Background ="{x:Null}" Width="800" Height="396" Visibility="Visible" Opacity="1" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" ResizeMode="NoResize" ShowInTaskbar="False" WindowState="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" WindowStyle="None">
+        Title="CustomMessageBox" Background ="{x:Null}" Width="800" Height="396" Visibility="Visible" Opacity="1" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" ResizeMode="NoResize" ShowInTaskbar="False" WindowState="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" AllowsTransparency="True" WindowStyle="None" Closing="Window_Closing">
 
     <Window.Resources>
         <ResourceDictionary Source="/Atestat;component/Resources/Dictionary.xaml"/>
@@ -25,23 +25,55 @@
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.05*"/>
-                    <ColumnDefinition Width="0.95*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.7*"/>
                     <ColumnDefinition Width="0.05*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Name="TextBlock" 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".15*"/>
+                    <RowDefinition Height=".7*"/>
+                    <RowDefinition Height=".15*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Name="textBlock" 
                        Text="It's a tie! Do you want to play again?" TextWrapping="WrapWithOverflow" 
-                       Grid.Column="1"  
-                       FontFamily="Montserrat" FontSize="42" TextTrimming="None" TextAlignment="Center" FontWeight="Normal" SizeChanged="TextBlock_SizeChanged">
+                       Grid.Column="2" Grid.Row="1" 
+                       FontFamily="Montserrat" FontSize="42" TextTrimming="None" TextAlignment="Center" FontWeight="Normal" SizeChanged="ControlSizeChanged" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
+
+
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".1*"/>
+                        <ColumnDefinition Width=".8*"/>
+                        <ColumnDefinition Width=".1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height=".8*"/>
+                        <RowDefinition Height=".1*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Image Grid.Row="1" Grid.Column="1" x:Name="Icon" Source="/Atestat;component/Assets/Error.png">
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="12" ShadowDepth="8" Opacity="100"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                
+             
+
             </Grid>
             
 
 
-            <Grid x:Name="ButtonsGrid" Grid.Row="2">
+            <Grid Grid.Row="2" x:Name="YesNoButtons" Visibility="Visible">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -61,7 +93,7 @@
                         Content="Da"
                         Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="36" 
                         Click="btnYes_Click" 
-                        SizeChanged="btnYes_SizeChanged">
+                        SizeChanged="ControlSizeChanged">
 
                     <Button.Effect>
                         <DropShadowEffect/>
@@ -73,13 +105,40 @@
                         Content="Nu" 
                         Foreground="White"  FontFamily="Montserrat" FontWeight="Bold" FontSize="36" 
                         Click="btnNo_Click" 
-                        IsCancel="True" SizeChanged="btnNo_SizeChanged">
+                        IsCancel="True" SizeChanged="ControlSizeChanged">
 
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
                 </Button>
             </Grid>
+
+            <Grid Grid.Row="2" x:Name="OkButton" Visibility="Visible">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".85*"/>
+                    <RowDefinition Height=".15*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="btnOk" Style="{StaticResource RoundButton}"
+                        Grid.Column="1" 
+                        Content="Ok"
+                        Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="36" 
+                        Click="btnOk_Click" 
+                        SizeChanged="ControlSizeChanged">
+
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
         </Grid>
     </Grid>
 </Window>

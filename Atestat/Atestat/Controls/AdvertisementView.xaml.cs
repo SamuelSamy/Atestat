@@ -128,14 +128,16 @@ namespace Atestat.Controls
             /// send the report
             if (String.IsNullOrEmpty(txtReportDesc.Text))
             {
-                MessageBox.Show("Va rugam sa adaugati un motiv!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa adaugati un motiv!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
                 return;
             }
             try
             {
                 if (AlreadyReported())
                 {
-                    MessageBox.Show("Mesajul a fost reclamat cu succes!");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost reclamat cu succes!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
 
                     AnimateBlurEffect(0, 20, 0, 1, 0);
                     return;
@@ -154,12 +156,14 @@ namespace Atestat.Controls
 
                 if (cmd.ExecuteNonQuery() != 0)
                 {
-                    MessageBox.Show("Mesajul a fost reclamat cu succes!");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost reclamat cu succes!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                     AnimateBlurEffect(0, 20, 0, 1, 0);
                 }
                 else
                 {
-                    MessageBox.Show("Eroare la trimiterea mesajului");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
 
                 Variables.conn.Close();
@@ -171,7 +175,8 @@ namespace Atestat.Controls
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -192,6 +197,8 @@ namespace Atestat.Controls
             /// delete add from data base and mark the report as verified
             ad.DeleteFromDataBase();
             MarkAsVerified();
+            CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost sters cu succes!", this, MessageBoxButton.OK);
+            cmb.ShowDialog();
             this.Content = new SettingsControl(true, 1);
         }
 
@@ -199,6 +206,8 @@ namespace Atestat.Controls
         {
             /// mark the report as verified, close the ad
             MarkAsVerified();
+            CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Reclamatia a fost stearsa cu succes!", this, MessageBoxButton.OK);
+            cmb.ShowDialog();
             this.Content = new SettingsControl(true, 1);
         }
 
@@ -262,13 +271,7 @@ namespace Atestat.Controls
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Functions.ControlResize(sender, e);
-        }
-
-
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
+            Functions.ControlResize(sender, e, this);
         }
 
         #endregion
@@ -371,7 +374,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return reported;
@@ -393,11 +397,12 @@ namespace Atestat.Controls
 
                 if (cmd.ExecuteNonQuery() != 0)
                 {
-                    MessageBox.Show("Reclamatie sterarsa cu succes!");
+                    /// nothing here lol
                 }
                 else
                 {
-                    MessageBox.Show("eroare");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
 
                 Variables.conn.Close();
@@ -408,7 +413,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -435,8 +441,9 @@ namespace Atestat.Controls
                 }
                 else
                 {
-                    MessageBox.Show("Nu a fost gasita categoria");
+                    category = "Aceasta categorie a fost stearsa";
                 }
+
                 r.Close();
                 Variables.conn.Close();
             }
@@ -446,7 +453,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return category;
@@ -473,7 +481,8 @@ namespace Atestat.Controls
                 }
                 else
                 {
-                    MessageBox.Show("Nu a fost gasit utilizatorul");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Nu a fost gasit utilizatorul care a adaugat acest anunt!!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
                 r.Close();
                 Variables.conn.Close();
@@ -485,7 +494,8 @@ namespace Atestat.Controls
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 

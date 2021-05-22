@@ -46,14 +46,16 @@ namespace Atestat.Controls
 
         private void btnContact_Click(object sender, RoutedEventArgs e)
         {
-            CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Something to test because i wanna see how this goes", this);
-            cmb.Show();
-        }
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
+            
         }
 
+        #endregion
+
+        #region CustomFunctions
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Functions.ControlResize(sender, e, this);
+        }
         #endregion
     }
 }

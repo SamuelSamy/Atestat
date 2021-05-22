@@ -32,11 +32,6 @@ namespace Atestat
 
         #region ControlsEvents
 
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
-        }
-
         private void btnAnunturi_Click(object sender, RoutedEventArgs e)
         {
             this.Content = new AdvertisementsPage(-1);
@@ -57,6 +52,14 @@ namespace Atestat
             {
                 this.Content = new HelpControl();
             }
+        }
+
+        #endregion
+
+        #region CustomFunctions
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Functions.ControlResize(sender, e, this);
         }
 
         #endregion

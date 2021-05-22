@@ -46,8 +46,8 @@
                     Content="Categorii" 
                     Foreground="Snow" 
                     FontSize="36"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" 
-                    Click="btnCats_click">
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ControlSizeChanged" 
+                    Click="btnCats_click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -64,7 +64,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged" Click="btnReports_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnReports_Click" Tag="36">
 
 
 
@@ -84,7 +84,7 @@
                     Foreground="Snow"
                     FontSize="36" 
                     FontWeight="Bold"
-                    SizeChanged="Button_SizeChanged" Click="btnHome_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnHome_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -102,7 +102,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged" Click="btnAdmini_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnAdmini_Click" Tag="36">
 
 
 
@@ -166,11 +166,11 @@
                     <ColumnDefinition Width=".1*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock  Text="Adaugare admin"
+                <TextBlock  Text="Adaugare admin" SizeChanged="ControlSizeChanged"
                             TextAlignment="Center"
                             FontWeight="Bold" Foreground="{StaticResource BlackBrush}" FontSize="56"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                            Grid.Row="2" Grid.Column="1"/>
+                            Grid.Row="2" Grid.Column="1" Tag="56"/>
 
                 <Grid Grid.Row="4" Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -188,8 +188,8 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Introduceti in caseta de text adresa de email a utilizatorului pe care doriti sa-l adaugati ca si administrator."
-                               FontSize="48"
-                               Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" TextWrapping="WrapWithOverflow" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="Segoe UI" FontStretch="Condensed" FontWeight="Normal" FontStyle="Normal"/>
+                               FontSize="48" SizeChanged="ControlSizeChanged"
+                               Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" TextWrapping="WrapWithOverflow" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="Segoe UI" FontStretch="Condensed" FontWeight="Normal" FontStyle="Normal" Tag="48"/>
 
                     <Grid Grid.Row="3" Grid.Column="1">
 
@@ -212,14 +212,14 @@
                              FontSize="24"
                              Style="{StaticResource CustomTextBox}"
                              SizeChanged="ControlSizeChanged"
-                             Text="samy@gmail.com" HorizontalContentAlignment="Left">
+                             Text="" HorizontalContentAlignment="Left" Tag="24">
                         </TextBox>
 
-                        <TextBlock  Text="Adresa de mail:"
+                        <TextBlock  Text="Adresa de mail:" SizeChanged="ControlSizeChanged"
                             TextAlignment="Center"
                             Foreground="{StaticResource BlackBrush}" FontSize="42"
                             HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                            Grid.Row="1" Grid.Column="1"/>
+                            Grid.Row="1" Grid.Column="1" Tag="42"/>
                     </Grid>
 
                 </Grid>
@@ -246,7 +246,7 @@
                             Style="{StaticResource RoundButton}"
                             Content="Adauga admin"
                             Foreground="Snow" FontWeight="Bold" FontSize="36"
-                            SizeChanged="Button_SizeChanged" Click="btnAddAdmin_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnAddAdmin_Click" Tag="36">
 
 
                         <Button.Effect>
@@ -261,7 +261,7 @@
                             Style="{StaticResource RoundButton}"
                             Content="Inapoi"
                             Foreground="Snow" FontWeight="Bold" FontSize="36"
-                            SizeChanged="Button_SizeChanged" Click="btnBackToAdminGrid_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnBackToAdminGrid_Click" Tag="36">
 
 
                         <Button.Effect>
@@ -312,11 +312,11 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <TextBlock  Text="Administratorii platformei"
+                <TextBlock  Text="Administratorii platformei" SizeChanged="ControlSizeChanged"
                             TextAlignment="Center"
                             FontWeight="Bold" Foreground="{StaticResource BlackBrush}" FontSize="36"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                            Grid.Row="1" Grid.Column="1"/>
+                            Grid.Row="1" Grid.Column="1" Tag="36"/>
 
                 <Grid Grid.Row="5" Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -343,7 +343,7 @@
                             Foreground="Snow"
                             FontSize="36" 
                             FontWeight="Bold"
-                            SizeChanged="Button_SizeChanged" Click="DeleteAdmin_Click">
+                            SizeChanged="ControlSizeChanged" Click="DeleteAdmin_Click" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -359,7 +359,7 @@
                             Foreground="Snow"
                             FontSize="36" 
                             FontWeight="Bold"
-                            SizeChanged="Button_SizeChanged" Click="ShowAddAdminPanel_Click">
+                            SizeChanged="ControlSizeChanged" Click="ShowAddAdminPanel_Click" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -387,11 +387,11 @@
                     <ColumnDefinition Width=".1*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock  Text="Adaugare categorie"
+                <TextBlock  Text="Adaugare categorie" SizeChanged="ControlSizeChanged"
                             TextAlignment="Center"
                             FontWeight="Bold" Foreground="{StaticResource BlackBrush}" FontSize="56"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                            Grid.Row="2" Grid.Column="1"/>
+                            Grid.Row="2" Grid.Column="1" Tag="56"/>
 
                 <Grid Grid.Row="4" Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -409,8 +409,8 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Introduceti in caseta de text numele categoriei pe care doriti sa o adaugati."
-                               FontSize="48"
-                               Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" TextWrapping="WrapWithOverflow" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="Segoe UI" FontStretch="Condensed" FontWeight="Normal" FontStyle="Normal"/>
+                               FontSize="48" SizeChanged="ControlSizeChanged"
+                               Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" TextWrapping="WrapWithOverflow" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="Segoe UI" FontStretch="Condensed" FontWeight="Normal" FontStyle="Normal" Tag="48"/>
 
                     <Grid Grid.Row="3" Grid.Column="1">
 
@@ -433,10 +433,10 @@
                              FontSize="24"
                              Style="{StaticResource CustomTextBox}"
                              SizeChanged="ControlSizeChanged"
-                             Text="samy@gmail.com" HorizontalContentAlignment="Left">
+                             Text="" HorizontalContentAlignment="Left" Tag="24">
                         </TextBox>
 
-                        <TextBlock  Text="Nume categorie:"
+                        <TextBlock  Text="Nume categorie:" SizeChanged="ControlSizeChanged"
                             TextAlignment="Center"
                             Foreground="{StaticResource BlackBrush}" FontSize="38"
                             HorizontalAlignment="Stretch" VerticalAlignment="Center"
@@ -467,7 +467,7 @@
                             Style="{StaticResource RoundButton}"
                             Content="Adauga categorie"
                             Foreground="Snow" FontWeight="Bold" FontSize="36"
-                            SizeChanged="Button_SizeChanged" Click="btnAddCategory_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnAddCategory_Click" Tag="36">
 
 
                         <Button.Effect>
@@ -482,7 +482,7 @@
                             Style="{StaticResource RoundButton}"
                             Content="Inapoi"
                             Foreground="Snow" FontWeight="Bold" FontSize="36"
-                            SizeChanged="Button_SizeChanged" Click="btnBackToCategoryGrid_Click">
+                            SizeChanged="ControlSizeChanged" Click="btnBackToCategoryGrid_Click" Tag="36">
 
 
                         <Button.Effect>
@@ -530,11 +530,11 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <TextBlock  Text="Categorii"
+                <TextBlock  Text="Categorii" SizeChanged="ControlSizeChanged"
                             TextAlignment="Center"
                             FontWeight="Bold" Foreground="{StaticResource BlackBrush}" FontSize="36"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                            Grid.Row="1" Grid.Column="1"/>
+                            Grid.Row="1" Grid.Column="1" Tag="36"/>
 
                 <Grid Grid.Row="5" Grid.Column="1">
                     
@@ -562,7 +562,7 @@
                             Foreground="Snow"
                             FontSize="36" 
                             FontWeight="Bold"
-                            SizeChanged="Button_SizeChanged" Click="DeleteCategory_Click">
+                            SizeChanged="ControlSizeChanged" Click="DeleteCategory_Click" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -578,7 +578,7 @@
                             Foreground="Snow"
                             FontSize="36" 
                             FontWeight="Bold"
-                            SizeChanged="Button_SizeChanged" Click="ShowAddCategoryPanel_Click">
+                            SizeChanged="ControlSizeChanged" Click="ShowAddCategoryPanel_Click" Tag="36">
 
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -613,7 +613,7 @@
                         <ColumnDefinition Width=".1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock x:Name="txtPage" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txtPage" SizeChanged="ControlSizeChanged" FontWeight="Bold" FontSize="36" Text="Pagina x / total" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="36"/>
 
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -627,7 +627,7 @@
                             <ColumnDefinition Width=".8*"/>
                             <ColumnDefinition Width=".15*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnNextPage" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click">
+                        <Button x:Name="btnNextPage" SizeChanged="ControlSizeChanged" Grid.Column="1" Grid.Row="1" Content="&gt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White"  Click="btnNextPage_Click" Tag="48">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
                             </Button.Effect>
@@ -647,7 +647,7 @@
                             <ColumnDefinition Width=".8*"/>
                             <ColumnDefinition Width=".15*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnPrevPage" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click">
+                        <Button x:Name="btnPrevPage" SizeChanged="ControlSizeChanged" Grid.Column="1" Grid.Row="1" Content="&lt;" Style="{StaticResource RoundButton}" FontWeight="Bold" FontSize="48" Foreground="White" Click="btnPrevPage_Click" Tag="48">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
                             </Button.Effect>

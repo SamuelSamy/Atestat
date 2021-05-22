@@ -158,11 +158,11 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBlock x:Name="AdTitle" Text="Nume foarte lung aici" FontSize="28" VerticalAlignment="Center"/>
+                    <TextBlock SizeChanged="ControlSizeChanged" x:Name="AdTitle" Text="Nume foarte lung aici" FontSize="28" VerticalAlignment="Center" Tag="28" TextWrapping="WrapWithOverflow"/>
                 </Grid>
 
                 <Grid Grid.Column="1" Grid.Row="3">
-                    <TextBlock x:Name="AdPrice" Text="pret foarte lung aici" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="26"/>
+                        <TextBlock SizeChanged="ControlSizeChanged" x:Name="AdPrice" Text="pret foarte lung aici" VerticalAlignment="Stretch" HorizontalAlignment="Right" FontSize="26" Tag="26" TextWrapping="WrapWithOverflow"/>
                 </Grid>
 
             </Grid>

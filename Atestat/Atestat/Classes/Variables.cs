@@ -14,5 +14,7 @@ namespace Atestat.Classes
 
         public static MySqlConnection conn = new MySqlConnection(@"SERVER=localhost; DATABASE=atestat; UID=root; PASSWORD=; Allow User Variables=True");
 
+        public static double WindowW = 1600, WindowH = 900;
+
     }
 }

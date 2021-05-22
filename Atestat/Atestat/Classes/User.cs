@@ -51,7 +51,6 @@ namespace Atestat.Classes
                     Variables.conn.Close();
                 }
 
-                MessageBox.Show(e.ToString());
             }
         }
     }

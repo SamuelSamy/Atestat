@@ -45,7 +45,7 @@
                     Content="Anunturi" 
                     Foreground="Snow" 
                     FontSize="36"
-                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="Button_SizeChanged" Click="btnAnunturi_Click">
+                    FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ControlSizeChanged" Click="btnAnunturi_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
@@ -62,7 +62,7 @@
                     Foreground="Snow" 
                     FontSize="36" 
                     FontWeight="Bold" 
-                    SizeChanged="Button_SizeChanged" Click="btnAccount_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnAccount_Click" Tag="36">
 
 
 
@@ -82,7 +82,7 @@
                     Foreground="Snow"
                     FontSize="36" 
                     FontWeight="Bold"
-                    SizeChanged="Button_SizeChanged" Click="btnHelp_Click">
+                    SizeChanged="ControlSizeChanged" Click="btnHelp_Click" Tag="36">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>

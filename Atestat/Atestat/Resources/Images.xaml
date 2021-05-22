@@ -17,4 +17,12 @@
         /Atestat;component/Assets/Info.png
     </ImageSource>
 
+    <ImageSource x:Key="Error">
+        /Atestat;component/Assets/Error.png
+    </ImageSource>
+
+    <ImageSource x:Key="Qustion">
+        /Atestat;component/Assets/Qustion.png
+    </ImageSource>
+
 </ResourceDictionary>

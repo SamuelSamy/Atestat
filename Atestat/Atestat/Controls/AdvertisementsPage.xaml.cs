@@ -73,10 +73,6 @@ namespace Atestat.Controls
             }
         }
 
-        private void TextBox_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
-        }
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             if (currentPage < pages)
@@ -220,7 +216,8 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-                    MessageBox.Show(ex.ToString());
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
             else
@@ -277,7 +274,8 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-                    MessageBox.Show(ex.ToString());
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
 
@@ -294,11 +292,6 @@ namespace Atestat.Controls
                 searchBar.Foreground = new SolidColorBrush(Color.FromRgb(70, 70, 70));
                 searchBar.FontWeight = FontWeights.Normal;
             }
-        }
-
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
         }
 
         #endregion
@@ -330,8 +323,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show("A aparut o eroare! Daca problema persista va rugam sa contactati un administrator!");
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -382,7 +375,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show("A aparut o eroare!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return cats;
@@ -492,7 +486,8 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-                    MessageBox.Show("Eroare");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
             else if (ConnectedUser.loggedIn && comboBoxId == (int)Categories.Favorite)
@@ -527,7 +522,8 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-                    MessageBox.Show(ex.ToString());
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
             else
@@ -563,7 +559,8 @@ namespace Atestat.Controls
                     {
                         Variables.conn.Close();
                     }
-                    MessageBox.Show("Eroare");
+                    CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                    cmb.ShowDialog();
                 }
             }
         }
@@ -596,6 +593,11 @@ namespace Atestat.Controls
                 txtPage.Text = "Pagina " + currentPage.ToString() + " / " + pages.ToString();
             }
         }
+        private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Functions.ControlResize(sender, e, this);
+        }
+
         #endregion
     }
 }

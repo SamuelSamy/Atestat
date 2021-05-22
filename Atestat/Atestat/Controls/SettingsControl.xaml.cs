@@ -195,7 +195,10 @@ namespace Atestat.Controls
         {
             if (gridAdmins.SelectedIndex != -1)
             {
-                //if (MessageBox.Show("Sunteti sigur ca doriti sa eliminati utilizatorul selectat?", "", MessageBoxButton.YesNo) == Yes)
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.yellow, "Sunteti sigur ca doriti sa eliminati utilizatorul selectat?", this, MessageBoxButton.YesNo);
+                
+
+                if (cmb.ShowDialog() == true) // yes pressed
                 {
                     DataGridCellInfo cellInfo = gridAdmins.SelectedCells[0];
 
@@ -203,17 +206,20 @@ namespace Atestat.Controls
 
                     if (DeleteUser(id))
                     {
-                        MessageBox.Show("Utilziatorul a fost eliminat cu succes!");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.green, "Utilziatorul a fost eliminat cu succes!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("a aparut o eroare");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Va rugam sa selectati un admin!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa selectati un admin!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -236,17 +242,21 @@ namespace Atestat.Controls
 
             if (admin.id == 0)
             {
-                MessageBox.Show("Utilziatorul nu exista!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Utilizatorul nu exista!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
                 return;
             }
 
             if (IsAdminAlready(admin))
             {
-                MessageBox.Show("Acest utilziator este deja un admin");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Acest utilizator are deja statutul de administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
             else
             {
-                // if (MessageBox.Show("Sunteti sigur ca doriti sa-l adaugati pe " + admin.name + " ca si administartor?") == Yes)
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.yellow, "Sunteti sigur ca doriti sa-i acordati utilizatorului cu numele " + admin.name + " statutul de administrator?", this, MessageBoxButton.YesNo);
+                
+                if (cmb.ShowDialog() == true)
                 {
                     if (AddUsser(admin))
                     {
@@ -255,11 +265,13 @@ namespace Atestat.Controls
                         gridAdmins.Items.Refresh();
                         AddAdmin.Visibility = Visibility.Hidden;
                         Admins.Visibility = Visibility.Visible;
-                        MessageBox.Show("Utilizatorul a fost adaugat ca si admin cu succes!");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.green, "Utilziatorul " + admin.name +" a primit statutul de administrator!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("eroare");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                 }
             }
@@ -269,7 +281,9 @@ namespace Atestat.Controls
         {
             if (CategoriesDataGrid.SelectedIndex != -1)
             {
-                //if (MessageBox.Show("Sunteti sigur ca doriti sa eliminati utilizatorul selectat?", "", MessageBoxButton.YesNo) == Yes)
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.yellow, "Sunteti sigur ca doriti sa eliminati categoria selectata?", this, MessageBoxButton.YesNo);
+                
+                if (cmb.ShowDialog() == true)
                 {
                     DataGridCellInfo cellInfo = CategoriesDataGrid.SelectedCells[0];
 
@@ -277,17 +291,20 @@ namespace Atestat.Controls
 
                     if (DeleteCategory(id))
                     {
-                        MessageBox.Show("Categoria a fost eliminat cu succes!");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.green, "Categoria a fost eliminata cu succes!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("a aparut o eroare");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Va rugam sa selectati o categorie!");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa selectati o categorie!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -295,11 +312,13 @@ namespace Atestat.Controls
         {
             if (IsACategoryAlready(txtCategory.Text))
             {
-                MessageBox.Show("Aceasta categorie exista deja");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Aceasta categorie exista deja!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
             else
             {
-                // if (MessageBox.Show("Sunteti sigur ca doriti sa-l adaugati pe " + admin.name + " ca si administartor?") == Yes)
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.yellow, "Sunteti sigur ca doriti sa adaugati categoria: " + txtCategory.Text + "?", this, MessageBoxButton.YesNo);
+                if (cmb.ShowDialog() == true)
                 {
                     int idCategory = AddCategory(txtCategory.Text);
                     if (idCategory != 0)
@@ -314,11 +333,13 @@ namespace Atestat.Controls
                         CategoriesDataGrid.Items.Refresh();
                         gridAddCategory.Visibility = Visibility.Hidden;
                         gridCats.Visibility = Visibility.Visible;
-                        MessageBox.Show("Categoria a fost adaugata cu succes!");
+                        CustomMessageBox cb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Categoria a fost adaugata cu succes!", this, MessageBoxButton.OK);
+                        cb.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("eroare");
+                        CustomMessageBox c = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                        c.ShowDialog();
                     }
                 }
             }
@@ -336,14 +357,10 @@ namespace Atestat.Controls
             gridAddCategory.Visibility = Visibility.Visible;
         }
 
-        private void Button_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Functions.ControlResize(sender, e);
-        }
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Functions.ControlResize(sender, e);
+            Functions.ControlResize(sender, e, this);
         }
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
@@ -448,7 +465,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -480,8 +498,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show("A aparut o eroare! Daca problema persista va rugam contactati un administrator");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
 
@@ -600,7 +618,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
         }
         private bool DeleteUser(int id)
@@ -635,8 +654,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return deleted;
@@ -672,8 +691,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return added;
@@ -713,8 +732,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return isAdmin;
@@ -757,8 +776,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
             return admin;
         }
@@ -796,8 +815,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-
-                MessageBox.Show(ex.ToString());
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return deleted;
@@ -810,7 +829,6 @@ namespace Atestat.Controls
             try
             {
                 Variables.conn.Open();
-
 
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = Variables.conn;
@@ -834,7 +852,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return id;
@@ -872,7 +891,8 @@ namespace Atestat.Controls
                 {
                     Variables.conn.Close();
                 }
-                MessageBox.Show("Eroare");
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
             }
 
             return isCategory;
