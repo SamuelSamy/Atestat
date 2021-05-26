@@ -1,0 +1,13 @@
+Aceasta este fereastra principala. Din aceasta fereastra puteti sa accesati anunturile existente, fereastra de conectare si fereastra de ajutor.
+In aceasta fereastra puteti vizualiza anunturile existente. La apasarea pe un anuntu se va deschide o fereastra in care vor aparea detaliile despre anunt. Pentru a selecta anunturile dintr-o anumita categorie selectati categoria dorita din ComboBox. Pentru a cauta un anunt in functie de numele acestuia introduceti numele dorit in casuta de text si apasati pe butonul `Cauta`.
+In aceasta fereastra puteti vizualiza detaliile despre un anunt. Daca sunteti conectat puteti reporta anuntul apasand pe butonul din dreapta sus.
+Pentru a va conecta apasati pe butonul `Conectare` de pe fereastra principala. Din aceasta fereastra puteti sa va conectati, sa va schimbati parola in caz ca ati uitat-o apasand pe `Ati uitat parola?` si sa creati un cont de utilizator nou prin apasarea butonului de `Inregistrare`.
+La apasarea butonului `Ati uitat parola?` se va deschide fereastra de mai sus in care trebuia sa introduceti adresa de mail de la contul dumneavoastra si sa urmariti pasii urmatori pentru a va reseta parola.
+La aparea butonullui `Inregistrare` se va deschide o fereastra care va permite utilizatorului sa creeze un cont nou. Daca aveti deja apasati pe butonul `Aveti deja un cont? Click aici pentru a va concta!`
+Din aceasta fereastra utilizatorul poate sa vizualizeze anunturile existente si sa deschida un panou in care sunt afisate setarile contului.
+In aceasta fereastra utilizatorul poate vizualiza anunturile si adauga anunturi noi apasand pe butonul `Adauga anunt` care va deschide o noua fereastra.
+Aceasta fereastra este utila pentru adaugarea unui anunt. Se vor completa toate campurile de text, se va adauga cel putin o imagine si se va selecta categoria in care se doreste publicarea anuntului.
+La apasarea butonului `Contul meu` din fereastra principala de conectare se va deschide fereastra afisata mai sus. Din aceasta fereastra utilizatorul poate sa isi vizualizeze anunturile personale si sa isi modifice datele dontului.
+La apasarea butonullui `Profilul meu` din fereastra `Contul meu` se vor afisa datele utilizatorului ca si in fereastra de mai sus. 
+Apasand butonul `Modifica` din fereastra anterioara, utilizatorul isi va putea modifica datele contului.
+Pentru a vizualiza anunturile personale apasati pe butonul `Anunturile mele`.

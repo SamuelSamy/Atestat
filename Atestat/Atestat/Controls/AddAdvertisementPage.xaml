@@ -37,7 +37,7 @@
             </TextBlock>
         </Viewbox>
 
-        
+
 
         <Grid  Grid.Row="1">
 
@@ -122,8 +122,8 @@
                             VerticalAlignment="Center"
                             SizeChanged="ControlSizeChanged" Tag="36"/>
                     </Viewbox>
-                    
-                    
+
+
 
 
                     <TextBox x:Name="txtDesc"
@@ -158,8 +158,8 @@
                                 Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Tag="36"/>
 
                     </Viewbox>
-                    
-                    
+
+
                     <Grid Grid.Row="3"
                           Grid.Column="1"
                           x:Name="Images">
@@ -225,7 +225,7 @@
 
                         </Grid>
 
-                        <Image x:Name="Image4" Grid.Column="6" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill" Cursor="Hand" MouseDown="Image_MouseDown"/>
+                        <Image x:Name="Image4" Grid.Column="6" Source="/Atestat;component/Assets/NoImage.png" Stretch="Fill" Cursor="Hand" MouseDown="Image_MouseDown" StretchDirection="Both"/>
 
                         <Grid Grid.Column="6" x:Name="GImage4">
                             <Grid.RowDefinitions>
@@ -279,7 +279,7 @@
                     <Viewbox Grid.Row="1" Grid.Column="1">
                         <TextBlock SizeChanged="ControlSizeChanged" Grid.Row="1" Grid.Column="1" Text="Categorie" FontWeight="Bold" FontSize="48" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2" Tag="48" />
                     </Viewbox>
-                    
+
 
                     <ComboBox SizeChanged="ControlSizeChanged" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="5" Grid.Row="3" Grid.Column="1" x:Name="cmbCats" FontSize="24" SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Tag="24"/>
 
@@ -311,7 +311,7 @@
                         <TextBlock SizeChanged="ControlSizeChanged" Grid.Row="1" Grid.Column="1" Text="Numar de telefon" FontWeight="Bold" FontSize="38" VerticalAlignment="Bottom" HorizontalAlignment="Left" Tag="38"  />
 
                     </Viewbox>
-                    
+
 
                     <TextBox x:Name="txtNumber"
                          Grid.Row="3"
@@ -324,7 +324,7 @@
                         <TextBlock Grid.Row="5"  SizeChanged="ControlSizeChanged" Grid.Column="1" Text="Pret (Lei)" FontWeight="Bold" FontSize="38" VerticalAlignment="Bottom" HorizontalAlignment="Left" Tag="38"  />
 
                     </Viewbox>
-                    
+
 
                     <TextBox x:Name="txtPrice"
                              Grid.Row="7"

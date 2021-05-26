@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Atestat.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1200">
+             d:DesignHeight="900" d:DesignWidth="1600">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/Atestat;component/Resources/Dictionary.xaml" />
@@ -174,7 +174,7 @@
                             <ColumnDefinition Width=".95*"/>
                             <ColumnDefinition Width=".025*"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <TextBlock x:Name="txtDetailsInfo"
                             Text="Anunt reclamat de: fatu.samuel24@gmail.com&#10;In data de: 99/99/9999&#10;Motiv:"
                             TextAlignment="Left"
@@ -186,7 +186,7 @@
                             
                             Grid.Row="1"
                             Grid.Column="1" TextWrapping="WrapWithOverflow">
-                            
+
                         </TextBlock>
 
 
@@ -378,7 +378,7 @@
                     VerticalAlignment="Center" SizeChanged="ControlSizeChanged"
                     Grid.Column="2" Tag="48"/>
                 </Viewbox>
-                
+
 
                 <Grid Grid.Column="3" x:Name="ReportIcon">
                     <Grid.RowDefinitions>
@@ -386,7 +386,7 @@
                         <RowDefinition Height=".6*"/>
                         <RowDefinition Height=".2*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Image x:Name="ReportButton" Source="/Assets/ReportButton.png" Grid.Row="1" ToolTip="Reclama acest anunt" Visibility="Hidden"
                            MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" />
 
@@ -440,8 +440,8 @@
                             Grid.Row="1" SizeChanged="ControlSizeChanged"
                             Grid.Column="1" Tag="36"/>
                         </Viewbox>
-                        
-                        
+
+
 
 
                         <TextBox x:Name="txtDesc"
@@ -475,8 +475,8 @@
                                 Grid.Row="0"  SizeChanged="ControlSizeChanged"
                                 Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Tag="36"/>
                         </Viewbox>
-                        
-                        
+
+
                         <Grid Grid.Row="3"
                           Grid.Column="1"
                           x:Name="Images">
@@ -605,7 +605,7 @@
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="Numar de telefon" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
 
                         </Viewbox>
-                        
+
 
                         <TextBox x:Name="txtNumber"
                          Grid.Row="3"
@@ -638,7 +638,7 @@
                             <TextBlock Grid.Row="1"  Grid.Column="1" Text="Pret (Lei)" FontWeight="Bold" FontSize="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
 
                         </Viewbox>
-                        
+
 
                         <TextBox x:Name="txtPrice"
                              Grid.Row="3"

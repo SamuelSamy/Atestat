@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -427,6 +427,7 @@ namespace Atestat.Controls
 
             btnPrevPage.Visibility = Visibility.Visible;
             btnNextPage.Visibility = Visibility.Visible;
+            Logo.Visibility = Visibility.Hidden;
 
             if (currentPage == 1)
             {
@@ -440,9 +441,8 @@ namespace Atestat.Controls
             {
                 btnPrevPage.Visibility = Visibility.Hidden;
                 btnNextPage.Visibility = Visibility.Hidden;
+                Logo.Visibility = Visibility.Visible;
             }
-
-
         }
 
 

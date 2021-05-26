@@ -79,6 +79,7 @@ namespace Atestat.Controls
                 AddAdmin.Visibility = Visibility.Hidden;
                 gridAds.Visibility = Visibility.Hidden;
                 gridCats.Visibility = Visibility.Hidden;
+                gridAddCategory.Visibility = Visibility.Hidden;
             }
         }
 
@@ -123,6 +124,7 @@ namespace Atestat.Controls
                 AddAdmin.Visibility = Visibility.Hidden;
                 gridAds.Visibility = Visibility.Visible;
                 gridCats.Visibility = Visibility.Hidden;
+                gridAddCategory.Visibility = Visibility.Hidden;
 
                 SelectAds();
                 currentPage = 1;
@@ -170,6 +172,7 @@ namespace Atestat.Controls
                 AddAdmin.Visibility = Visibility.Hidden;
                 gridAds.Visibility = Visibility.Hidden;
                 gridCats.Visibility = Visibility.Visible;
+                gridAddCategory.Visibility = Visibility.Hidden;
 
 
             }
@@ -227,6 +230,7 @@ namespace Atestat.Controls
         {
             Admins.Visibility = Visibility.Hidden;
             AddAdmin.Visibility = Visibility.Visible;
+            txtMail.Text = "";
         }
 
         private void btnBackToAdminGrid_Click(object sender, RoutedEventArgs e)
@@ -355,6 +359,7 @@ namespace Atestat.Controls
         {
             gridCats.Visibility = Visibility.Hidden;
             gridAddCategory.Visibility = Visibility.Visible;
+            txtCategory.Text = "";
         }
 
 
@@ -448,7 +453,7 @@ namespace Atestat.Controls
                     a.id = int.Parse(r["id"].ToString());
                     a.name = r["nume"].ToString();
                     a.mail = r["mail"].ToString();
-                    a.registerDate = DateTime.Parse(r["dataI"].ToString());
+                    a.registerDate = DateTime.Parse(r["dataI"].ToString()).ToShortDateString();
                     a.phone = r["nrTelefon"].ToString();
 
                     admins.Add(a);
@@ -761,10 +766,9 @@ namespace Atestat.Controls
                     admin.name = r["nume"].ToString();
                     admin.id = int.Parse(r["id"].ToString());
                     admin.phone = r["nrTelefon"].ToString();
-                    admin.registerDate = DateTime.Parse(r["dataI"].ToString());
+                    admin.registerDate = DateTime.Parse(r["dataI"].ToString()).ToShortDateString();
                     admin.mail = mail;
                 }
-
 
                 r.Close();
                 Variables.conn.Close();
@@ -789,7 +793,6 @@ namespace Atestat.Controls
             try
             {
                 Variables.conn.Open();
-
 
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = Variables.conn;

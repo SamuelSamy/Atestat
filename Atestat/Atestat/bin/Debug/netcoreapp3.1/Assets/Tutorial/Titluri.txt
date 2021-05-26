@@ -1,0 +1,13 @@
+Fereastra principala
+Fereastra de vizualizare a anunturilor
+Fereastra pentru vizulaizarea unui anunt
+Fereastra de conectare
+Fereastra pentru recuperarea parolei
+Fereastra de inregistrare
+Fereastra principala de conectare
+Fereastra de vizualizare a anunturilor
+Fereastra de adaugare a unui anunt
+Fereastra pentru vizualizarea contului
+Fereastra de vizualizare a datelor personale
+Fereastra pentru modificarea datelor personale
+Fereastra pentru vizualizare anunturilor personale

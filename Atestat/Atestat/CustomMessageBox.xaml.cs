@@ -45,22 +45,20 @@ namespace Atestat
                 OkButton.Visibility = Visibility.Visible;
             }
 
-
-
             switch (ColorType)
             {
-                case (int)MessageBoxColorTypes.green:   
+                case (int)MessageBoxColorTypes.green:
                     color.G = 255;
 
                     Icon.Source = (Resources["Info"] as ImageSource);
                     break;
 
-                case (int)MessageBoxColorTypes.red:     
+                case (int)MessageBoxColorTypes.red:
                     color.R = 255;
 
                     break;
 
-                case (int)MessageBoxColorTypes.yellow:  
+                case (int)MessageBoxColorTypes.yellow:
                     color.R = 255;
                     color.G = 255;
 
@@ -81,12 +79,8 @@ namespace Atestat
 
             owner = e as MainWindow;
 
-            DoubleAnimation anim = new DoubleAnimation();
-            anim.From = 0;
-            anim.To = .95;
-            anim.Duration = (Duration)TimeSpan.FromSeconds(AnimationTime);
 
-            this.BeginAnimation(UIElement.OpacityProperty, anim);
+            AnimateBlur(0, 20);
         }
 
         #region CloseFunctions
@@ -112,7 +106,7 @@ namespace Atestat
         #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        { 
+        {
             Border.Background = colorBrush;
 
             this.Height = owner.ActualHeight / 1.5;
@@ -120,27 +114,21 @@ namespace Atestat
 
             this.Left = owner.Left + (owner.ActualWidth - this.ActualWidth) / 2;
             this.Top = owner.Top + (owner.ActualHeight - this.ActualHeight) / 2;
-
-
-            BlurEffect b = new BlurEffect();
-            owner.Effect = b;
-
-            DoubleAnimation anim = new DoubleAnimation();
-            anim.From = 0;
-            anim.To = 20;
-            anim.Duration = (Duration)TimeSpan.FromSeconds(AnimationTime);
-
-            b.BeginAnimation(BlurEffect.RadiusProperty, anim);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            AnimateBlur(20, 0);
+        }
+
+        public void AnimateBlur(int from, int to)
         {
             BlurEffect b = new BlurEffect();
             owner.Effect = b;
 
             DoubleAnimation anim = new DoubleAnimation();
-            anim.From = 20;
-            anim.To = 0;
+            anim.From = from;
+            anim.To = to;
             anim.Duration = (Duration)TimeSpan.FromSeconds(AnimationTime);
 
             b.BeginAnimation(BlurEffect.RadiusProperty, anim);
@@ -148,7 +136,7 @@ namespace Atestat
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            
+
         }
     }
 }

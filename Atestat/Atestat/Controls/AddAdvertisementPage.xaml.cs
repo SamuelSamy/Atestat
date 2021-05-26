@@ -130,7 +130,6 @@ namespace Atestat.Controls
 
                 CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "A aparut o eroare, daca problema persista va rugam sa contactati un administrator!", this, MessageBoxButton.OK);
                 cmb.ShowDialog();
-
             }
 
             if (EditView)
@@ -385,6 +384,7 @@ namespace Atestat.Controls
                     (Images.FindName("Image" + (i + 1).ToString()) as Image).Source = (Resources["NoImage"] as ImageSource);
                     (Images.FindName("RImage" + (i + 1).ToString()) as Image).Source = null;
                 }
+
 
                 int c = 0;
 

@@ -54,8 +54,10 @@ namespace Atestat
             }
         }
 
-        public static bool AdressAlreadyInDataBase(string mail)
+        public static int AdressAlreadyInDataBase(string mail)
         {
+            int id = 0;
+
             try
             {
                 bool ret = false;
@@ -73,14 +75,11 @@ namespace Atestat
 
                 if (r.Read())
                 {
-                    ret = true;
+                    id = int.Parse(r["id"].ToString());
                 }
                 
                 r.Close();
                 Variables.conn.Close();
-               
-                return ret;
-
             }
             catch
             {
@@ -88,9 +87,9 @@ namespace Atestat
                 {
                     Variables.conn.Close();
                 }
-
-                return true;
             }
+
+            return id;
         }
 
         public static string MD5Hash(string text)

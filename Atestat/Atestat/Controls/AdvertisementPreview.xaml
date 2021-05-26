@@ -84,15 +84,12 @@
                         <RowDefinition Height=".8*"/>
                     </Grid.RowDefinitions>
 
-                    
-                    
-
                     <Grid Grid.Row="2"
                       Grid.Column="2">
 
                         <Border BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="6">
                             
-                            <Image x:Name="AdImage" Stretch="Fill"/>
+                            <Image x:Name="AdImage" Stretch="Fill" StretchDirection="Both"/>
                         </Border>
 
                     </Grid>

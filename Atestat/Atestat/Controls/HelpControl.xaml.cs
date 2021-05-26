@@ -41,12 +41,12 @@ namespace Atestat.Controls
 
         private void btnTutorial_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Content = new TutorialControl();
         }
 
         private void btnContact_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Content = new ContactControl();
         }
 
         #endregion

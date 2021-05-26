@@ -362,10 +362,9 @@
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        
-      
-        
-    </Style>
 
+
+
+    </Style>
 
 </ResourceDictionary>

@@ -120,6 +120,8 @@ namespace Atestat.Controls
                         up.ads.RemoveAt(up.ads.FindIndex(x => x == adID));
                         up.ResetAds();
 
+                        DeleteImages();
+
                         cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost sters cu succes!", up, MessageBoxButton.OK);
                         cmb.ShowDialog();
 
@@ -130,9 +132,6 @@ namespace Atestat.Controls
                         cmb.ShowDialog();
                     }
                 }
-
-
-
             }
             else if (fromControl == (int)ControlTypes.AdvertisementsPage)
             {
@@ -147,6 +146,9 @@ namespace Atestat.Controls
                     {
                         ac.adIds.RemoveAt(ac.adIds.FindIndex(x => x == adID));
                         ac.ResetAds();
+
+                        DeleteImages();
+
                         cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost sters cu succes!", uc, MessageBoxButton.OK);
                         cmb.ShowDialog();
                     }
@@ -156,13 +158,8 @@ namespace Atestat.Controls
                         cmb.ShowDialog();
                     }
                 }
-
-
             }
-
         }
-
-
 
         private void Favorite_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -202,10 +199,7 @@ namespace Atestat.Controls
                             }
                         }
 
-
-
                         Favorite.Source = (Resources["NotFavorite"] as ImageSource);
-
                         isFav = false;
                     }
 
@@ -329,22 +323,6 @@ namespace Atestat.Controls
 
         private void ControlSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            /// YES AH YES
-
-            /*if (fromControl == (int)ControlTypes.UserPanel)
-            {
-                 Functions.ControlResize(sender, e, (((this.Parent as Grid).Parent as Grid).Parent as Grid).Parent as UserControl);
-            }
-            else if (fromControl == (int)ControlTypes.AdvertisementsPage)
-            {
-                Functions.ControlResize(sender, e, ((this.Parent as Grid).Parent as Grid).Parent as AdvertisementsPage);
-            }
-            else if (fromControl == (int)ControlTypes.AdminPanel)
-            {
-                Functions.ControlResize(sender, e, (((this.Parent as Grid).Parent as Grid).Parent as Grid).Parent as UserControl);
-            }*/
-
-
             Functions.ControlResize(sender, e, this);
         }
 
@@ -386,6 +364,26 @@ namespace Atestat.Controls
             AdImage.Source = im;
             AdTitle.Text = ad.title;
             AdPrice.Text = ad.price.ToString() + " Lei";
+        }
+
+        public void DeleteImages()
+        {
+            for (int i = 0; i < ad.images; i++)
+            {
+                // God please help me!
+                string path = Variables.debugPath + "Assets\\Images\\" + ad.id + "_" + i.ToString();
+
+                if (File.Exists(path + ".png"))
+                {
+                    path += ".png";
+                }
+                else
+                {
+                    path += ".jpg";
+                }
+
+                File.Delete(path);
+            }
         }
 
         public bool IsMarkedAsFavorite()

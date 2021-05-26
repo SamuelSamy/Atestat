@@ -60,38 +60,56 @@ namespace Atestat
             {
                 if (txtPass.SelectionLength != 0)
                 {
-                    password = password.Remove(txtPass.SelectionStart, txtPass.SelectionLength);
+                    int index = txtPass.SelectionStart;
+                    password = password.Remove(index, txtPass.SelectionLength);
+                    txtPass.Text = txtPass.Text.Remove(index, txtPass.SelectionLength);
+                    txtPass.CaretIndex = index;
                 }
                 else if (caretPos != 0)
                 {
                     if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
                     {
                         password = password.Remove(0, caretPos);
+                        txtPass.Text = txtPass.Text.Remove(0, caretPos);
+                        txtPass.CaretIndex = 0;
                     }
                     else
                     {
                         password = password.Remove(caretPos - 1, 1);
+                        txtPass.Text = txtPass.Text.Remove(caretPos - 1, 1);
+                        txtPass.CaretIndex = caretPos - 1;
                     }
                 }
+
+                e.Handled = true;
+
             }
 
             if (e.Key == Key.Delete && caretPos != password.Length)
             {
                 if (txtPass.SelectionLength != 0)
                 {
-                    password = password.Remove(txtPass.SelectionStart, txtPass.SelectionLength);
+                    int index = txtPass.SelectionStart;
+                    password = password.Remove(index, txtPass.SelectionLength);
+                    txtPass.Text = txtPass.Text.Remove(index, txtPass.SelectionLength);
+                    txtPass.CaretIndex = index;
                 }
                 else if (caretPos != password.Length)
                 {
                     if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
                     {
                         password = password.Remove(caretPos, password.Length - caretPos);
+                        txtPass.Text = txtPass.Text.Remove(caretPos, txtPass.Text.Length - caretPos);
+                        txtPass.CaretIndex = 0;
                     }
                     else
                     {
                         password = password.Remove(caretPos, 1);
+                        txtPass.Text = txtPass.Text.Remove(caretPos, 1);
+                        txtPass.CaretIndex = caretPos;
                     }
                 }
+                e.Handled = true;
 
             }
 
@@ -188,6 +206,13 @@ namespace Atestat
                 return;
             }
 
+            if (txtName.Text.Trim().Length < 3)
+            {
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa introduceti un nume valid!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+                return;
+            }
+
             if (!IsValidAddress(txtMail.Text))
             {
                 CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa introduceti o adresa de mail valida!", this, MessageBoxButton.OK);
@@ -195,7 +220,7 @@ namespace Atestat
                 return;
             }
 
-            if (Functions.AdressAlreadyInDataBase(txtMail.Text))
+            if (Functions.AdressAlreadyInDataBase(txtMail.Text) != 0)
             {
                 CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Adresa de mail introdusa exista deja!", this, MessageBoxButton.OK);
                 cmb.ShowDialog();
@@ -293,12 +318,12 @@ namespace Atestat
             if (txtName.Text.Trim().Length < 3)
             {        
                 txtName.Style = (Resources["CustomTextBoxWrong"] as Style);
-                NameToolTip.Visibility = Visibility.Hidden;
+                NameToolTip.Visibility = Visibility.Visible;
             }
             else
             {
                 txtName.Style = (Resources["CustomTextBox"] as Style);
-                NameToolTip.Visibility = Visibility.Visible;
+                NameToolTip.Visibility = Visibility.Hidden;
             }
 
             txtName.Text = text;
@@ -322,7 +347,7 @@ namespace Atestat
             else
             {
                 txtMail.Style = (Resources["CustomTextBox"] as Style);
-                MailToolTip.Visibility = Visibility.Visible;
+                MailToolTip.Visibility = Visibility.Hidden;
             }
 
             txtMail.Text = mail;
@@ -358,19 +383,6 @@ namespace Atestat
                 return false;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="password"></param>
-        /// <returns>
-        ///    nothing, 8+ chars, digit, capital
-        ///    0000, 0001, ..., 1111
-        ///    first bit    -> passwords match
-        ///    second bit   -> 8+ chars
-        ///    third bit    -> digit
-        ///    fourth bit   -> capital
-        /// </returns>
         private int IsValidPassword(string password, bool match = true)
         {
             int Value = (int)PasswordRequirements.None;

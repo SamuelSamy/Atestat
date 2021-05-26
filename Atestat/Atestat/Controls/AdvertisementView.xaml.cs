@@ -159,6 +159,7 @@ namespace Atestat.Controls
                     CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost reclamat cu succes!", this, MessageBoxButton.OK);
                     cmb.ShowDialog();
                     AnimateBlurEffect(0, 20, 0, 1, 0);
+                    txtReportDesc.Text = "";
                 }
                 else
                 {
@@ -197,6 +198,9 @@ namespace Atestat.Controls
             /// delete add from data base and mark the report as verified
             ad.DeleteFromDataBase();
             MarkAsVerified();
+
+            DeleteImages();
+
             CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.green, "Anuntul a fost sters cu succes!", this, MessageBoxButton.OK);
             cmb.ShowDialog();
             this.Content = new SettingsControl(true, 1);
@@ -545,6 +549,26 @@ namespace Atestat.Controls
 
             PopupGrid.BeginAnimation(OpacityProperty, opacityAnimation);
             b.BeginAnimation(BlurEffect.RadiusProperty, anim);
+        }
+
+        public void DeleteImages()
+        {
+            for (int i = 0; i < ad.images; i++)
+            {
+                // God please help me!
+                string path = Variables.debugPath + "Assets\\Images\\" + ad.id + "_" + i.ToString();
+
+                if (File.Exists(path + ".png"))
+                {
+                    path += ".png";
+                }
+                else
+                {
+                    path += ".jpg";
+                }
+
+                File.Delete(path);
+            }
         }
 
         #endregion

@@ -7,10 +7,10 @@ namespace Atestat.Classes
         public string name { set; get; }
         public string mail { set; get; }
         public string phone { set; get; }
-        public DateTime registerDate { set; get; }
+        public string registerDate { set; get; }
         public int id { set; get; }
 
-        public Admin(string name, string mail, string phone, DateTime registerDate, int id)
+        public Admin(string name, string mail, string phone, string registerDate, int id)
         {
             this.name = name;
             this.mail = mail;

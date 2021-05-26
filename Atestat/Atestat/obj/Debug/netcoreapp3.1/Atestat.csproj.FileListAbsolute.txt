@@ -62,3 +62,7 @@ D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\Advertisem
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\AdvertisementView.baml
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\CustomMessageBox.g.cs
 D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\CustomMessageBox.baml
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\ContactControl.g.cs
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\ContactControl.baml
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\TutorialControl.g.cs
+D:\c#\ProiectAtestat\Atestat\Atestat\obj\Debug\netcoreapp3.1\Controls\TutorialControl.baml

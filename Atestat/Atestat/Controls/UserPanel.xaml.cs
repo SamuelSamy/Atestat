@@ -30,7 +30,7 @@ namespace Atestat.Controls
 
         public const string key = "This Ad Is From The User Page And It Should Redirect Him To The User Panel ▬↓-:`┘y";
 
-        string password1 = "", password2 = "";
+        string password1 = "";
 
         #endregion
         public UserPanel(int adPage = -1)
@@ -207,6 +207,43 @@ namespace Atestat.Controls
 
         private void UpdateProfile(object sender, RoutedEventArgs e)
         {
+            if (!AllAreCompleted())
+            {
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa completati toate casutele pentru text!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+                return;
+            }
+
+            if (txtName.Text.Trim().Length < 3)
+            {
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa introduceti un nume valid!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+                return;
+            }
+
+            if (!IsValidAddress(txtMail.Text))
+            {
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Va rugam sa introduceti o adresa de mail valida!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+                return;
+            }
+
+            int addresID = Functions.AdressAlreadyInDataBase(txtMail.Text);
+
+            if (addresID != 0 && addresID != ConnectedUser.id)
+            {
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Adresa de mail introdusa exista deja!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+                return;
+            }
+
+            if (IsValidPassword(password1) != (int)PasswordRequirements.All)
+            {
+                CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Parola introdusa nu respecta criteriile!", this, MessageBoxButton.OK);
+                cmb.ShowDialog();
+                return;
+            }
+
             try
             {
                 Variables.conn.Open();
@@ -449,7 +486,7 @@ namespace Atestat.Controls
             password = password1;
 
             e.Handled = true;
-            txtPass.Text = txtPass.Text.Insert(caretPos, "•");
+            txtPass.Text = txtPass.Text.Insert(caretPos, key);
             txtPass.CaretIndex = caretPos + 1;
 
             CheckPasswords(password, txtPass, txtPass.CaretIndex);
@@ -528,7 +565,6 @@ namespace Atestat.Controls
             int Value = (int)PasswordRequirements.None;
 
             Value |= (int)PasswordRequirements.Match;
-            
 
             if (password.Length > 7)
             {
@@ -550,7 +586,6 @@ namespace Atestat.Controls
             }
 
             return Value;
-
         }
 
         public void UpdateAds()
@@ -630,6 +665,11 @@ namespace Atestat.Controls
             {
                 txtPage.Text = "Pagina " + currentPage.ToString() + " / " + pages.ToString();
             }
+        }
+
+        public bool AllAreCompleted()
+        {
+            return (!String.IsNullOrEmpty(txtName.Text) && !String.IsNullOrEmpty(txtMail.Text) && !String.IsNullOrEmpty(password1) && !String.IsNullOrEmpty(phoneNo.Content.ToString()));
         }
 
         #endregion

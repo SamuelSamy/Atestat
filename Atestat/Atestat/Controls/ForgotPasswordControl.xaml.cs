@@ -252,7 +252,7 @@ namespace Atestat
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (Functions.AdressAlreadyInDataBase(txtMail.Text) == false)
+            if (Functions.AdressAlreadyInDataBase(txtMail.Text) == 0)
             {
                 CustomMessageBox cmb = new CustomMessageBox((int)MessageBoxColorTypes.red, "Adresa de mail introdusa nu exista!", this, MessageBoxButton.OK);
                 cmb.ShowDialog();
